@@ -7,7 +7,10 @@ import { Slider, TextField, Tooltip } from '@material-ui/core'
 const RoundPlanner = () => {
 
     const [roundDetails, setRoundDetails] = useState<App.RoundDetails>({
-        amountRaising: 100000
+        preMoneyValuation: 1500000,
+        amountRaising: 150000,
+        cashInBank: 25000,
+        monthlyBurnRate: 5000
     } as App.RoundDetails)
 
     const calculateEquity = () => {
@@ -32,9 +35,12 @@ const RoundPlanner = () => {
     }
 
     const calculateBurn = () => {
-        if (roundDetails.cashInBank) {
+        if (roundDetails.cashInBank && roundDetails.monthlyBurnRate) {
+
+            let burn = roundDetails.cashInBank / roundDetails.monthlyBurnRate
+            
             return (
-                (roundDetails.cashInBank / roundDetails.monthlyBurnRate).toFixed(1)
+                (Math.round(burn * 4) / 4) * 1 // * 1 gets rid of .00
             )
         } else {
             return 0
