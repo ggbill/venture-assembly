@@ -1,0 +1,86 @@
+.menu-bar {
+   
+    .MuiAppBar-root {
+        position: fixed;
+        box-shadow: none;
+        
+    }
+
+    .MuiAppBar-colorPrimary {
+        flex-grow: 1;
+        background-color: #071013;
+        color: white;
+    }
+
+    
+
+    .MuiToolbar-root {
+        justify-content: space-between;
+        padding: 6px 24px;
+
+        .logo-wrapper{
+            font-size: 1.2em;
+            a{
+                display: flex;
+                color: unset;
+                text-decoration: none;
+                font-size: 1.7em;
+                font-weight: 700;
+            }
+        }
+
+        .link-wrapper{
+            a{
+                color: unset;
+                text-decoration: none;  
+                font-weight: 700;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .hamburger-menu {
+        display: none;
+        color: white;
+        justify-content: flex-end;
+        &:hover {
+            background-color: transparent;
+            color: #e2e2e2;
+        }
+
+        .MuiButton-base {
+            .MuiButton-label {
+                width: 24px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .menu-bar {
+        .MuiToolbar-root {
+            padding-left: 12px;
+        }
+
+        .hamburger-menu {
+            display: flex;
+        }
+
+        .menu-items {
+            display: none;
+        }
+
+        .logo-wrapper {
+
+            a {   
+                svg{
+                    width: 167px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+}
