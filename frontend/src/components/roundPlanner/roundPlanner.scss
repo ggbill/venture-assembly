@@ -39,29 +39,51 @@
 
     .results-wrapper{
         display: flex;
-        background-color: #F17105;
-        padding: 24px 0;
+        background-color: #DA4167;
+        padding: 48px 0;
+        color: white;
 
         .results{
             display: flex;
-            flex-direction: row;
-            justify-content: space-around;
+            flex-direction: column;
             flex-grow: 1;
+            
 
-            .result{
+            .figures-wrapper{
                 display: flex;
-                flex-direction: column;
-                align-items: center;
+                flex-direction: row;
+                justify-content: space-around;
+                margin-bottom: 36px;
+            
 
-                .label{
-
-                }
-
-                .value{
-                    font-size: 2.5em;
-                    font-weight: 800;
+                .result{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+    
+                    .label{
+    
+                    }
+    
+                    .value{
+                        font-size: 2.5em;
+                        font-weight: 800;
+                    }
                 }
             }
+
+            .tooltip-wrapper{
+                font-size: 0.8em;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                // padding: 0 160px;
+                .emoji{
+                    font-size: 2em;
+                }
+            }
+
+           
         }
     }
 }

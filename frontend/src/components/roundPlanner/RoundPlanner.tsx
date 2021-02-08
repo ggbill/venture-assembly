@@ -14,31 +14,31 @@ const RoundPlanner = () => {
     } as App.RoundDetails)
 
     const calculateEquity = () => {
-        if (roundDetails.preMoneyValuation){
-          return (
-            ((roundDetails.amountRaising / (roundDetails.preMoneyValuation + roundDetails.amountRaising)) * 100).toFixed(1)
-        )  
-        }else{
+        if (roundDetails.preMoneyValuation) {
+            return (
+                ((roundDetails.amountRaising / (roundDetails.preMoneyValuation + roundDetails.amountRaising)) * 100).toFixed(1)
+            )
+        } else {
             return 0
         }
-        
+
     }
 
     const calculatePostMoney = () => {
-        if (roundDetails.preMoneyValuation){
+        if (roundDetails.preMoneyValuation) {
             return (
                 roundDetails.preMoneyValuation + roundDetails.amountRaising
-            ) 
-          }else{
-              return 0
-          }
+            )
+        } else {
+            return 0
+        }
     }
 
     const calculateBurn = () => {
         if (roundDetails.cashInBank && roundDetails.monthlyBurnRate) {
 
             let burn = roundDetails.cashInBank / roundDetails.monthlyBurnRate
-            
+
             return (
                 (Math.round(burn * 4) / 4) * 1 // * 1 gets rid of .00
             )
@@ -135,18 +135,29 @@ const RoundPlanner = () => {
             </div>
             <div className="results-wrapper">
                 <div className="results content">
-                    <div className="result">
-                        <span className="label">Equity to be Sold</span>
-                        <span className="value">{`${calculateEquity()}%`}</span>
+                    <div className="figures-wrapper">
+                        <div className="result">
+                            <span className="label">Equity to be Sold</span>
+                            <span className="value">{`${calculateEquity()}%`}</span>
+                        </div>
+                        <div className="result">
+                            <span className="label">Post Money Valuation</span>
+                            <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
+                        </div>
+                        <div className="result">
+                            <span className="label">Runway</span>
+                            <span className="value">{`${calculateBurn()} months`}</span>
+                        </div>
                     </div>
-                    <div className="result">
-                        <span className="label">Post Money Valuation</span>
-                        <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
+                    <div className="tooltip-wrapper">
+                        <span className="emoji">💡☝️</span>
+                        <span>As a rule of thumb for the money raised now to give a 2x uplift in valuation by the next round. Here you are saying </span>
+                        <span><b><u>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.amountRaising)}</u></b></span>
+                        <span> will get you to </span>
+                        <span><b><u>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.preMoneyValuation * 2)}</u></b></span>
+                        <span> valuation.</span>
                     </div>
-                    <div className="result">
-                        <span className="label">Runway</span>
-                        <span className="value">{`${calculateBurn()} months`}</span>
-                    </div>
+
 
                 </div>
 
