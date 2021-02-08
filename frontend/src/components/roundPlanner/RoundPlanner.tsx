@@ -137,16 +137,35 @@ const RoundPlanner = () => {
                 <div className="results content">
                     <div className="figures-wrapper">
                         <div className="result">
-                            <span className="label">Equity to be Sold</span>
-                            <span className="value">{`${calculateEquity()}%`}</span>
+                            <div className="emoji">
+                                🗞️
+                            </div>
+                            <div className="figures">
+                                <span className="label">Equity to be Sold</span>
+                                <span className="value">{`${calculateEquity()}%`}</span>
+                            </div>
+
                         </div>
                         <div className="result">
-                            <span className="label">Post Money Valuation</span>
-                            <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
+                            <div className="emoji">
+                                🏷️
+                            </div>
+                            <div className="figures">
+                                <span className="label">Post Money Valuation</span>
+                                <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
+                            </div>
                         </div>
                         <div className="result">
-                            <span className="label">Runway</span>
-                            <span className="value">{`${calculateBurn()} months`}</span>
+                            <div className="emoji">
+                                {calculateBurn() <= 1 && <span>🥵</span>}
+                                {calculateBurn() > 1 && calculateBurn() <= 3 && <span>😮</span>}
+                                {calculateBurn() > 3 && calculateBurn() <= 6 && <span>🤔</span>}
+                                {calculateBurn() > 6 && <span>😎</span>}
+                            </div>
+                            <div className="figures">
+                                <span className="label">Runway</span>
+                                <span className="value">{`${calculateBurn()} months`}</span>
+                            </div>
                         </div>
                     </div>
                     <div className="tooltip-wrapper">
