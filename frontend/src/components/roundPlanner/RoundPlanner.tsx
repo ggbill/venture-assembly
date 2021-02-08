@@ -11,15 +11,24 @@ const RoundPlanner = () => {
     } as App.RoundDetails)
 
     const calculateEquity = () => {
-        return (
+        if (roundDetails.preMoneyValuation){
+          return (
             ((roundDetails.amountRaising / (roundDetails.preMoneyValuation + roundDetails.amountRaising)) * 100).toFixed(1)
-        )
+        )  
+        }else{
+            return 0
+        }
+        
     }
 
     const calculatePostMoney = () => {
-        return (
-            roundDetails.preMoneyValuation + roundDetails.amountRaising
-        )
+        if (roundDetails.preMoneyValuation){
+            return (
+                roundDetails.preMoneyValuation + roundDetails.amountRaising
+            ) 
+          }else{
+              return 0
+          }
     }
 
     const calculateBurn = () => {
