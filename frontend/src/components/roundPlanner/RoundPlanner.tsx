@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import MenuBar from '../shared/MenuBar'
 import NumberFormat from 'react-number-format'
 import { Slider, TextField, Tooltip } from '@material-ui/core'
+import CustomVASlider from '../shared/CustomVASlider'
 
 const RoundPlanner = () => {
 
@@ -35,17 +36,17 @@ const RoundPlanner = () => {
     }
 
     const calculateBurn = () => {
-        if (roundDetails.cashInBank && roundDetails.monthlyBurnRate) {
-
+        if (!roundDetails.monthlyBurnRate) {
+            return "∞"
+        } else if (!roundDetails.cashInBank) {
+            return 0
+        } else {
             let burn = roundDetails.cashInBank / roundDetails.monthlyBurnRate
 
             return (
                 (Math.round(burn * 4) / 4) * 1 // * 1 gets rid of .00
             )
-        } else {
-            return 0
         }
-
     }
 
     return (
@@ -83,7 +84,16 @@ const RoundPlanner = () => {
                                 </span>
                             </div>
 
-                            <Slider
+                            {/* <Slider
+                                defaultValue={roundDetails.amountRaising}
+                                aria-labelledby="discrete-slider"
+                                step={5000}
+                                min={10000}
+                                max={1000000}
+                                onChange={(event, value) => setRoundDetails({ ...roundDetails, amountRaising: Number(value) })}
+                            /> */}
+
+                            <CustomVASlider
                                 defaultValue={roundDetails.amountRaising}
                                 aria-labelledby="discrete-slider"
                                 step={5000}
@@ -163,19 +173,16 @@ const RoundPlanner = () => {
                                 {calculateBurn() > 6 && <span>😎</span>}
                             </div>
                             <div className="figures">
-                                <span className="label">Runway</span>
-                                <span className="value">{`${calculateBurn()} months`}</span>
+                                <span className="label">Runway (months)</span>
+                                <span className="value">{`${calculateBurn()}`}</span>
                             </div>
                         </div>
                     </div>
                     <div className="tooltip-wrapper">
-                        <span className="emoji">💡☝️</span>
-                        <span>As a rule of thumb for the money raised now to give a 2x uplift in valuation by the next round. Here you are saying </span>
-                        <span><b><u>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.amountRaising)}</u></b></span>
-                        <span> will get you to </span>
-                        <span><b><u>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.preMoneyValuation * 2)}</u></b></span>
-                        <span> valuation.</span>
+                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.amountRaising)}</u></b> will get you to a <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.preMoneyValuation * 2)}</u></b> valuation.` }}>
+                        </span>
                     </div>
+
 
 
                 </div>

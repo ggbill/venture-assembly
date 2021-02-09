@@ -15,6 +15,13 @@
 
             .MuiFormControl-root {
                 width: 100%;
+
+                .MuiFormLabel-root.Mui-focused {
+                    color: #da4167 !important;
+                }
+                .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+                    border-color: #da4167 !important;
+                }
             }
 
             .slider-wrapper {
@@ -22,6 +29,8 @@
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
+                position: relative;
+                top: -16px;
 
                 .selected-figure {
                     position: relative;
@@ -37,46 +46,45 @@
         }
     }
 
-    .results-wrapper{
+    .results-wrapper {
         display: flex;
-        background-color: #DA4167;
+        background-color: #da4167;
         padding: 48px 0;
         color: white;
 
-        .results{
+        .results {
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            
 
-            .figures-wrapper{
+            .figures-wrapper {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 margin-bottom: 36px;
-            
 
-                .result{
+                .result {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
+                    justify-content: center;
+                    // width: 300px;
 
-                    .emoji{
+                    .emoji {
                         font-size: 2.5em;
                         margin-right: 12px;
                     }
 
-                    .figures{
+                    .figures {
                         display: flex;
-                        flex-direction: column; 
+                        flex-direction: column;
                         justify-content: center;
                         text-align: center;
 
-                        .label{
-    
+                        .label {
                         }
-        
-                        .value{
+
+                        .value {
                             font-size: 2.5em;
                             font-weight: 800;
                         }
@@ -84,18 +92,62 @@
                 }
             }
 
-            .tooltip-wrapper{
+            .tooltip-wrapper {
                 font-size: 0.8em;
                 text-align: center;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                .emoji{
+
+                .emoji {
                     font-size: 2em;
                 }
             }
+        }
+    }
+}
 
-           
+@media only screen and (max-width: 800px) {
+    .round-planner-page {
+        .inputs-wrapper {
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0;
+
+            .field-wrapper {
+                display: inline-flex;
+                width: 100%;
+                margin-bottom: 24px;
+
+                &:nth-child(odd) {
+                    margin-right: 0;
+                }
+
+                .slider-wrapper {
+                    margin: 24px 0 0 0;
+                }
+            }
+        }
+
+        .results-wrapper {
+            .results {
+                .figures-wrapper {
+                    flex-direction: column;
+                    margin-bottom: 0;
+                    .result {
+                        flex-direction: column;
+                        margin-bottom: 24px;
+
+                        .emoji {
+                            margin-right: 0;
+                        }
+
+                        
+                    }
+                }
+
+               
+            }
         }
     }
 }
