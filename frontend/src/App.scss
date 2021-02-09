@@ -10,30 +10,10 @@
     min-height: calc(100vh - 215px); /* will cover the 100% of viewport minus (header + footer) */
     overflow: hidden;
     display: block;
-    margin-top: 85px;
+    // margin-top: 76px;
 }
 
-.header-section {
-    background-color: #2258ff;
-    color: white;
-    padding: 75px 0;
 
-    .title-wrapper {
-        display: flex;
-        flex-direction: column;
-
-        .title {
-            // max-width: 670px;
-            font-size: 3em;
-            font-weight: 600;
-            line-height: 1.1;
-        }
-
-        .sub-title {
-            font-size: 1.3em;
-        }
-    }
-}
 
 .MuiButton-root.va-button {
     color: white;
@@ -57,70 +37,9 @@
 }
 
 
-
-.basic-details-section,
-.funding-details-section,
-.team-details-section,
-.risk-details-section,
-.forecast-details-section,
-.extras-details-section {
-    margin-top: 48px;
-    .title-wrapper {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 24px;
-        .title {
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        .step-counter {
-            font-size: 1.3em;
-            // font-weight: bold;
-        }
-    }
-
-    .intro-text {
-        margin-bottom: 24px;
-    }
-
-    .input-wrapper {
-        .MuiFormControl-root {
-            width: calc(50% - 6px);
-            margin-bottom: 12px;
-        }
-
-        .margin-right {
-            margin-right: 12px;
-        }
-
-        .MuiInputBase-input.Mui-disabled {
-            background: gainsboro;
-        }
-    }
-}
-
 @media only screen and (max-width: 600px) {
-    .basic-details-section,
-    .funding-details-section,
-    .team-details-section,
-    .risk-details-section,
-    .forecast-details-section,
-    .extras-details-section {
-        .input-wrapper {
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 24px;
-            .MuiFormControl-root {
-                width: 100%;
-                margin: 0 0 12px 0;
-            }
-        }
-    }
-
-    // .ain-button{
-    //     margin-bottom: 12px;
-    // }
-
-    
+    .full-height-content {
+        min-height: calc(100vh - 215px); /* will cover the 100% of viewport minus (header + footer) */
+        // margin-top: 68px;
+    } 
 }

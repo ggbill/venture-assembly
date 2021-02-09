@@ -8,18 +8,17 @@ const Home = () => {
     return (
         <div className="home-page">
             <MenuBar />
-            {/* <section className="header-section">
+            <section className="header-section">
                 <div className="content">
                     <div className="title-wrapper">
-                        <span className="title">Welcome to the AIN Pitch Submission Portal</span>
-                    </div>
-                    <div className="button-wrapper">
-                        <Link to='/broking-submission'>
-                            <button className="ain-button">Lets Do This!</button>
-                        </Link>
+                        <span className="title">Venture Assembly<span className="full-stop">.</span></span>
                     </div>
                 </div>
-            </section> */}
+                <div className="read-more">
+                    read more
+                    <div className="arrow">↓</div>
+                </div>
+            </section>
 
         </div>
     )

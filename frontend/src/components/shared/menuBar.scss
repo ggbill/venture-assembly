@@ -26,60 +26,91 @@
                 text-decoration: none;
                 font-size: 1.7em;
                 font-weight: 700;
+                .full-stop{
+                    color: #d81747;
+                }
             }
         }
 
-        .link-wrapper{
+        .menu-items{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
             a{
                 color: unset;
                 text-decoration: none;  
                 font-weight: 700;
+                margin-left: 24px;
 
                 &:hover{
-                    text-decoration: underline;
+                    text-decoration: underline #d81747 2px;
+                }
+
+                .contact-us-wrapper{
+                    background-color: #d81747;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+
+                    &:hover{
+                        text-decoration: underline white 2px;
+                    }
                 }
             }
         }
-    }
 
-    .hamburger-menu {
-        display: none;
-        color: white;
-        justify-content: flex-end;
-        &:hover {
-            background-color: transparent;
-            color: #e2e2e2;
+        .hamburger-menu {
+            display: none;
+            color: white;
+            justify-content: flex-end;
+            &:hover {
+                background-color: transparent;
+                color: #e2e2e2;
+            }
+    
+            .MuiButton-base {
+                .MuiButton-label {
+                    width: 24px;
+                }
+            }
+        }
+    }   
+}
+
+.menu-drawer{
+    .MuiDrawer-paper{
+        background-color: #071013;
+        padding-bottom: 24px;
+
+        a{
+            color: white;
+            text-decoration: none;
+            .MuiListItem-root{
+                font-weight: 600;
+                font-size: 1.3em;
+            }
         }
 
-        .MuiButton-base {
-            .MuiButton-label {
-                width: 24px;
+        .close-icon-container{
+            height: 56px;
+            display: flex;
+            justify-content: flex-end;
+            svg{
+                color: white;
             }
         }
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 700px) {
     .menu-bar {
         .MuiToolbar-root {
-            padding-left: 12px;
-        }
-
-        .hamburger-menu {
-            display: flex;
-        }
-
-        .menu-items {
-            display: none;
-        }
-
-        .logo-wrapper {
-
-            a {   
-                svg{
-                    width: 167px;
-                    height: 70px;
-                }
+            // padding-left: 12px;
+            .hamburger-menu {
+                display: flex;
+            }
+    
+            .menu-items {
+                display: none;
             }
         }
     }

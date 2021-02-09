@@ -52,16 +52,74 @@ const MenuBar = () => {
                     <Toolbar>
                         <div className="logo-wrapper">
                             <Link to={'/'}>
-                                <span>VA .</span>
+                                <span>VA <span className="full-stop">.</span></span>
                             </Link>
                         </div>
-                        <div className="link-wrapper">
+                        <div className="menu-items">
+                            <Link to={'/round-planner'}>
+                                <span>About</span>
+                            </Link>
+                            <Link to={'/round-planner'}>
+                                <span>Services</span>
+                            </Link>
+                            <Link to={'/round-planner'}>
+                                <span>Checklists</span>
+                            </Link>
                             <Link to={'/round-planner'}>
                                 <span>Round Planner</span>
                             </Link>
+
+                            <Link to={'/round-planner'}>
+                                <div className="contact-us-wrapper">
+                                    <span>Contact Us</span>
+                                </div>
+                            </Link>
+                        </div>
+                        <div className="clickable-icon hamburger-menu" aria-controls="simple-menu" aria-haspopup="true"
+                            onClick={toggleDrawer(true)}
+                        >
+                            <MenuIcon />
                         </div>
                     </Toolbar>
                 </AppBar>
+
+                <Drawer
+                        anchor="top"
+                        open={isDrawerOpen}
+                        onClose={toggleDrawer(false)}
+                        className="menu-drawer"
+                        // classes={{
+                        //     paper: classes.paper
+                        // }}
+                    >
+                        <div className="close-icon-container">
+                            <Button
+                                className="clickable-icon hamburger-menu"
+                                aria-controls="simple-menu"
+                                aria-haspopup="true"
+                                onClick={toggleDrawer(false)}
+                                // style={{ color: props.auction.appConfig.menuBarFontColor }}
+                            >
+                                <CloseIcon />
+                            </Button>
+                        </div>
+                        <Link to={`/`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>About</MenuItem>
+                        </Link>
+                        <Link to={`/`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Services</MenuItem>
+                        </Link>
+                        <Link to={`/`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Checklists</MenuItem>
+                        </Link>
+                        <Link to={`/round-planner`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>
+                        </Link>
+                        <Link to={`/`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Contact Us</MenuItem>
+                        </Link>
+
+                    </Drawer>
             </div>
         </>
     )

@@ -1,6 +1,41 @@
-.home-page{
-    .title-wrapper{
-        max-width: 600px;
-        margin-bottom: 12px;
+.home-page {
+    .header-section {
+        display: flex;
+        background-color: #071013;
+        color: white;
+        // padding: 75px 0;
+        height: 100vh;
+
+        .title-wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            top: 150px;
+
+            .title {
+                font-size: 3em;
+                font-weight: 600;
+                line-height: 1.1;
+                .full-stop {
+                    color: #d81747;
+                }
+            }
+
+            .sub-title {
+                font-size: 1.3em;
+            }
+        }
+        .read-more {
+            color: white;
+            text-align: center;
+            width: 100%;
+            font-size: 0.875rem;
+            bottom: 5vh;
+            position: absolute;
+            .arrow{
+                color: #d81747;
+            }
+        }
     }
 }
