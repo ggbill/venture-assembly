@@ -45,12 +45,32 @@
                 }
             }
 
-            .tech-checkbox{
+            .tech-checkbox {
                 position: relative;
                 top: -6px;
-                .MuiFormControlLabel-label{
+                .MuiFormControlLabel-label {
                     font-size: 0.8em;
+                }
+            }
 
+            &.with-question-mark {
+                flex-direction: row;
+                align-items: center;
+
+                .question-mark-wrapper {
+                    
+                    display: flex;
+                    svg {
+                        width: 25px;
+                        height: 25px;
+                        margin: 0 0 0 12px;
+                        fill: #da4167;
+                        cursor: pointer;
+
+                        &:hover{
+                           fill: #940025;
+                        }
+                    }
                 }
             }
         }
@@ -138,11 +158,10 @@
                     margin: 24px 0 0 0;
                 }
 
-                .tech-checkbox{
+                .tech-checkbox {
                     position: relative;
                     top: 0;
-                    .MuiFormControlLabel-label{
-                        
+                    .MuiFormControlLabel-label {
                     }
                 }
             }
@@ -162,8 +181,6 @@
                         .emoji {
                             margin-right: 0;
                         }
-
-                        
                     }
                 }
             }

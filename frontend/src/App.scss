@@ -35,7 +35,7 @@
     }
 }
 
-.ain-button {
+.MuiButton-root.va-button {
     color: white;
     border-radius: 5px;
     font-family: "Poppins", "Helvetica", sans-serif;
@@ -43,14 +43,20 @@
     padding: 12px 6px;
     font-weight: 500;
     border: none;
-    background-color: #3b7cee;
+    background-color: #d81747;
+
+    &:hover{
+        background-color: #940025;
+    }
+
+    &:disabled{
+        background-color: gray !important;
+        border: none;
+        cursor: unset;  
+    }
 }
 
-.ain-button:disabled{
-    background-color: gray !important;
-    border: none;
-    cursor: unset;
-}
+
 
 .basic-details-section,
 .funding-details-section,

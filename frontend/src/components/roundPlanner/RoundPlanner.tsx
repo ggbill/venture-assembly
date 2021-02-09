@@ -2,12 +2,14 @@ import './roundPlanner.scss'
 import React, { useState } from 'react'
 import MenuBar from '../shared/MenuBar'
 import NumberFormat from 'react-number-format'
-import { Checkbox, FormControl, FormControlLabel, FormHelperText, Input, InputLabel, ListItem, MenuItem, OutlinedInput, Select, Slider, TextField, Tooltip } from '@material-ui/core'
+import { Checkbox, FormControl, FormControlLabel, FormHelperText, Input, InputAdornment, InputLabel, ListItem, MenuItem, OutlinedInput, Select, Slider, TextField, Tooltip } from '@material-ui/core'
 import CustomVASlider from '../shared/CustomVASlider'
-import Chip from '@material-ui/core/Chip';
+import NotificationDialog from '../shared/NotificationDialog'
+import { ReactComponent as QuestionMark } from '../../images/question-mark.svg'
 
 const RoundPlanner = () => {
 
+    const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "" })
     const [roundDetails, setRoundDetails] = useState<App.RoundDetails>({
         preMoneyValuation: 1500000,
         amountRaising: 150000,
@@ -19,8 +21,6 @@ const RoundPlanner = () => {
         month12Revenue: 0,
         isUsesTech: false
     })
-
-
 
     const calculateEquity = () => {
         if (roundDetails.preMoneyValuation) {
@@ -63,7 +63,7 @@ const RoundPlanner = () => {
             <div className="content">
                 <h1>Round Planner.</h1>
                 <div className="inputs-wrapper">
-                    <div className="field-wrapper">
+                    <div className="field-wrapper with-question-mark">
                         <NumberFormat
                             value={roundDetails.preMoneyValuation}
                             name="preMoneyValuation"
@@ -78,7 +78,33 @@ const RoundPlanner = () => {
                             onValueChange={(values) => setRoundDetails({ ...roundDetails, preMoneyValuation: Number(values.value) })}
                             helperText="Please enter how much your company is worth before this round of investment."
                             required
+                            InputProps={{
+                                endAdornment: <InputAdornment position="end">
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "Company Valuation",
+                                            message: "If you are unsure, enter a value. The average funding round gives away about 15% for the amount they are raising."
+                                        })
+                                    }}>
+                                        <QuestionMark/>
+                                    </div>
+
+                                </InputAdornment>,
+                            }}
                         />
+                        {/* <div className="question-mark-wrapper" onClick={() => {
+                            setNotificationDialogProperties({
+                                isOpen: true,
+                                type: "NOTIFICATION",
+                                title: "Company Valuation",
+                                message: "If you are unsure, enter a value. The average funding round gives away about 15% for the amount they are raising."
+                            })
+                        }}>
+                            <QuestionMark style={{fill: "#da4167"}} />
+                        </div> */}
+
                     </div>
                     <div className="field-wrapper">
                         <div className="slider-wrapper">
@@ -294,50 +320,16 @@ const RoundPlanner = () => {
 
             </div>
             <div className="results-wrapper">
-                {/* <div className="results content">
-                    <div className="figures-wrapper">
-                        <div className="result">
-                            <div className="emoji">
-                                🗞️
-                            </div>
-                            <div className="figures">
-                                <span className="label">Equity to be Sold</span>
-                                <span className="value">{`${calculateEquity()}%`}</span>
-                            </div>
-
-                        </div>
-                        <div className="result">
-                            <div className="emoji">
-                                🏷️
-                            </div>
-                            <div className="figures">
-                                <span className="label">Post Money Valuation</span>
-                                <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
-                            </div>
-                        </div>
-                        <div className="result">
-                            <div className="emoji">
-                                {calculateBurn() <= 1 && <span>🥵</span>}
-                                {calculateBurn() > 1 && calculateBurn() <= 3 && <span>😮</span>}
-                                {calculateBurn() > 3 && calculateBurn() <= 6 && <span>🤔</span>}
-                                {calculateBurn() > 6 && <span>😎</span>}
-                            </div>
-                            <div className="figures">
-                                <span className="label">Runway (months)</span>
-                                <span className="value">{`${calculateBurn()}`}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="tooltip-wrapper">
-                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.amountRaising)}</u></b> will get you to a <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.preMoneyValuation * 2)}</u></b> valuation.` }}>
-                        </span>
-                    </div>
-
-
-
-                </div> */}
 
             </div>
+
+            <NotificationDialog
+                handleClose={() => setNotificationDialogProperties({ ...notificationDialogProperties, isOpen: false })}
+                isDialogOpen={notificationDialogProperties.isOpen}
+                message={notificationDialogProperties.message}
+                title={notificationDialogProperties.title}
+                type={notificationDialogProperties.type}
+            />
 
         </div>
     )
