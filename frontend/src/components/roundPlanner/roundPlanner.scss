@@ -1,10 +1,11 @@
 .round-planner-page {
     .inputs-wrapper {
         // margin: 12px 0 36px;
-        padding: 24px 0;
+        padding: 48px 0;
 
         .field-wrapper {
             display: inline-flex;
+            flex-direction: column;
 
             width: calc(50% - 6px);
             margin-bottom: 24px;
@@ -43,13 +44,23 @@
                     }
                 }
             }
+
+            .tech-checkbox{
+                position: relative;
+                top: -6px;
+                .MuiFormControlLabel-label{
+                    font-size: 0.8em;
+
+                }
+            }
         }
     }
 
     .results-wrapper {
         display: flex;
         background-color: #da4167;
-        padding: 48px 0;
+        padding: 60px 0;
+        margin: 60px 0;
         color: white;
 
         .results {
@@ -126,10 +137,20 @@
                 .slider-wrapper {
                     margin: 24px 0 0 0;
                 }
+
+                .tech-checkbox{
+                    position: relative;
+                    top: 0;
+                    .MuiFormControlLabel-label{
+                        
+                    }
+                }
             }
         }
 
         .results-wrapper {
+            padding: 24px 0;
+            margin: 24px 0;
             .results {
                 .figures-wrapper {
                     flex-direction: column;
@@ -145,8 +166,10 @@
                         
                     }
                 }
+            }
 
-               
+            .tooltip-wrapper {
+                line-height: 1.7em;
             }
         }
     }
