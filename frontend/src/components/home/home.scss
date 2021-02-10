@@ -51,13 +51,14 @@
     .home-page {
         .header-section {
             .title-wrapper {
+                top: 100px;
                 .sub-title {
                     margin-top: 12px;
                     flex-direction: column;
                     font-size: 1.5em;
 
                     .typing-text-wrapper{
-                        margin-top: -8px;
+                        margin-top: -4px;
                     }
                     
                 }
