@@ -33,7 +33,7 @@ const Home = () => {
                                     <span>build a world beating team<span className="full-stop">.</span></span>
                                     <Typist.Backspace count={27} delay={2000} />
                                     <Typist.Delay ms={1000} />
-                                    <span><b>wage war on startup bloat<span className="full-stop">.</span></b></span>
+                                    <span>wage war on startup <b>bloat</b><span className="full-stop">.</span></span>
                                 </Typist>
                             </div>
                         </div>
