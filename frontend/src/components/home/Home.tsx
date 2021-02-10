@@ -1,8 +1,12 @@
 import './home.scss'
 import React from 'react'
 import MenuBar from '../shared/MenuBar'
-import Typist from 'react-typist';
-import 'react-typist/dist/Typist.css';
+import Typist from 'react-typist'
+import 'react-typist/dist/Typist.css'
+import { Button } from '@material-ui/core'
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -23,21 +27,31 @@ const Home = () => {
                                     <span>find specialist help<span className="full-stop">.</span></span>
                                     <Typist.Backspace count={21} delay={2000} />
                                     <Typist.Delay ms={1000} />
-                                    <span>build their network<span className="full-stop">.</span></span>
+                                    <span>expand their network<span className="full-stop">.</span></span>
                                     <Typist.Backspace count={21} delay={2000} />
                                     <Typist.Delay ms={1000} />
-                                    <span>hire staff<span className="full-stop">.</span></span>
-                                    <Typist.Backspace count={11} delay={2000} />
+                                    <span>build a world beating team<span className="full-stop">.</span></span>
+                                    <Typist.Backspace count={27} delay={2000} />
                                     <Typist.Delay ms={1000} />
                                     <span><b>wage war on startup bloat<span className="full-stop">.</span></b></span>
                                 </Typist>
                             </div>
                         </div>
+                        <div className="cta-wrapper">
+                            <Link to={'/round-planner'}>
+                                <Button className="va-button cta">
+                                    <span>Get Started</span> <ArrowForwardIcon />
+                                </Button>
+                            </Link>
+                        </div>
+
+
                     </div>
+
                 </div>
                 <div className="read-more">
-                    read more
-                <div className="arrow">↓</div>
+                    <span>read more</span>
+                    <ArrowDownwardIcon />
                 </div>
             </section>
 

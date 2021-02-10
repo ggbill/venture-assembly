@@ -66,13 +66,9 @@ const MenuBar = () => {
                                 <span>Checklists</span>
                             </Link>
                             <Link to={'/round-planner'}>
+                                {/* <div className="cta-wrapper"> */}
                                 <span>Round Planner</span>
-                            </Link>
-
-                            <Link to={'/round-planner'}>
-                                <div className="contact-us-wrapper">
-                                    <span>Contact Us</span>
-                                </div>
+                                {/* </div> */}
                             </Link>
                         </div>
                         <div className="clickable-icon hamburger-menu" aria-controls="simple-menu" aria-haspopup="true"
@@ -115,10 +111,6 @@ const MenuBar = () => {
                         <Link to={`/round-planner`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>
                         </Link>
-                        <Link to={`/`}>
-                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Contact Us</MenuItem>
-                        </Link>
-
                     </Drawer>
             </div>
         </>

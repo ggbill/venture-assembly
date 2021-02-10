@@ -60,7 +60,7 @@ const RoundPlanner = () => {
     return (
         <div className="round-planner-page">
             <MenuBar />
-            <div className="content">
+            <div className="content top-page-margin">
                 <h1>Round Planner.</h1>
                 <div className="inputs-wrapper">
                     <div className="field-wrapper with-question-mark">
