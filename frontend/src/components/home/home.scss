@@ -23,8 +23,15 @@
             }
 
             .sub-title {
-                font-size: 1.3em;
+                display: flex;
+                flex-direction: row;
+                font-size: 1.5em;
+                .full-stop {
+                    color: #d81747;
+                }
             }
+
+
         }
         .read-more {
             color: white;
@@ -38,4 +45,24 @@
             }
         }
     }
+}
+
+@media only screen and (max-width: 600px) {
+    .home-page {
+        .header-section {
+            .title-wrapper {
+                .sub-title {
+                    margin-top: 12px;
+                    flex-direction: column;
+                    font-size: 1.5em;
+
+                    .typing-text-wrapper{
+                        margin-top: -8px;
+                    }
+                    
+                }
+            }
+        }
+    }
+
 }
