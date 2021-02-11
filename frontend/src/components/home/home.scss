@@ -27,23 +27,22 @@
                 flex-direction: row;
                 font-size: 1.5em;
                 margin-top: 12px;
+                justify-content: center;
                 .full-stop {
                     color: #d81747;
                 }
             }
 
-            .cta-wrapper{
+            .cta-wrapper {
                 margin-top: 24px;
-                a{
+                a {
                     text-decoration: none;
                 }
-                svg{
+                svg {
                     margin-left: 6px;
                     font-size: 1.4em;
                 }
             }
-
-
         }
         .read-more {
             color: white;
@@ -55,8 +54,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            svg{
+
+            svg {
                 fill: #d81747;
+                cursor: pointer;
+                z-index: 1000;
+            }
+            span {
+                cursor: pointer;
+                z-index: 1000;
             }
         }
     }
@@ -70,10 +76,9 @@
                 .sub-title {
                     margin-top: 12px;
                     flex-direction: column;
-                    font-size: 1.5em;                    
+                    font-size: 1.5em;
                 }
             }
         }
     }
-
 }

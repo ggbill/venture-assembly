@@ -8,7 +8,6 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 import { Link } from 'react-router-dom'
 
-
 const Home = () => {
     return (
         <div className="home-page">
@@ -45,7 +44,6 @@ const Home = () => {
                             </Link>
                         </div>
 
-
                     </div>
 
                 </div>
@@ -54,7 +52,6 @@ const Home = () => {
                     <ArrowDownwardIcon />
                 </div>
             </section>
-
         </div>
     )
 }

@@ -8,6 +8,13 @@ declare module App {
         stage: string, 
         monthlyRevenue: number,
         month12Revenue: number,
-        isUsesTech: boolean
+        isUsesTech: boolean,
+        financials: FinancialDetails[]
+    }
+
+    interface FinancialDetails {
+        year: number,
+        revenue: number,
+        ebitda: number
     }
 }
