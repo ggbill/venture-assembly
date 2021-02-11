@@ -2,6 +2,7 @@ import './sectorSection.scss'
 import React, { useState } from 'react'
 import NumberFormat from 'react-number-format'
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, Input, InputAdornment, InputLabel, ListItem, MenuItem, OutlinedInput, Paper, Select, Slider, Table, TableBody, TableCell, TableHead, TableRow, TextField, Tooltip } from '@material-ui/core'
+import FinancialsLineChart from './FinancialsLineChart'
 
 interface InputProps {
     roundDetails: App.RoundDetails
@@ -125,88 +126,94 @@ const SectorSection = (props: InputProps) => {
                 </div>
                 <div className="financials-wrapper">
                     {/* {JSON.stringify(props.roundDetails.financials)} */}
-                    <Paper>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>
-                                    </TableCell>
-                                    <TableCell>
-                                        <span>Year 1</span>
-                                    </TableCell>
-                                    <TableCell>
-                                        <span>Year 2</span>
-                                    </TableCell>
-                                    <TableCell>
-                                        <span>Year 3</span>
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell>
-                                        Revenue
-                                    </TableCell>
-                                    {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
+                    <div className="financials-table-wrapper">
+                        <Paper className="financials-table" >
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
                                         <TableCell>
-                                            <NumberFormat
-                                                value={props.roundDetails.financials[index].revenue}
-                                                name="monthlyRevenue"
-                                                allowLeadingZeros={false}
-                                                allowNegative={false}
-                                                customInput={TextField}
-                                                prefix={'£'}
-                                                type="tel"
-                                                variant="outlined"
-                                                thousandSeparator
-                                                onValueChange={(values) => setFinancials(index, "revenue", values.value)}
-                                                required
-                                            />
                                         </TableCell>
-                                    ))}
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>
-                                        EBITDA
-                                    </TableCell>
-                                    {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
                                         <TableCell>
-                                            <NumberFormat
-                                                value={props.roundDetails.financials[index].ebitda}
-                                                name="monthlyRevenue"
-                                                allowLeadingZeros={false}
-                                                customInput={TextField}
-                                                prefix={'£'}
-                                                type="tel"
-                                                variant="outlined"
-                                                thousandSeparator
-                                                onValueChange={(values) => setFinancials(index, "ebitda", values.value)}
-                                                required
-                                                InputProps={{ inputProps: { min: 0, max: props.roundDetails.financials[index].revenue } }}
-                                                isAllowed={(values) => {
-                                                    const { formattedValue, floatValue } = values;
-                                                    return formattedValue === "" || Number(floatValue) <= props.roundDetails.financials[index].revenue;
-                                                }}
-                                            />
+                                            <span>Year 1</span>
                                         </TableCell>
-                                    ))}
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>
-                                        Costs
-                                    </TableCell>
-                                    {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
                                         <TableCell>
-                                            <div className={(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda) < 0 ? "cost red" : "cost"}>
-                                                {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda)}
-                                            </div>
+                                            <span>Year 2</span>
                                         </TableCell>
-                                    ))}
-                                </TableRow>
+                                        <TableCell>
+                                            <span>Year 3</span>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell>
+                                            Revenue
+                                    </TableCell>
+                                        {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
+                                            <TableCell>
+                                                <NumberFormat
+                                                    value={props.roundDetails.financials[index].revenue}
+                                                    name="monthlyRevenue"
+                                                    allowLeadingZeros={false}
+                                                    allowNegative={false}
+                                                    customInput={TextField}
+                                                    prefix={'£'}
+                                                    type="tel"
+                                                    variant="outlined"
+                                                    thousandSeparator
+                                                    onValueChange={(values) => setFinancials(index, "revenue", values.value)}
+                                                    required
+                                                />
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            EBITDA
+                                    </TableCell>
+                                        {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
+                                            <TableCell>
+                                                <NumberFormat
+                                                    value={props.roundDetails.financials[index].ebitda}
+                                                    name="monthlyRevenue"
+                                                    allowLeadingZeros={false}
+                                                    customInput={TextField}
+                                                    prefix={'£'}
+                                                    type="tel"
+                                                    variant="outlined"
+                                                    thousandSeparator
+                                                    onValueChange={(values) => setFinancials(index, "ebitda", values.value)}
+                                                    required
+                                                    InputProps={{ inputProps: { min: 0, max: props.roundDetails.financials[index].revenue } }}
+                                                    isAllowed={(values) => {
+                                                        const { formattedValue, floatValue } = values;
+                                                        return formattedValue === "" || Number(floatValue) <= props.roundDetails.financials[index].revenue;
+                                                    }}
+                                                />
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell>
+                                            Costs
+                                    </TableCell>
+                                        {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
+                                            <TableCell>
+                                                <div className={(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda) < 0 ? "cost red" : "cost"}>
+                                                    {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda)}
+                                                </div>
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                            <FormHelperText>Remember - EBITDA is always lower than revenue.</FormHelperText>
+                        </Paper>
+                    </div>
 
-                            </TableBody>
-                        </Table>
-                    </Paper>
+                    <div className="financials-line-chart-wrapper">
+                        <FinancialsLineChart roundDetails={props.roundDetails} />
+                    </div>
 
                 </div>
 

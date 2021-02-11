@@ -1,19 +1,37 @@
-.sector-section{
-    .financials-wrapper{
-        width: 50%;
+.sector-section {
+    .financials-wrapper {
+        display: flex;
+        flex-direction: row;
+        // align-items: stretch;
 
-        .MuiPaper-root{
-            padding: 12px;
+        .financials-table-wrapper {
+            display: flex;
+            width: 50%;
+            margin-right: 12px;
+
+            .financials-table {
+                padding: 12px;
+                
+                .cost {
+                    padding: 6px 12px;
+                    font-size: 1.2em;
+
+                    &.red {
+                        font-weight: bold;
+                        color: red;
+                    }
+                }
+
+                .MuiFormHelperText-root {
+                    width: 100%;
+                }
+            }
         }
 
-        .cost{
-            padding: 6px 12px;
-            font-size: 1.2em;
+        .financials-line-chart-wrapper {
+            display: flex;
+            width: 50%;
 
-            &.red{
-                font-weight: bold;
-                color: red;
-            }
         }
     }
 }
