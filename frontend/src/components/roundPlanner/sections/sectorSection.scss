@@ -2,9 +2,18 @@
     .financials-wrapper{
         width: 50%;
 
+        .MuiPaper-root{
+            padding: 12px;
+        }
+
         .cost{
             padding: 6px 12px;
             font-size: 1.2em;
+
+            &.red{
+                font-weight: bold;
+                color: red;
+            }
         }
     }
 }
