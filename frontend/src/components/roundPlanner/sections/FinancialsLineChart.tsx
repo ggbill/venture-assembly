@@ -1,7 +1,8 @@
-import { Paper } from '@material-ui/core';
+import { Paper } from '@material-ui/core'
 import React from 'react'
-import { Line } from "react-chartjs-2";
+import { Line} from "react-chartjs-2"
 import './financialsLineChart.scss'
+import "chartjs-plugin-datalabels"
 
 interface InputProps {
     roundDetails: App.RoundDetails
@@ -29,24 +30,49 @@ const FinancialsLineChart = (props: InputProps) => {
             {
                 label: "Revenue",
                 data: revenueDataSet,
-                // data: [33, 53, 85, 41, 44, 65],
                 fill: true,
-                backgroundColor: "rgba(75,192,192,0.2)",
-                borderColor: "rgba(75,192,192,1)"
+                backgroundColor: "rgba(218,65,103,0.2)",
+                borderColor: "rgba(218,65,103,1)"
             },
             {
                 label: "EBITDA",
                 data: ebitdaDataSet,
-                // data: [33, 25, 35, 51, 54, 76],
                 fill: false,
-                borderColor: "#742774"
+                borderColor: "#07A0C3"
             }
         ]
     };
 
     return (
         <Paper className="financials-line-chart">
-            <Line data={data} />
+            <Line
+             data={data}
+             options={{
+                plugins: {
+                    datalabels: {
+                        align: (context) => {
+                            
+                          return "end"
+                        },
+                      display: (context) => {
+                        return context.dataset.label === "Revenue";
+                      },
+                      formatter: (value, context) => {
+
+                        console.log(context)
+
+                        if (Number(ebitdaDataSet[context.dataIndex]) < 0){
+                            return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100) - 100 + '%')
+                        }else{
+                            return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100)+ '%')
+                        }
+
+
+                      }
+                    }
+                  }  
+             }}
+              />
         </Paper>
     )
 }

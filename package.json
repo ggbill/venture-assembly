@@ -32,6 +32,7 @@
     "@types/mongoose": "^5.5.18",
     "@types/node": "^12.12.7",
     "chart.js": "^2.9.4",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "moment": "^2.29.1",
     "mongodb": "^3.3.2",
     "node-sass": "^4.13.1",
