@@ -182,6 +182,11 @@ const SectorSection = (props: InputProps) => {
                                                 thousandSeparator
                                                 onValueChange={(values) => setFinancials(index, "ebitda", values.value)}
                                                 required
+                                                InputProps={{ inputProps: { min: 0, max: props.roundDetails.financials[index].revenue } }}
+                                                isAllowed={(values) => {
+                                                    const { formattedValue, floatValue } = values;
+                                                    return formattedValue === "" || Number(floatValue) <= props.roundDetails.financials[index].revenue;
+                                                }}
                                             />
                                         </TableCell>
                                     ))}
@@ -192,20 +197,6 @@ const SectorSection = (props: InputProps) => {
                                     </TableCell>
                                     {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
                                         <TableCell>
-                                            {/* <NumberFormat
-                                            value={(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda)}
-                                            name="monthlyRevenue"
-                                            allowLeadingZeros={false}
-                                            allowNegative={false}
-                                            customInput={TextField}
-                                            prefix={'£'}
-                                            type="tel"
-                                            variant="outlined"
-                                            thousandSeparator
-                                            // onValueChange={(values) => setFinancials(index, "ebitda", values.value)}
-                                            readOnly
-                                            disabled
-                                        /> */}
                                             <div className={(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda) < 0 ? "cost red" : "cost"}>
                                                 {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda)}
                                             </div>
