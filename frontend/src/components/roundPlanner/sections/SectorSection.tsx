@@ -214,9 +214,7 @@ const SectorSection = (props: InputProps) => {
                     <div className="financials-line-chart-wrapper">
                         <FinancialsLineChart roundDetails={props.roundDetails} />
                     </div>
-
                 </div>
-
             </div>
             <div className="results-wrapper">
                 <div className="results content">
@@ -236,14 +234,13 @@ const SectorSection = (props: InputProps) => {
                             </div>
                             <div className="figures">
                                 <span className="label">Valuation / Rev</span>
-                                
                                 {(
                                     props.roundDetails.preMoneyValuation === 0 ||
                                     typeof (props.roundDetails.preMoneyValuation) === "undefined" ||
                                     props.roundDetails.financials[0].revenue === 0 ||
                                     typeof (props.roundDetails.financials[0].revenue) === "undefined"
                                 ) ?
-                                <span className="value error">Please complete company valuation and year 1 revenue.</span> :
+                                    <span className="value error">Please complete company valuation and year 1 revenue.</span> :
                                     <span className="value">{`${(props.roundDetails.preMoneyValuation / props.roundDetails.financials[0].revenue).toFixed(0)}x`}</span>
                                 }
                             </div>
@@ -261,27 +258,18 @@ const SectorSection = (props: InputProps) => {
                                     props.roundDetails.monthlyRevenue === 0 ||
                                     typeof (props.roundDetails.monthlyRevenue) === "undefined"
                                 ) ?
-                                <span className="value error">Please complete monthly revenue and month 12 revenue.</span> :
-                                <span className="value">{`${(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue).toFixed(1)}x`}</span>
+                                    <span className="value error">Please complete monthly revenue and month 12 revenue.</span> :
+                                    <span className="value">{`${(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue).toFixed(1)}x`}</span>
                                 }
                             </div>
 
                         </div>
                         <div className="result">
-                            {/* <div className="emoji">
-                                🚀
-                            </div>
-                            <div className="figures">
-                                <span className="label">Growth Rate</span>
-                                <span className="value">{`${props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue}x`}</span>
-                            </div> */}
-
+                            
                         </div>
 
                     </div>
                     <div className="tooltip-wrapper">
-                        {/* <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</u></b> will get you to a <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</u></b> valuation.` }}>
-                        </span> */}
                     </div>
                 </div>
             </div>

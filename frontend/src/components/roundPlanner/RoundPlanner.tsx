@@ -4,6 +4,7 @@ import MenuBar from '../shared/MenuBar'
 import NotificationDialog from '../shared/NotificationDialog'
 import PlannerSection from './sections/PlannerSection'
 import SectorSection from './sections/SectorSection'
+import FutureSection from './sections/FutureSection'
 
 const RoundPlanner = () => {
 
@@ -18,7 +19,7 @@ const RoundPlanner = () => {
         monthlyRevenue: 0,
         month12Revenue: 0,
         isUsesTech: false,
-        financials: [{year: 1, revenue: 10, ebitda: 0}, {year: 2, revenue: 20, ebitda: 0}, {year: 3, revenue: 30, ebitda: 0}]
+        financials: [{ year: 1, revenue: 10, ebitda: 0 }, { year: 2, revenue: 20, ebitda: 0 }, { year: 3, revenue: 30, ebitda: 0 }]
     })
 
     return (
@@ -31,6 +32,12 @@ const RoundPlanner = () => {
                 setRoundDetails={setRoundDetails}
             />
             <SectorSection
+                roundDetails={roundDetails}
+                setNotificationDialogProperties={setNotificationDialogProperties}
+                setRoundDetails={setRoundDetails}
+            />
+
+            <FutureSection
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}

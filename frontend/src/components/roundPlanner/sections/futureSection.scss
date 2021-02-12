@@ -1,0 +1,15 @@
+.multiple-section{
+    .MuiTable-root{
+        .MuiTableHead-root{
+            th{
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+        .MuiTableBody-root{
+            td{
+                text-align: center;
+            }
+        }
+    }
+}
