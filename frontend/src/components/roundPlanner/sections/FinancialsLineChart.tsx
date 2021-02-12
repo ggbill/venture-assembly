@@ -50,7 +50,25 @@ const FinancialsLineChart = (props: InputProps) => {
                 options={{
                     plugins: {
                         datalabels: {
-                            display: false,
+                            align: (context) => {
+                                
+                              return "end"
+                            },
+                          display: (context) => {
+                            return context.dataset.label === "Revenue";
+                          },
+                          formatter: (value, context) => {
+    
+                            console.log(context)
+    
+                            if (Number(ebitdaDataSet[context.dataIndex]) < 0){
+                                return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100) - 100 + '%')
+                            }else{
+                                return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100)+ '%')
+                            }
+    
+    
+                          }
                         }
                     },
                     tooltips: {
