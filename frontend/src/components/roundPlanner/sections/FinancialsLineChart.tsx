@@ -1,6 +1,6 @@
 import { Paper } from '@material-ui/core'
 import React from 'react'
-import { Line} from "react-chartjs-2"
+import { Line } from "react-chartjs-2"
 import './financialsLineChart.scss'
 import "chartjs-plugin-datalabels"
 
@@ -46,33 +46,56 @@ const FinancialsLineChart = (props: InputProps) => {
     return (
         <Paper className="financials-line-chart">
             <Line
-             data={data}
-             options={{
-                plugins: {
-                    datalabels: {
-                        align: (context) => {
-                            
-                          return "end"
-                        },
-                      display: (context) => {
-                        return context.dataset.label === "Revenue";
-                      },
-                      formatter: (value, context) => {
-
-                        console.log(context)
-
-                        if (Number(ebitdaDataSet[context.dataIndex]) < 0){
-                            return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100) - 100 + '%')
-                        }else{
-                            return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100)+ '%')
+                data={data}
+                options={{
+                    plugins: {
+                        datalabels: {
+                            align: (context) => {
+                                if (context.dataIndex === 0) {
+                                    return "right"
+                                } else if (context.dataIndex === 2) {
+                                    return "left"
+                                } else {
+                                    return "start"
+                                }
+                            },
+                            display: (context) => {
+                                return context.dataset.label === "Revenue";
+                            },
+                            formatter: (value, context) => {
+                                if (Number(ebitdaDataSet[context.dataIndex]) < 0) {
+                                    return (`Margin: \n ${Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) - 100}%`)
+                                } else {
+                                    return (`Margin: \n${Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100)}%`)
+                                }
+                            },
+                            textAlign: 'center',
+                            font: {
+                                // weight: 'bold',
+                                size: 12,
+                                family: 'Poppins',
+                            },
+                            color: "black",
+                            backgroundColor: "#da41677a",
+                            borderColor: "#d81747",
+                            borderRadius: 4,
+                            clamp: true
                         }
-
-
-                      }
+                    },
+                    tooltips: { enabled: false },
+                    maintainAspectRatio: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                userCallback: function (value, index, values) {
+                                    return (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value))
+                                }
+                            }
+                        }]
                     }
-                  }  
-             }}
-              />
+                }}
+            />
         </Paper>
     )
 }

@@ -207,7 +207,7 @@ const SectorSection = (props: InputProps) => {
                                     </TableRow>
                                 </TableBody>
                             </Table>
-                            <FormHelperText>Remember - EBITDA is always lower than revenue.</FormHelperText>
+                            <FormHelperText>Remember - EBITDA must be lower than revenue.</FormHelperText>
                         </Paper>
                     </div>
 
