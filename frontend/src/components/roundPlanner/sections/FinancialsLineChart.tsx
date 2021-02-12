@@ -50,39 +50,36 @@ const FinancialsLineChart = (props: InputProps) => {
                 options={{
                     plugins: {
                         datalabels: {
-                            align: (context) => {
-                                if (context.dataIndex === 0) {
-                                    return "right"
-                                } else if (context.dataIndex === 2) {
-                                    return "left"
-                                } else {
-                                    return "start"
-                                }
-                            },
-                            display: (context) => {
-                                return context.dataset.label === "Revenue";
-                            },
-                            formatter: (value, context) => {
-                                if (Number(ebitdaDataSet[context.dataIndex]) < 0) {
-                                    return (`Margin: \n ${Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) - 100}%`)
-                                } else {
-                                    return (`Margin: \n${Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100)}%`)
-                                }
-                            },
-                            textAlign: 'center',
-                            font: {
-                                // weight: 'bold',
-                                size: 12,
-                                family: 'Poppins',
-                            },
-                            color: "black",
-                            backgroundColor: "#da41677a",
-                            borderColor: "#d81747",
-                            borderRadius: 4,
-                            clamp: true
+                            display: false,
                         }
                     },
-                    tooltips: { enabled: false },
+                    tooltips: {
+
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                return (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(tooltipItem.value))
+                            },
+                            afterLabel: function (tooltipItem, data) {
+                                console.log(tooltipItem)
+                                if (tooltipItem.datasetIndex === 0) {
+                                    if (Number(ebitdaDataSet[tooltipItem.index]) < 0) {
+                                        return (`Margin:  ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100) - 100}%`)
+                                    } else {
+                                        return (`Margin: ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100)}%`)
+                                    }
+                                }
+                            }
+                        },
+                        textAlign: 'center',
+                        font: {
+                            // weight: 'bold',
+                            size: 12,
+                            family: 'Poppins',
+                        },
+                        color: "black",
+                        backgroundColor: "#071013",
+                        borderRadius: 4,
+                    },
                     maintainAspectRatio: false,
                     scales: {
                         yAxes: [{
