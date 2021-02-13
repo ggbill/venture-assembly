@@ -1,4 +1,4 @@
-import '../roundPlanner.scss'
+import './fundamentalsSection.scss'
 import React from 'react'
 import NumberFormat from 'react-number-format'
 import { InputAdornment, TextField} from '@material-ui/core'
@@ -11,7 +11,7 @@ interface InputProps{
     setNotificationDialogProperties: (any: any) => void
 }
 
-const PlannerSection = (props: InputProps) => {
+const FundamentalsSection = (props: InputProps) => {
 
     const calculateEquity = () => {
         if (props.roundDetails.preMoneyValuation) {
@@ -49,9 +49,9 @@ const PlannerSection = (props: InputProps) => {
     }
 
     return (
-        <div className="planner-section">
-            <div className="content top-page-margin">
-                <h1>Round Planner.</h1>
+        <div className="fundamentals-section">
+            <div className="content">
+                <h2>Fundamentals.</h2>
                 <div className="inputs-wrapper">
                     <div className="field-wrapper with-question-mark">
                         <NumberFormat
@@ -190,4 +190,4 @@ const PlannerSection = (props: InputProps) => {
 
 }
 
-export default PlannerSection
+export default FundamentalsSection

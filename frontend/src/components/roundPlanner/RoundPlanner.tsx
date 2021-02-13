@@ -2,7 +2,7 @@ import './roundPlanner.scss'
 import React, { useState } from 'react'
 import MenuBar from '../shared/MenuBar'
 import NotificationDialog from '../shared/NotificationDialog'
-import PlannerSection from './sections/PlannerSection'
+import FundamentalsSection from './sections/FundamentalsSection'
 import SectorSection from './sections/SectorSection'
 import FutureSection from './sections/FutureSection'
 
@@ -26,7 +26,17 @@ const RoundPlanner = () => {
         <div className="round-planner-page">
             <MenuBar />
 
-            <PlannerSection
+            <div className="content top-page-margin">
+                <h1>Round Planner.</h1>
+                <p>Welcome to the Venture Assembly Round Planner, a free tool designed to help founders understand the key metrics required for raising capital.</p>
+                {/* <p>Most companies will at some of their development look to raise capital to help them scale. This is a complex process and can be daunting for the most seasoned entrepreneur.
+                However, there is a standard set of information that underpins the decision making process for the vast majority of investors - this tool will help you to formulate and structure that information.</p> */}
+                <p>Enter your information into the sections below to see your company's key metrics generated in real time. If you are struggling or would just prefer to talk this through with one of our friendly 
+                experts please take a look at our <a href='#'>services page.</a>
+                </p>
+            </div>
+
+            <FundamentalsSection
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}

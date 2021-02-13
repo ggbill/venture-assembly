@@ -1,15 +1,68 @@
-.multiple-section{
-    .MuiTable-root{
-        .MuiTableHead-root{
-            th{
-                font-weight: bold;
-                text-align: center;
+.future-section {
+    .row-wrapper{
+        display: flex;
+        flex-direction: row;
+
+
+        .MuiPaper-root {
+            width: 50%;
+            padding: 12px;
+    
+            .MuiTable-root {
+                margin-bottom: 24px;
+    
+                .MuiTableHead-root {
+                    th {
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                }
+                .MuiTableBody-root {
+                    td {
+                        text-align: center;
+                    }
+                }
             }
-        }
-        .MuiTableBody-root{
-            td{
-                text-align: center;
+    
+            .MuiFormHelperText-root{
+    
             }
         }
     }
+    
+
+    .outro-wrapper{
+        margin-top: 48px;
+
+        .MuiCard-root{
+            h3{
+                margin: 0;
+
+                .emoji{
+                    margin-right: 6px;
+                }
+            }
+            padding: 12px;
+            margin-bottom: 12px;
+            background-color: #eeeeee;
+            font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace
+        }
+    }
 }
+
+@media only screen and (max-width: 600px) {
+    .future-section {
+        .row-wrapper{
+            display: flex;
+            flex-direction: row;
+    
+    
+            .MuiPaper-root {
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+
