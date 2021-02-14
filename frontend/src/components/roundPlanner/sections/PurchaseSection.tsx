@@ -21,6 +21,7 @@ const PurchaseSection = (props: InputProps) => {
                 <div className="row-wrapper">
                     <Card>
                         <CardActionArea>
+                            <span className="level">Basic</span>
                             <span className="title">Download Round Planner Pack</span>
                             <DownloadSVG className="logo" />
                             <span className="price">£10</span>
@@ -38,6 +39,7 @@ const PurchaseSection = (props: InputProps) => {
                     </Card>
                     <Card>
                         <CardActionArea>
+                        <span className="level">Intermediate</span>
                         <span className="title">Planner Pack Reviewed with Questions</span>
                         <QuestionSVG className="logo" />
                             <span className="price">£25</span>
@@ -55,10 +57,11 @@ const PurchaseSection = (props: InputProps) => {
                     </Card>
                     <Card>
                         <CardActionArea>
+                        <span className="level">Advanced</span>
                         <span className="title">Planner Pack and Pitch Deck Online Review Session</span>
                         <CallSVG className="logo" />
                             <span className="price">£100</span>
-                            <Button className="va-button">Buy</Button>
+                            <Button className="va-button">Make an Enquiry</Button>
                             <span className="description">
                                 Round Planner Pack includes:
                                 <ul>
