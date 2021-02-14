@@ -56,15 +56,15 @@ const MenuBar = () => {
                             </Link>
                         </div>
                         <div className="menu-items">
-                            <Link to={'/round-planner'}>
+                            {/* <Link to={'/round-planner'}>
                                 <span>About</span>
-                            </Link>
-                            <Link to={'/round-planner'}>
+                            </Link> */}
+                            {/* <Link to={'/round-planner'}>
                                 <span>Services</span>
                             </Link>
                             <Link to={'/round-planner'}>
                                 <span>Checklists</span>
-                            </Link>
+                            </Link> */}
                             <Link to={'/round-planner'}>
                                 {/* <div className="cta-wrapper"> */}
                                 <span>Round Planner</span>
@@ -99,15 +99,15 @@ const MenuBar = () => {
                                 <CloseIcon />
                             </Button>
                         </div>
-                        <Link to={`/`}>
+                        {/* <Link to={`/`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>About</MenuItem>
-                        </Link>
-                        <Link to={`/`}>
+                        </Link> */}
+                        {/* <Link to={`/`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Services</MenuItem>
                         </Link>
                         <Link to={`/`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Checklists</MenuItem>
-                        </Link>
+                        </Link> */}
                         <Link to={`/round-planner`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>
                         </Link>

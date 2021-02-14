@@ -39,7 +39,14 @@ const Home = () => {
                         <div className="cta-wrapper">
                             <Link to={'/round-planner'}>
                                 <Button className="va-button cta">
-                                    <span>Get Started</span> <ArrowForwardIcon />
+                                    <span>Free Round Planner</span>
+                                    {/* <span>Get Started</span> <ArrowForwardIcon /> */}
+                                </Button>
+                            </Link>
+                            <Link to={'/round-planner'}>
+                                <Button className="va-button cta secondary">
+                                    <span>Talk to an expert</span>
+                                    {/* <span>Get Started</span> <ArrowForwardIcon /> */}
                                 </Button>
                             </Link>
                         </div>

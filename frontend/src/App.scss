@@ -41,6 +41,17 @@
         font-weight: 700;
         width: 200px;
     }
+
+    &.secondary{
+        background-color: #071013;
+        // color: #d81747;
+        border: solid 1px #d81747;
+
+        &:hover{
+            background-color: #1f2a2e;
+            border: solid 1px #940025;
+        }
+    }
 }
 
 
