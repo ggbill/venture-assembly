@@ -10,11 +10,40 @@ declare module App {
         month12Revenue: number,
         isUsesTech: boolean,
         financials: FinancialDetails[]
+        swot: SwotObject
     }
 
     interface FinancialDetails {
         year: number,
         revenue: number,
         ebitda: number
+    }
+
+    interface ValidationObject {
+        name: string,
+        isValid: boolean,
+        validationMessage: string
+    }
+
+    interface Enquiry{
+        name: string
+        email: string
+        category: string
+        message: string
+    }
+
+    interface Booking{
+        name: string
+        email: string
+        message: string
+        pdfBlob: any
+    }
+
+    interface SwotObject{
+        team: number
+        technology: number
+        advisors: number
+        traction: number
+        market: number
     }
 }

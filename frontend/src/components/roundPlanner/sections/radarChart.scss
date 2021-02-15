@@ -1,0 +1,12 @@
+.radar-chart{
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    padding: 0 12px;
+
+    canvas{ 
+        height:100%;
+        width: 100% !important;
+     }
+}
+

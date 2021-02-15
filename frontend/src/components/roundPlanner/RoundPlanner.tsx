@@ -6,6 +6,8 @@ import FundamentalsSection from './sections/FundamentalsSection'
 import SectorSection from './sections/SectorSection'
 import FutureSection from './sections/FutureSection'
 import PurchaseSection from './sections/PurchaseSection'
+import PitchDeckBookingDialog from '../shared/PitchDeckBookingDialog'
+import SwotSection from './sections/SwotSection'
 
 const RoundPlanner = () => {
 
@@ -20,8 +22,10 @@ const RoundPlanner = () => {
         monthlyRevenue: 0,
         month12Revenue: 0,
         isUsesTech: false,
-        financials: [{ year: 1, revenue: 10, ebitda: 0 }, { year: 2, revenue: 20, ebitda: 0 }, { year: 3, revenue: 30, ebitda: 0 }]
+        financials: [{ year: 1, revenue: 80000, ebitda: 15000 }, { year: 2, revenue: 125000, ebitda: 45000 }, { year: 3, revenue: 325000, ebitda: 299000 }],
+        swot: {team: 1, technology: 1, advisors: 1, traction: 1, market: 1}
     })
+    const [isPitchDeckBookingDialogOpen, setIsPitchDeckBookingDialogOpen] = useState<boolean>(false)
 
     return (
         <div className="round-planner-page">
@@ -44,6 +48,12 @@ const RoundPlanner = () => {
                 setRoundDetails={setRoundDetails}
             />
 
+            <SwotSection
+                roundDetails={roundDetails}
+                setNotificationDialogProperties={setNotificationDialogProperties}
+                setRoundDetails={setRoundDetails}
+            />
+
             <FutureSection
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
@@ -54,6 +64,7 @@ const RoundPlanner = () => {
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}
+                setIsPitchDeckBookingDialogOpen={setIsPitchDeckBookingDialogOpen}
             />
 
 
@@ -64,6 +75,11 @@ const RoundPlanner = () => {
                 message={notificationDialogProperties.message}
                 title={notificationDialogProperties.title}
                 type={notificationDialogProperties.type}
+            />
+
+            <PitchDeckBookingDialog
+                handleClose={() => setIsPitchDeckBookingDialogOpen(false)}
+                isDialogOpen={isPitchDeckBookingDialogOpen}
             />
 
         </div>

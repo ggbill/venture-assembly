@@ -9,6 +9,7 @@ interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
     setNotificationDialogProperties: (any: any) => void
+    setIsPitchDeckBookingDialogOpen: (boolean: boolean) => void
 }
 
 const PurchaseSection = (props: InputProps) => {
@@ -32,16 +33,16 @@ const PurchaseSection = (props: InputProps) => {
                                     <li>All information and insights included in this page in shareable pdf format (see example <a href='#'>here</a>)</li>
                                     <li>A list of ten questions likely to be asked by potential investors, generated based on the information provided in the form above.</li>
                                 </ul>
-                                
+
                             </span>
                         </CardActionArea>
 
                     </Card>
                     <Card>
                         <CardActionArea>
-                        <span className="level">Intermediate</span>
-                        <span className="title">Planner Pack Reviewed with Questions</span>
-                        <QuestionSVG className="logo" />
+                            <span className="level">Intermediate</span>
+                            <span className="title">Planner Pack Reviewed with Questions</span>
+                            <QuestionSVG className="logo" />
                             <span className="price">£25</span>
                             <Button className="va-button">Buy</Button>
                             <span className="description">
@@ -50,25 +51,24 @@ const PurchaseSection = (props: InputProps) => {
                                     <li>All information and insights included in this page in shareable pdf format (see example <a href='#'>here</a>)</li>
                                     <li>A list of ten questions likely to be asked by potential investors, generated based on the information provided in the form above.</li>
                                 </ul>
-                                
+
                             </span>
                         </CardActionArea>
 
                     </Card>
                     <Card>
-                        <CardActionArea>
-                        <span className="level">Advanced</span>
-                        <span className="title">Planner Pack and Pitch Deck Online Review Session</span>
-                        <CallSVG className="logo" />
+                        <CardActionArea onClick={() => props.setIsPitchDeckBookingDialogOpen(true)}>
+                            <span className="level">Advanced</span>
+                            <span className="title">Planner Pack and Pitch Deck Online Review Session</span>
+                            <CallSVG className="logo" />
                             <span className="price">£100</span>
-                            <Button className="va-button">Make an Enquiry</Button>
+                            <Button className="va-button" onClick={() => props.setIsPitchDeckBookingDialogOpen(true)}>Book a Session</Button>
                             <span className="description">
                                 Round Planner Pack includes:
                                 <ul>
                                     <li>All information and insights included in this page in shareable pdf format (see example <a href='#'>here</a>)</li>
                                     <li>A list of ten questions likely to be asked by potential investors, generated based on the information provided in the form above.</li>
                                 </ul>
-                                
                             </span>
                         </CardActionArea>
 

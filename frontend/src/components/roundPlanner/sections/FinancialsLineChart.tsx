@@ -51,30 +51,25 @@ const FinancialsLineChart = (props: InputProps) => {
                     plugins: {
                         datalabels: {
                             align: (context) => {
-                                
-                              return "end"
+
+                                return "end"
                             },
-                          display: (context) => {
-                            return context.dataset.label === "Revenue";
-                          },
-                          formatter: (value, context) => {
-    
-                            console.log(context)
-    
-                            if (Number(ebitdaDataSet[context.dataIndex]) < 0){
-                                return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100) - 100 + '%')
-                            }else{
-                                return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value ) * 100)+ '%')
+                            display: (context) => {
+                                return context.dataset.label === "Revenue";
+                            },
+                            formatter: (value, context) => {
+                                if (Number(ebitdaDataSet[context.dataIndex]) < 0) {
+                                    return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) - 100 + '%')
+                                } else {
+                                    return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) + '%')
+                                }
                             }
-    
-    
-                          }
                         }
                     },
                     tooltips: {
 
                         callbacks: {
-                            label: function(tooltipItem, data) {
+                            label: function (tooltipItem, data) {
                                 return (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(tooltipItem.value))
                             },
                             afterLabel: function (tooltipItem, data) {
