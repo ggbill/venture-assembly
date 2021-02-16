@@ -1,9 +1,8 @@
 import './swotSection.scss'
 import React from 'react'
-import { Card, FormHelperText, Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
-import useQuestionGenerator from '../../../hooks/useQuestionGenerator';
 import RadarChart from './RadarChart';
 import CustomVASlider from '../../shared/CustomVASlider';
+import useSwotHelperTextGenerator from './useSwotHelperTextGenerator';
 
 interface InputProps {
     roundDetails: App.RoundDetails
@@ -12,6 +11,8 @@ interface InputProps {
 }
 
 const SwotSection = (props: InputProps) => {
+
+    const swotHelperTextGenerator = useSwotHelperTextGenerator()
 
     const handleSwotChange = (name, value) => {
         let tempSwot = { ...props.roundDetails.swot }
@@ -44,6 +45,10 @@ const SwotSection = (props: InputProps) => {
                                 max={5}
                                 onChange={(event, value) => handleSwotChange("team", value)}
                             />
+                            
+                            <div className="helper-text">
+                            <span>{swotHelperTextGenerator.getHelperText("team", props.roundDetails.swot.team)}</span>
+                            </div>
                         </div>
                         <div className="slider-wrapper">
                             <div className="selected-figure">
@@ -63,6 +68,10 @@ const SwotSection = (props: InputProps) => {
                                 max={5}
                                 onChange={(event, value) => handleSwotChange("technology", value)}
                             />
+                            
+                            <div className="helper-text">
+                                <span>{swotHelperTextGenerator.getHelperText("technology", props.roundDetails.swot.technology)}</span>
+                            </div>
                         </div>
                         <div className="slider-wrapper">
                             <div className="selected-figure">
@@ -82,6 +91,10 @@ const SwotSection = (props: InputProps) => {
                                 max={5}
                                 onChange={(event, value) => handleSwotChange("advisors", value)}
                             />
+                            
+                            <div className="helper-text">
+                            <span>{swotHelperTextGenerator.getHelperText("advisors", props.roundDetails.swot.advisors)}</span>
+                            </div>
                         </div>
                         <div className="slider-wrapper">
                             <div className="selected-figure">
@@ -101,6 +114,10 @@ const SwotSection = (props: InputProps) => {
                                 max={5}
                                 onChange={(event, value) => handleSwotChange("traction", value)}
                             />
+                            
+                            <div className="helper-text">
+                            <span>{swotHelperTextGenerator.getHelperText("traction", props.roundDetails.swot.traction)}</span>
+                            </div>
                         </div>
                         <div className="slider-wrapper">
                             <div className="selected-figure">
@@ -120,6 +137,10 @@ const SwotSection = (props: InputProps) => {
                                 max={5}
                                 onChange={(event, value) => handleSwotChange("market", value)}
                             />
+
+                            <div className="helper-text">
+                            <span>{swotHelperTextGenerator.getHelperText("market", props.roundDetails.swot.market)}</span>
+                            </div>
                         </div>
                     </div>
                     <div className="chart-wrapper">
