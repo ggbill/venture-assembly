@@ -45,5 +45,6 @@ declare module App {
         advisors: number
         traction: number
         market: number
+        // uniqueness: number
     }
 }

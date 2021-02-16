@@ -21,6 +21,7 @@ const RadarChart = (props: InputProps) => {
                 props.roundDetails.swot.advisors,
                 props.roundDetails.swot.traction,
                 props.roundDetails.swot.market,
+                // props.roundDetails.swot.uniqueness,
             ],
             fill: true,
             backgroundColor: "#da416778",

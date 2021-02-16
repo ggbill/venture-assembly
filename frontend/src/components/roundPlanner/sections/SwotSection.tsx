@@ -142,6 +142,29 @@ const SwotSection = (props: InputProps) => {
                             <span>{swotHelperTextGenerator.getHelperText("market", props.roundDetails.swot.market)}</span>
                             </div>
                         </div>
+                        {/* <div className="slider-wrapper">
+                            <div className="selected-figure">
+                                <span className="label">
+                                    {`Uniqueness: `}
+                                </span>
+                                <span className="value">
+                                    {props.roundDetails.swot.uniqueness}
+                                </span>
+                            </div>
+
+                            <CustomVASlider
+                                defaultValue={props.roundDetails.swot.uniqueness}
+                                aria-labelledby="discrete-slider"
+                                step={1}
+                                min={1}
+                                max={5}
+                                onChange={(event, value) => handleSwotChange("uniqueness", value)}
+                            />
+
+                            <div className="helper-text">
+                            <span>{swotHelperTextGenerator.getHelperText("uniqueness", props.roundDetails.swot.uniqueness)}</span>
+                            </div>
+                        </div> */}
                     </div>
                     <div className="chart-wrapper">
                         <RadarChart roundDetails={props.roundDetails} />

@@ -265,6 +265,27 @@ const SectorSection = (props: InputProps) => {
 
                         </div>
                         <div className="result">
+                        <div className="emoji">
+                        📈
+                            </div>
+                            <div className="figures">
+                                <span className="label">Compound Monthly Growth Rate</span>
+
+                                <span className="value">{`${((Math.pow(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue, (1/11)) - 1) * 100).toFixed(0)}%`}</span>
+
+
+
+
+                                {/* {(
+                                    props.roundDetails.month12Revenue === 0 ||
+                                    typeof (props.roundDetails.month12Revenue) === "undefined" ||
+                                    props.roundDetails.monthlyRevenue === 0 ||
+                                    typeof (props.roundDetails.monthlyRevenue) === "undefined"
+                                ) ?
+                                    <span className="value error">Please complete monthly revenue and month 12 revenue.</span> :
+                                    <span className="value">{`${(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue).toFixed(1)}x`}</span>
+                                } */}
+                            </div>
                             
                         </div>
 
