@@ -2,34 +2,50 @@
     .MuiPaper-root {
         max-width: 900px;
 
-        .intro-text{
+        .intro-text {
             margin-bottom: 24px;
             font-size: 0.9em;
-
         }
 
-        .inputs-wrapper{
-            .MuiFormControl-root{
+        .inputs-wrapper {
+            .MuiFormControl-root {
                 // margin-bottom: 12px;
-    
-                &:not(:last-child){
+
+                &:not(:last-child) {
                     margin-bottom: 12px;
                 }
             }
 
-            .field-wrapper.file-upload:hover{
-                cursor: pointer!important;
+            .field-wrapper.file-upload:hover {
+                cursor: pointer !important;
             }
+
+
+
+            //weirdness caused by cropper - TODO FIX--------------
+            .company-intro {
+                position: relative;
+                top: -166px;
+                margin-bottom: -166px;
+            }
+
+            .image-cropper-wrapper {
+                min-height: 200px;
+            }
+            //------------
+
+
+
+            
         }
 
-        .MuiFormControlLabel-label{
+        .MuiFormControlLabel-label {
             font-size: 0.8rem;
         }
 
-        .ts-and-cs-error{
+        .ts-and-cs-error {
             color: red;
             margin: -6px 0 0 0;
         }
-
     }
 }

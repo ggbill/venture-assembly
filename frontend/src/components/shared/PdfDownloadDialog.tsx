@@ -5,7 +5,6 @@ import './pdfDownloadDialog.scss'
 import usePdfDownloadValidation from './usePdfDownloadValidation';
 import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
-import ImageCrop from '../imageCrop/ImageCrop';
 import ImageCropper from '../imageCropper/ImageCropper';
 
 
@@ -163,7 +162,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                         />
                     </div> */}
-                    <div className="field-wrapper file-upload" onClick={openFileDialog}>
+                    <div className="field-wrapper" onClick={openFileDialog}>
                         <input
                             accept="image/*"
                             // className={classes.input}
@@ -183,7 +182,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                         />
                     </div>
-                    <div className="field-wrapper">
+                    <div className="field-wrapper company-intro">
                         <TextField
                             id="companyIntro"
                             name="companyIntro"
@@ -194,22 +193,16 @@ const PdfDowloadDialog = (props: InputProps) => {
                             onChange={(event) => setPdfObject({ ...pdfObject, companyIntro: event.target.value })}
                             fullWidth
                             multiline
-                            rows={5}
-                            rowsMax={5}
+                            rows={8}
+                            rowsMax={8}
                             inputProps={{ maxLength: 250 }}
                         />
                     </div>
-                    <div className="field-wrapper">
-                        {/* <ImageCrop src={selectedLogo} pdfObject={pdfObject} setPdfObject={setPdfObject} /> */}
-                        {/* <ImageCropper src="https://d33wubrfki0l68.cloudfront.net/446b1f54b7535dc5e58648c68222312c90c1aec6/14bd8/img/profile.jpg" pdfObject={pdfObject} setPdfObject={setPdfObject} /> */}
-
+                    
+                    <div className="field-wrapper image-cropper-wrapper">
                         {selectedLogoBase64String &&
                             <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />
                         }
-
-
-
-
                     </div>
                 </div>
 
