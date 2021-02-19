@@ -25,11 +25,11 @@ const useSwotHelperTextGenerator = () => {
         {
             category: "advisors",
             helperTextList: [
-                "No advisors.",
-                "advisors helper text 2.",
-                "advisors helper text 3.",
-                "advisors helper text 4.",
-                "World class advisory board, leaders in field.",
+                "No advisors",
+                "Unofficial contacts can reach out to",
+                "Advisory board in place of varying experience levels",
+                "High quality experience board",
+                "World class advisory board, leaders in field",
             ]
         },
         {

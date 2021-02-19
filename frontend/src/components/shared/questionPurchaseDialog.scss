@@ -1,0 +1,31 @@
+.pdf-purchase-dialog {
+    .MuiPaper-root {
+        width: 600px;
+
+        .intro-text{
+            margin-bottom: 24px;
+            font-size: 0.9em;
+
+        }
+
+        .inputs-wrapper{
+            .MuiFormControl-root{
+                // margin-bottom: 12px;
+    
+                &:not(:last-child){
+                    margin-bottom: 12px;
+                }
+            }
+        }
+
+        .MuiFormControlLabel-label{
+            font-size: 0.8rem;
+        }
+
+        .ts-and-cs-error{
+            color: red;
+            margin: -6px 0 0 0;
+        }
+
+    }
+}

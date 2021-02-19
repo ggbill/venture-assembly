@@ -47,4 +47,16 @@ declare module App {
         market: number
         // uniqueness: number
     }
+
+    interface PdfObject{
+        name: string, 
+        email: string, 
+        phone: string, 
+        companyName: string,
+        companyWebsite: string,
+        companyLogoBase64String: string,
+        companyIntro: string,
+        roundDetails: RoundDetails, 
+        radarBase64String: string   
+    }
 }

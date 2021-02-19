@@ -8,6 +8,7 @@ interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
     setNotificationDialogProperties: (any: any) => void
+    setRadarChartBase64String: (base64String: string) => void
 }
 
 const SwotSection = (props: InputProps) => {
@@ -167,7 +168,7 @@ const SwotSection = (props: InputProps) => {
                         </div> */}
                     </div>
                     <div className="chart-wrapper">
-                        <RadarChart roundDetails={props.roundDetails} />
+                        <RadarChart roundDetails={props.roundDetails} setRadarChartBase64String={props.setRadarChartBase64String} />
                     </div>
 
                 </div>

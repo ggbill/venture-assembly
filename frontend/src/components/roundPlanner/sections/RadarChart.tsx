@@ -1,16 +1,30 @@
 import { Paper } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Line, Radar } from "react-chartjs-2"
 import './radarChart.scss'
 import "chartjs-plugin-datalabels"
 
 interface InputProps {
     roundDetails: App.RoundDetails
+    setRadarChartBase64String: (base64String: string) => void
 }
 
-
 const RadarChart = (props: InputProps) => {
+    const chartRef = useRef<any>(null);
 
+    const handleClick = async (event) => {
+       
+        let base64Image = chartRef.current.chartInstance.toBase64Image();
+
+        await fetch("/stripe/test-pdf", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify({"image": base64Image}),
+        });
+    }
 
     let data = {
         labels: ['Team', 'Technology', 'Advisors', 'Traction', 'Market'],
@@ -31,9 +45,18 @@ const RadarChart = (props: InputProps) => {
         }]
     };
 
+    useEffect(() => {
+
+        props.setRadarChartBase64String(chartRef.current.chartInstance.toBase64Image())
+       
+        // eslint-disable-next-line react-hooks/exhaustive-deps  
+    }, []);
+
+
     return (
         <Paper className="radar-chart">
             <Radar
+                ref={chartRef}
                 data={data}
                 options={{
                     maintainAspectRatio: false,
@@ -50,17 +73,17 @@ const RadarChart = (props: InputProps) => {
                                 // size: 12,
                                 // lineHeight: 1 /* align v center */
                                 size: 14,
-                            weight: 'bold',
-                            color: '#000',
-                            fontFamily: "'Poppins', 'Helvetica', sans-serif"
+                                weight: 'bold',
+                                color: '#000',
+                                fontFamily: "'Poppins', 'Helvetica', sans-serif"
                             },
-                        padding: {
-                            top: 6,
-                            left: 8,
-                            right: 8,
-                            bottom: 4
-                        },
-                        backgroundColor: 'white',
+                            padding: {
+                                top: 6,
+                                left: 8,
+                                right: 8,
+                                bottom: 4
+                            },
+                            backgroundColor: 'white',
                             /* hover styling */
                             // backgroundColor: function (context) {
                             //     return context.hovered ? context.dataset.borderColor : 'white';
@@ -102,6 +125,7 @@ const RadarChart = (props: InputProps) => {
 
                 }}
             />
+            <button onClick={handleClick}>Click me</button>
         </Paper>
     )
 }

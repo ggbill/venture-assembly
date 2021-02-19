@@ -1,0 +1,35 @@
+.pdf-purchase-dialog {
+    .MuiPaper-root {
+        max-width: 900px;
+
+        .intro-text{
+            margin-bottom: 24px;
+            font-size: 0.9em;
+
+        }
+
+        .inputs-wrapper{
+            .MuiFormControl-root{
+                // margin-bottom: 12px;
+    
+                &:not(:last-child){
+                    margin-bottom: 12px;
+                }
+            }
+
+            .field-wrapper.file-upload:hover{
+                cursor: pointer!important;
+            }
+        }
+
+        .MuiFormControlLabel-label{
+            font-size: 0.8rem;
+        }
+
+        .ts-and-cs-error{
+            color: red;
+            margin: -6px 0 0 0;
+        }
+
+    }
+}

@@ -13,7 +13,7 @@ server.on('error', (err) => {
 
 server.on('listening', async () => {
     console.info(`Listening on a port ${PORT}`);
-    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/angel-investment-network", {
+    mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/venture-assembly", {
         useNewUrlParser: true,
         useFindAndModify: false
     });

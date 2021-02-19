@@ -13,7 +13,31 @@
     // margin-top: 76px;
 }
 
+.field-wrapper {
+    display: inline-flex;
 
+    width: calc(50% - 6px);
+    margin-bottom: 12px;
+
+    &:nth-child(odd) {
+        margin-right: 12px;
+    }
+
+    .MuiFormControl-root {
+        width: 100%;
+    }
+}
+
+.MuiFormControl-root {
+    width: 100%;
+
+    .MuiFormLabel-root.Mui-focused {
+        color: #da4167 !important;
+    }
+    .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+        border-color: #da4167 !important;
+    }
+}
 
 
 
@@ -22,7 +46,7 @@
     border-radius: 5px;
     font-family: "Poppins", "Helvetica", sans-serif;
     min-width: 135px;
-    padding: 12px 6px;
+    padding: 12px;
     font-weight: 500;
     border: none;
     background-color: #d81747;
