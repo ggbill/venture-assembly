@@ -5,6 +5,9 @@ import './pdfDownloadDialog.scss'
 import usePdfDownloadValidation from './usePdfDownloadValidation';
 import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
+import ImageCrop from '../imageCrop/ImageCrop';
+import ImageCropper from '../imageCropper/ImageCropper';
+
 
 interface InputProps {
     isDialogOpen: boolean,
@@ -23,12 +26,13 @@ const PdfDowloadDialog = (props: InputProps) => {
         companyIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     } as App.PdfObject);
     const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(true);
-    const [selectedLogoFileName, setSelectedLogoFileName] = useState<string>("Click here");
+    const [selectedLogoBase64String, setSelectedLogoBase64String] = useState<string>("");
+    const [selectedLogo, setSelectedLogo] = useState<any>(null);
     const pdfDownloadValidation = usePdfDownloadValidation()
     const pdfGenerator = usePdfGenerator()
 
+
     const generatePdf = () => {
-        console.log("generate pdf")
         pdfObject.roundDetails = props.roundDetails
         pdfObject.radarBase64String = props.radarChartBase64String
 
@@ -46,41 +50,16 @@ const PdfDowloadDialog = (props: InputProps) => {
         inputFile.current.click();
     }
 
-    const uploadFile = async (event) => {
-
-        if (event.target.files[0]){
-        setSelectedLogoFileName(event.target.files[0].name)
-        const base64: any = await convertBase64(event.target.files[0])
-        setPdfObject({ ...pdfObject, companyLogoBase64String: base64 })
-        // console.log(base64)
+    const uploadFile = e => {
+        if (e.target.files && e.target.files.length > 0) {
+            setSelectedLogo(e.target.files[0])
+            const reader: any = new FileReader();
+            reader.addEventListener('load', () =>
+                setSelectedLogoBase64String(reader.result)
+            );
+            reader.readAsDataURL(e.target.files[0]);
         }
-        
-        
     };
-
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader()
-            fileReader.readAsDataURL(file)
-
-            fileReader.onload = () => {
-                resolve(fileReader.result)
-            }
-            fileReader.onerror = (error) => {
-                reject(error)
-            }
-        })
-    }
-
-    useEffect(() => {
-
-        if (props.isDialogOpen) {
-            // console.log(props.radarChartBase64String)
-        }
-
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps  
-    }, [props.isDialogOpen]);
 
     return (
         <Dialog
@@ -195,34 +174,47 @@ const PdfDowloadDialog = (props: InputProps) => {
                             onChange={(event) => uploadFile(event)}
                             ref={inputFile}
                         />
+
                         <TextField
                             label="Your Company's Logo"
                             variant="outlined"
-                            value={selectedLogoFileName}
+                            value={selectedLogo ? selectedLogo.name : "Select an image"}
                             disabled
                             fullWidth
                         />
-                        {/* <label htmlFor="raised-button-file">
-                            <Button onClick={openFileDialog}>
-                                Upload
-                            </Button>
-                        </label> */}
                     </div>
-                    <TextField
-                        id="companyIntro"
-                        name="companyIntro"
-                        className=""
-                        label={`Short Company Intro (${250 - pdfObject.companyIntro.length} characters remaining)`}
-                        variant="outlined"
-                        value={pdfObject.companyIntro}
-                        onChange={(event) => setPdfObject({ ...pdfObject, companyIntro: event.target.value })}
-                        fullWidth
-                        multiline
-                        rows={3}
-                        rowsMax={3}
-                        inputProps={{ maxLength: 250 }}
-                    />
+                    <div className="field-wrapper">
+                        <TextField
+                            id="companyIntro"
+                            name="companyIntro"
+                            className=""
+                            label={`Short Company Intro (${250 - pdfObject.companyIntro.length} characters remaining)`}
+                            variant="outlined"
+                            value={pdfObject.companyIntro}
+                            onChange={(event) => setPdfObject({ ...pdfObject, companyIntro: event.target.value })}
+                            fullWidth
+                            multiline
+                            rows={5}
+                            rowsMax={5}
+                            inputProps={{ maxLength: 250 }}
+                        />
+                    </div>
+                    <div className="field-wrapper">
+                        {/* <ImageCrop src={selectedLogo} pdfObject={pdfObject} setPdfObject={setPdfObject} /> */}
+                        {/* <ImageCropper src="https://d33wubrfki0l68.cloudfront.net/446b1f54b7535dc5e58648c68222312c90c1aec6/14bd8/img/profile.jpg" pdfObject={pdfObject} setPdfObject={setPdfObject} /> */}
+
+                        {selectedLogoBase64String &&
+                            <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />
+                        }
+
+
+
+
+                    </div>
                 </div>
+
+
+
 
                 <FormControlLabel
                     control={

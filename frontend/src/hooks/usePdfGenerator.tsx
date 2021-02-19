@@ -41,7 +41,7 @@ const usePdfGenerator = () => {
                                 {pdfObject.companyLogoBase64String &&
                                     <Image
                                         src={pdfObject.companyLogoBase64String}
-                                        style={{ width: 200, marginRight: 30 }}
+                                        style={{ height: 80, width: 80,  marginRight: 30 }}
                                     />
                                 }
 
