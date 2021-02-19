@@ -24,15 +24,15 @@ const usePdfGenerator = () => {
                     <View>
                         <View style={styles.header}>
                             <View style={{ display: "flex", flexDirection: "row" }}>
-                                <Text style={{ fontSize: 28, fontFamily: "Poppins", fontWeight: 'bold' }}>
+                                <Text style={{ fontSize: 21, fontFamily: "Poppins", fontWeight: 'bold' }}>
                                     VA
                                 </Text>
-                                <Text style={{ fontSize: 28, color: "#d81747", fontFamily: "Poppins", fontWeight: 'bold' }}>
+                                <Text style={{ fontSize: 21, color: "#d81747", fontFamily: "Poppins", fontWeight: 'bold' }}>
                                     .
                                 </Text>
                             </View>
 
-                            <Text style={{ fontSize: 14, fontFamily: "Poppins" }}>
+                            <Text style={{ fontSize: 12, fontFamily: "Poppins" }}>
                                 Round Planner
                             </Text>
                         </View>

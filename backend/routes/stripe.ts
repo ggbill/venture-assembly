@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PDFController } from '../controllers/pdf.controller';
+
 
 const router = require('express').Router();
 const stripe = require("stripe")("sk_test_BxKQ9cg1p2v9Tl3z05gX3GFi");
@@ -55,18 +55,6 @@ router.post("/create-checkout-session", async (req, res) => {
         }
     });
     res.json({ id: session.id });
-});
-
-
-router.post("/test-pdf", async (req, res) => {
-    console.log("test-pdf")
-
-    // console.log(req.body)
-
-    PDFController.CreateRoundPlannerPdf(req.body)
-
-    
-    res.json( "done" );
 });
 
 

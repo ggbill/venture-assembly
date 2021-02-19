@@ -28,6 +28,7 @@ const PdfDowloadDialog = (props: InputProps) => {
     const pdfGenerator = usePdfGenerator()
 
     const generatePdf = () => {
+        console.log("generate pdf")
         pdfObject.roundDetails = props.roundDetails
         pdfObject.radarBase64String = props.radarChartBase64String
 
