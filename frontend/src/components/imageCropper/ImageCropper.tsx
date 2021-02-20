@@ -19,6 +19,7 @@ const ImageCropper = (props: InputProps) => {
             zoomable: true,
             scalable: true,
             aspectRatio: 1,
+            dragMode: "move",
             cropend: () => {
                 const canvas = cropper.getCroppedCanvas();
                 props.setPdfObject({ ...props.pdfObject, companyLogoBase64String: canvas.toDataURL() })
