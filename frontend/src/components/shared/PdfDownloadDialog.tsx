@@ -162,7 +162,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                         />
                     </div> */}
-                    <div className="field-wrapper" onClick={openFileDialog}>
+                    <div className={selectedLogo ? "field-wrapper logo-upload image" : "field-wrapper logo-upload no-image"} onClick={openFileDialog}>
                         <input
                             accept="image/*"
                             // className={classes.input}
@@ -182,7 +182,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                         />
                     </div>
-                    <div className="field-wrapper company-intro">
+                    <div className={selectedLogo ? "field-wrapper company-intro image" : "field-wrapper company-intro no-image"}>
                         <TextField
                             id="companyIntro"
                             name="companyIntro"
@@ -200,8 +200,9 @@ const PdfDowloadDialog = (props: InputProps) => {
                     </div>
                     
                     <div className="field-wrapper image-cropper-wrapper">
-                        {selectedLogoBase64String &&
-                            <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />
+                        {selectedLogoBase64String ?
+                            <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />:
+                            <div className="select-image-placeholder">Please select a logo file above</div>
                         }
                     </div>
                 </div>

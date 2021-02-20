@@ -23,7 +23,10 @@ const ImageCropper = (props: InputProps) => {
             cropend: () => {
                 const canvas = cropper.getCroppedCanvas();
                 props.setPdfObject({ ...props.pdfObject, companyLogoBase64String: canvas.toDataURL() })
-            }
+            },
+            toggleDragModeOnDblclick: false,
+            minCropBoxWidth: 20,
+            minCropBoxHeight: 20
         });
 
         return () => {
