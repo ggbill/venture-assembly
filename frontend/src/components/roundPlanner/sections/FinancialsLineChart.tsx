@@ -1,15 +1,17 @@
 import { Paper } from '@material-ui/core'
-import React from 'react'
+import React, { useRef } from 'react'
 import { Line } from "react-chartjs-2"
 import './financialsLineChart.scss'
 import "chartjs-plugin-datalabels"
 
 interface InputProps {
     roundDetails: App.RoundDetails
+    setRoundDetails: (roundDetails: App.RoundDetails) => void
 }
 
 
 const FinancialsLineChart = (props: InputProps) => {
+    const chartRef = useRef<any>(null);
 
     // let revenueDataSet, ebitdaDataSet: Number[] = []
     let revenueDataSet: Number[] = []
@@ -46,8 +48,15 @@ const FinancialsLineChart = (props: InputProps) => {
     return (
         <Paper className="financials-line-chart">
             <Line
+                ref={chartRef}
                 data={data}
                 options={{
+                    animation: {
+                        onComplete: function () {
+                            // console.log("animation complete")
+                            props.setRoundDetails({ ...props.roundDetails, financialsBase64String: chartRef.current.chartInstance.toBase64Image() })
+                        }
+                    },
                     plugins: {
                         datalabels: {
                             align: (context) => {

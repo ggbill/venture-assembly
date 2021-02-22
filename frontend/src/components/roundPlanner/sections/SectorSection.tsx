@@ -212,7 +212,7 @@ const SectorSection = (props: InputProps) => {
                     </div>
 
                     <div className="financials-line-chart-wrapper">
-                        <FinancialsLineChart roundDetails={props.roundDetails} />
+                        <FinancialsLineChart roundDetails={props.roundDetails} setRoundDetails={props.setRoundDetails} />
                     </div>
                 </div>
             </div>

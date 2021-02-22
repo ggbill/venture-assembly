@@ -148,7 +148,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("companyName").isValid}
                             helperText={!pdfDownloadValidation.getValidation("companyName").isValid && pdfDownloadValidation.getValidation("companyName").validationMessage}
-                            inputProps={{ maxLength: 35 }}
+                            inputProps={{ maxLength: 28 }}
                         />
                     </div>
                     <div className="field-wrapper">
@@ -238,7 +238,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                 }
 
                 {/* here: {JSON.stringify(props.roundDetails.radarBase64String)} */}
-                <img style={{width: 200, height:200}} src={props.roundDetails.radarBase64String}/>
+                {/* <img style={{width: 200, height:200}} src={props.roundDetails.radarBase64String}/> */}
 
             </DialogContent>
             <DialogActions>

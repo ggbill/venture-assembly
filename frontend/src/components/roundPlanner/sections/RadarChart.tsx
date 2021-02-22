@@ -7,27 +7,10 @@ import "chartjs-plugin-datalabels"
 interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
-    // pdfObject: App.PdfObject
-    // setPdfObject: (pdfObject: App.PdfObject) => void
 }
 
 const RadarChart = (props: InputProps) => {
     const chartRef = useRef<any>(null);
-
-    // const handleClick = async (event) => {
-
-    //     let base64Image = chartRef.current.chartInstance.toBase64Image();
-
-    //     await fetch("/stripe/test-pdf", {
-    //         method: "POST",
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': "application/json"
-    //         },
-    //         body: JSON.stringify({"image": base64Image}),
-    //     });
-    // }
-
     let data = {
         labels: ['Team', 'Technology', 'Advisors', 'Traction', 'Market'],
         datasets: [{
