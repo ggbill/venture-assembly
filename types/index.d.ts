@@ -1,5 +1,12 @@
 declare module App {
     interface RoundDetails {
+        name: string, 
+        email: string, 
+        phone: string, 
+        companyName: string,
+        companyWebsite: string,
+        companyLogoBase64String: string,
+        companyIntro: string,
         preMoneyValuation: number,
         amountRaising: number,
         cashInBank: number,
@@ -10,7 +17,9 @@ declare module App {
         month12Revenue: number,
         isUsesTech: boolean,
         financials: FinancialDetails[]
-        swot: SwotObject
+        swot: SwotObject,
+        radarBase64String: string,
+        swotSlidersBase64String: string   
     }
 
     interface FinancialDetails {
@@ -48,15 +57,16 @@ declare module App {
         // uniqueness: number
     }
 
-    interface PdfObject{
-        name: string, 
-        email: string, 
-        phone: string, 
-        companyName: string,
-        companyWebsite: string,
-        companyLogoBase64String: string,
-        companyIntro: string,
-        roundDetails: RoundDetails, 
-        radarBase64String: string   
-    }
+    // interface PdfObject{
+    //     name: string, 
+    //     email: string, 
+    //     phone: string, 
+    //     companyName: string,
+    //     companyWebsite: string,
+    //     companyLogoBase64String: string,
+    //     companyIntro: string,
+    //     // roundDetails: RoundDetails, 
+    //     radarBase64String: string,
+    //     swotSlidersBase64String: string   
+    // }
 }

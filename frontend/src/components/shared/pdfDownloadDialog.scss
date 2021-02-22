@@ -17,27 +17,25 @@
             }
 
             .field-wrapper.logo-upload {
-                .MuiInputBase-root:hover{
-                    .MuiOutlinedInput-notchedOutline{
-                        border-color: black!important;
+                .MuiInputBase-root:hover {
+                    .MuiOutlinedInput-notchedOutline {
+                        border-color: black !important;
                     }
                 }
-                
-                &.no-image{
-                    
+
+                &.no-image {
                     .MuiInputBase-input {
                         color: rgba(0, 0, 0, 0.57);
                         cursor: text;
                     }
                 }
-                &.image{
+                &.image {
                     .MuiInputBase-input {
                         color: rgba(0, 0, 0, 0.87);
                         cursor: text;
                     }
                 }
             }
-
 
             .select-image-placeholder {
                 display: flex;
@@ -57,12 +55,19 @@
             }
             .company-intro.image {
                 position: relative;
-                top: -166px;
-                margin-bottom: -166px;
+                top: -175px;
+                margin-bottom: -175px;
             }
 
             .image-cropper-wrapper {
                 min-height: 200px;
+                .cropper-wrapper {
+                    width: 100%;
+                    .helper-text {
+                        font-size: 0.8em;
+                        color: #797979;
+                    }
+                }
             }
             //------------
         }

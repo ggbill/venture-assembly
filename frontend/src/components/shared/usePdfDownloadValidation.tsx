@@ -24,7 +24,7 @@ const usePdfPurchaseValidation = () => {
 
     }
 
-    const validateInputs = (pdfPurchase: App.PdfObject, isTermsAgreed: boolean): boolean => {
+    const validateInputs = (roundDetails: App.RoundDetails, isTermsAgreed: boolean): boolean => {
 
         let tempValidationObject: App.ValidationObject[] = [
             { name: "name", isValid: true, validationMessage: "" },
@@ -46,7 +46,7 @@ const usePdfPurchaseValidation = () => {
             });
         }
 
-        if (pdfPurchase.name === "" || typeof (pdfPurchase.name) === "undefined") {
+        if (roundDetails.name === "" || typeof (roundDetails.name) === "undefined") {
             setFailedValidation("name", "Please enter your name.")
         }
 
@@ -54,16 +54,16 @@ const usePdfPurchaseValidation = () => {
             setFailedValidation("isTermsAgreed", "You must agree to continue.")
         }
 
-        if (pdfPurchase.email === "" || typeof (pdfPurchase.email) === "undefined") {
+        if (roundDetails.email === "" || typeof (roundDetails.email) === "undefined") {
             setFailedValidation("email", "Please enter your email address.")
         } else {
-            if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(pdfPurchase.email)) {
+            if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(roundDetails.email)) {
             } else {
                 setFailedValidation("email", "Invalid email address.")
             }
         }
 
-        if (pdfPurchase.phone === "" || typeof (pdfPurchase.phone) === "undefined") {
+        if (roundDetails.phone === "" || typeof (roundDetails.phone) === "undefined") {
             setFailedValidation("phone", "Please enter your phone number.")
         } else {
 
@@ -71,13 +71,13 @@ const usePdfPurchaseValidation = () => {
             let number;
 
             try {
-                if (pdfPurchase.phone.substring(0, 3) === "+44") {
-                    number = phoneUtil.parseAndKeepRawInput(pdfPurchase.phone);
-                } else if (pdfPurchase.phone.substring(0, 4) === "0044") {
-                    var updatedNumber = `+44 ${pdfPurchase.phone.substring(4, pdfPurchase.phone.length)}`
+                if (roundDetails.phone.substring(0, 3) === "+44") {
+                    number = phoneUtil.parseAndKeepRawInput(roundDetails.phone);
+                } else if (roundDetails.phone.substring(0, 4) === "0044") {
+                    var updatedNumber = `+44 ${roundDetails.phone.substring(4, roundDetails.phone.length)}`
                     number = phoneUtil.parseAndKeepRawInput(updatedNumber);
                 } else {
-                    number = phoneUtil.parseAndKeepRawInput(`+44 ${pdfPurchase.phone}`);
+                    number = phoneUtil.parseAndKeepRawInput(`+44 ${roundDetails.phone}`);
                 }
 
                 if (!phoneUtil.isValidNumber(number)) {
@@ -90,7 +90,7 @@ const usePdfPurchaseValidation = () => {
             }
         }
 
-        if (pdfPurchase.companyName === "" || typeof (pdfPurchase.companyName) === "undefined") {
+        if (roundDetails.companyName === "" || typeof (roundDetails.companyName) === "undefined") {
             setFailedValidation("companyName", "Please enter a company name.")
         }
         

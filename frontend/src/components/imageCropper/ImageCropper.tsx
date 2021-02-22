@@ -6,13 +6,14 @@ import "./imageCropper.scss";
 
 interface InputProps {
     src: any,
-    pdfObject: App.PdfObject,
-    setPdfObject: (pdfObject: App.PdfObject) => void
+    roundDetails: App.RoundDetails
+    setRoundDetails: (roundDetails: App.RoundDetails) => void
 }
 
 const ImageCropper = (props: InputProps) => {
 
     const imageElement: any = useRef(null);
+
 
     useEffect(() => {
         const cropper = new Cropper(imageElement.current, {
@@ -22,7 +23,7 @@ const ImageCropper = (props: InputProps) => {
             dragMode: "move",
             cropend: () => {
                 const canvas = cropper.getCroppedCanvas();
-                props.setPdfObject({ ...props.pdfObject, companyLogoBase64String: canvas.toDataURL() })
+                props.setRoundDetails({ ...props.roundDetails, companyLogoBase64String: canvas.toDataURL() })
             },
             toggleDragModeOnDblclick: false,
             minCropBoxWidth: 20,

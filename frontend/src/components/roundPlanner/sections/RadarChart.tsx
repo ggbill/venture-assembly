@@ -6,25 +6,27 @@ import "chartjs-plugin-datalabels"
 
 interface InputProps {
     roundDetails: App.RoundDetails
-    setRadarChartBase64String: (base64String: string) => void
+    setRoundDetails: (roundDetails: App.RoundDetails) => void
+    // pdfObject: App.PdfObject
+    // setPdfObject: (pdfObject: App.PdfObject) => void
 }
 
 const RadarChart = (props: InputProps) => {
     const chartRef = useRef<any>(null);
 
-    const handleClick = async (event) => {
-       
-        let base64Image = chartRef.current.chartInstance.toBase64Image();
+    // const handleClick = async (event) => {
 
-        await fetch("/stripe/test-pdf", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify({"image": base64Image}),
-        });
-    }
+    //     let base64Image = chartRef.current.chartInstance.toBase64Image();
+
+    //     await fetch("/stripe/test-pdf", {
+    //         method: "POST",
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': "application/json"
+    //         },
+    //         body: JSON.stringify({"image": base64Image}),
+    //     });
+    // }
 
     let data = {
         labels: ['Team', 'Technology', 'Advisors', 'Traction', 'Market'],
@@ -45,20 +47,19 @@ const RadarChart = (props: InputProps) => {
         }]
     };
 
-    useEffect(() => {
-
-        props.setRadarChartBase64String(chartRef.current.chartInstance.toBase64Image())
-       
-        // eslint-disable-next-line react-hooks/exhaustive-deps  
-    }, []);
-
-
     return (
         <Paper className="radar-chart">
             <Radar
                 ref={chartRef}
                 data={data}
                 options={{
+                    animation: {
+                        onComplete: function () {
+                            // console.log("animation complete")
+                            props.setRoundDetails({ ...props.roundDetails, radarBase64String: chartRef.current.chartInstance.toBase64Image() })
+                        }
+                    },
+
                     maintainAspectRatio: false,
                     plugins: {
                         datalabels: {
@@ -125,7 +126,7 @@ const RadarChart = (props: InputProps) => {
 
                 }}
             />
-            <button onClick={handleClick}>Click me</button>
+            {/* <button onClick={handleClick}>Click me</button> */}
         </Paper>
     )
 }

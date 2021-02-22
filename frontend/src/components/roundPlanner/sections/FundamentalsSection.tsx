@@ -4,6 +4,7 @@ import NumberFormat from 'react-number-format'
 import { InputAdornment, TextField} from '@material-ui/core'
 import CustomVASlider from '../../shared/CustomVASlider'
 import { ReactComponent as QuestionMark } from '../../../images/question-mark.svg'
+import useRoundPlannerCalculator from '../../../hooks/useRoundPlannerCalculator'
 
 interface InputProps{
     roundDetails: App.RoundDetails
@@ -13,40 +14,7 @@ interface InputProps{
 
 const FundamentalsSection = (props: InputProps) => {
 
-    const calculateEquity = () => {
-        if (props.roundDetails.preMoneyValuation) {
-            return (
-                ((props.roundDetails.amountRaising / (props.roundDetails.preMoneyValuation + props.roundDetails.amountRaising)) * 100).toFixed(1)
-            )
-        } else {
-            return 0
-        }
-
-    }
-
-    const calculatePostMoney = () => {
-        if (props.roundDetails.preMoneyValuation) {
-            return (
-                props.roundDetails.preMoneyValuation + props.roundDetails.amountRaising
-            )
-        } else {
-            return 0
-        }
-    }
-
-    const calculateBurn = () => {
-        if (!props.roundDetails.monthlyBurnRate) {
-            return "∞"
-        } else if (!props.roundDetails.cashInBank) {
-            return 0
-        } else {
-            let burn = props.roundDetails.cashInBank / props.roundDetails.monthlyBurnRate
-
-            return (
-                (Math.round(burn * 4) / 4) * 1 // * 1 gets rid of .00
-            )
-        }
-    }
+    let roundPlannerCalculator = useRoundPlannerCalculator()
 
     return (
         <div className="fundamentals-section">
@@ -153,7 +121,7 @@ const FundamentalsSection = (props: InputProps) => {
                             </div>
                             <div className="figures">
                                 <span className="label">Equity to be Sold</span>
-                                <span className="value">{`${calculateEquity()}%`}</span>
+                                <span className="value">{`${roundPlannerCalculator.calculateEquity(props.roundDetails.preMoneyValuation, props.roundDetails.amountRaising)}%`}</span>
                             </div>
 
                         </div>
@@ -163,19 +131,19 @@ const FundamentalsSection = (props: InputProps) => {
                             </div>
                             <div className="figures">
                                 <span className="label">Post Money Valuation</span>
-                                <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(calculatePostMoney())}</span>
+                                <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundPlannerCalculator.calculatePostMoney(props.roundDetails.preMoneyValuation, props.roundDetails.amountRaising))}</span>
                             </div>
                         </div>
                         <div className="result">
                             <div className="emoji">
-                                {calculateBurn() <= 1 && <span>🥵</span>}
-                                {calculateBurn() > 1 && calculateBurn() <= 3 && <span>😮</span>}
-                                {calculateBurn() > 3 && calculateBurn() <= 6 && <span>🤔</span>}
-                                {calculateBurn() > 6 && <span>😎</span>}
+                                {roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) <= 1 && <span>🥵</span>}
+                                {roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) > 1 && roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) <= 3 && <span>😮</span>}
+                                {roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) > 3 && roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) <= 6 && <span>🤔</span>}
+                                {roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) > 6 && <span>😎</span>}
                             </div>
                             <div className="figures">
                                 <span className="label">Runway (months)</span>
-                                <span className="value">{`${calculateBurn()}`}</span>
+                                <span className="value">{`${roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank)}`}</span>
                             </div>
                         </div>
                     </div>
@@ -187,7 +155,6 @@ const FundamentalsSection = (props: InputProps) => {
             </div>
         </div>
     )
-
 }
 
 export default FundamentalsSection

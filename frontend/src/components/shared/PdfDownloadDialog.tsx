@@ -8,22 +8,26 @@ import { saveAs } from 'file-saver';
 import ImageCropper from '../imageCropper/ImageCropper';
 
 
+
 interface InputProps {
     isDialogOpen: boolean,
     handleClose: (boolean: boolean) => void,
     roundDetails: App.RoundDetails
-    radarChartBase64String: string
+    setRoundDetails: (roundDetails: App.RoundDetails) => void
+    // radarChartBase64String: string
+    // pdfObject: App.PdfObject
+    // setPdfObject: (pdfObject: App.PdfObject) => void
 }
 
 const PdfDowloadDialog = (props: InputProps) => {
 
-    const [pdfObject, setPdfObject] = useState<App.PdfObject>({
-        name: "Bill",
-        email: "wohamilton@gmail.com",
-        phone: "07123 123456",
-        companyName: "BillCo",
-        companyIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    } as App.PdfObject);
+    // const [pdfObject, setPdfObject] = useState<App.PdfObject>({
+    //     name: "Bill",
+    //     email: "wohamilton@gmail.com",
+    //     phone: "07123 123456",
+    //     companyName: "BillCo",
+    //     companyIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    // } as App.PdfObject);
     const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(true);
     const [selectedLogoBase64String, setSelectedLogoBase64String] = useState<string>("");
     const [selectedLogo, setSelectedLogo] = useState<any>(null);
@@ -32,12 +36,12 @@ const PdfDowloadDialog = (props: InputProps) => {
 
 
     const generatePdf = () => {
-        pdfObject.roundDetails = props.roundDetails
-        pdfObject.radarBase64String = props.radarChartBase64String
+        // pdfObject.roundDetails = props.roundDetails
+        // pdfObject.radarBase64String = props.radarChartBase64String
 
-        if (pdfDownloadValidation.validateInputs(pdfObject, isAgreedTerms)) {
-            pdf(pdfGenerator.generateRoundPlannerPdf(pdfObject)).toBlob().then((blob) => {
-                saveAs(blob, `${pdfObject.companyName} - Round Planner.pdf`)
+        if (pdfDownloadValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
+            pdf(pdfGenerator.generateRoundPlannerPdf(props.roundDetails)).toBlob().then((blob) => {
+                saveAs(blob, `${props.roundDetails.companyName} - Round Planner.pdf`)
             })
         }
     };
@@ -53,12 +57,21 @@ const PdfDowloadDialog = (props: InputProps) => {
         if (e.target.files && e.target.files.length > 0) {
             setSelectedLogo(e.target.files[0])
             const reader: any = new FileReader();
-            reader.addEventListener('load', () =>
+            reader.addEventListener('load', () => {
+                props.setRoundDetails({ ...props.roundDetails, companyLogoBase64String: reader.result })
                 setSelectedLogoBase64String(reader.result)
-            );
+            });
             reader.readAsDataURL(e.target.files[0]);
         }
     };
+
+    // useEffect(() => {
+    //     // console.log(props.pdfradarChartBase64String)
+    //     console.log(props.roundDetails)
+    //     props.setRoundDetails({ ...props.roundDetails, roundDetails: props.roundDetails })
+
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps  
+    // }, []);
 
     return (
         <Dialog
@@ -83,8 +96,8 @@ const PdfDowloadDialog = (props: InputProps) => {
                             className=""
                             label="Your Name"
                             variant="outlined"
-                            value={pdfObject.name}
-                            onChange={(event) => setPdfObject({ ...pdfObject, name: event.target.value })}
+                            value={props.roundDetails.name}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, name: event.target.value })}
                             required
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("name").isValid}
@@ -98,8 +111,8 @@ const PdfDowloadDialog = (props: InputProps) => {
                             className=""
                             label="Your Email Address"
                             variant="outlined"
-                            value={pdfObject.email}
-                            onChange={(event) => setPdfObject({ ...pdfObject, email: event.target.value })}
+                            value={props.roundDetails.email}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, email: event.target.value })}
                             required
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("email").isValid}
@@ -113,8 +126,8 @@ const PdfDowloadDialog = (props: InputProps) => {
                             className=""
                             label="Your Phone Number"
                             variant="outlined"
-                            value={pdfObject.phone}
-                            onChange={(event) => setPdfObject({ ...pdfObject, phone: event.target.value })}
+                            value={props.roundDetails.phone}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, phone: event.target.value })}
                             required
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("phone").isValid}
@@ -127,10 +140,10 @@ const PdfDowloadDialog = (props: InputProps) => {
                             id="companyName"
                             name="companyName"
                             className=""
-                            label={`Your Company's Name (${35 - pdfObject.companyName.length} characters remaining)`}
+                            label={`Your Company's Name (${28 - props.roundDetails.companyName.length} characters remaining)`}
                             variant="outlined"
-                            value={pdfObject.companyName}
-                            onChange={(event) => setPdfObject({ ...pdfObject, companyName: event.target.value })}
+                            value={props.roundDetails.companyName}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyName: event.target.value })}
                             required
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("companyName").isValid}
@@ -145,23 +158,12 @@ const PdfDowloadDialog = (props: InputProps) => {
                             className=""
                             label="Your Company's Website"
                             variant="outlined"
-                            value={pdfObject.companyWebsite}
-                            onChange={(event) => setPdfObject({ ...pdfObject, companyWebsite: event.target.value })}
+                            value={props.roundDetails.companyWebsite}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyWebsite: event.target.value })}
                             fullWidth
                         />
                     </div>
-                    {/* <div className="field-wrapper">
-                        <TextField
-                            id="companylogoUrl"
-                            name="companyLogoUrl"
-                            className=""
-                            label="Your Company's Logo"
-                            variant="outlined"
-                            value={pdfObject.companyLogoUrl}
-                            onChange={(event) => setPdfObject({ ...pdfObject, companyLogoUrl: event.target.value })}
-                            fullWidth
-                        />
-                    </div> */}
+                    
                     <div className={selectedLogo ? "field-wrapper logo-upload image" : "field-wrapper logo-upload no-image"} onClick={openFileDialog}>
                         <input
                             accept="image/*"
@@ -187,10 +189,10 @@ const PdfDowloadDialog = (props: InputProps) => {
                             id="companyIntro"
                             name="companyIntro"
                             className=""
-                            label={`Short Company Intro (${250 - pdfObject.companyIntro.length} characters remaining)`}
+                            label={`Short Company Intro (${250 - props.roundDetails.companyIntro.length} characters remaining)`}
                             variant="outlined"
-                            value={pdfObject.companyIntro}
-                            onChange={(event) => setPdfObject({ ...pdfObject, companyIntro: event.target.value })}
+                            value={props.roundDetails.companyIntro}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyIntro: event.target.value })}
                             fullWidth
                             multiline
                             rows={8}
@@ -198,10 +200,17 @@ const PdfDowloadDialog = (props: InputProps) => {
                             inputProps={{ maxLength: 250 }}
                         />
                     </div>
-                    
+
                     <div className="field-wrapper image-cropper-wrapper">
                         {selectedLogoBase64String ?
-                            <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />:
+                            <div className="cropper-wrapper">
+                                <ImageCropper src={selectedLogoBase64String} roundDetails={props.roundDetails} setRoundDetails={props.setRoundDetails} />
+                                <div className="helper-text">
+                                    Scroll on the image to zoom in or out
+                                </div>
+                            </div>
+                            // <ImageCropper src={selectedLogoBase64String} pdfObject={pdfObject} setPdfObject={setPdfObject} />
+                            :
                             <div className="select-image-placeholder">Please select a logo file above</div>
                         }
                     </div>
@@ -227,6 +236,9 @@ const PdfDowloadDialog = (props: InputProps) => {
                 {!pdfDownloadValidation.getValidation("isTermsAgreed").isValid &&
                     <FormHelperText className="ts-and-cs-error">{pdfDownloadValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
                 }
+
+                {/* here: {JSON.stringify(props.roundDetails.radarBase64String)} */}
+                <img style={{width: 200, height:200}} src={props.roundDetails.radarBase64String}/>
 
             </DialogContent>
             <DialogActions>
