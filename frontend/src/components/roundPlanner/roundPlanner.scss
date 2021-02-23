@@ -1,9 +1,24 @@
 .round-planner-page {
     .top-page-margin{
-        margin-top: 100px;
+        margin-top: 76px;
     }
+
+    .page-title{
+        font-size: 2em;
+        font-weight: 700;
+    }
+    .page-subtitle{
+        font-size: 1.5em;
+        font-weight: 700;
+    }
+
+    .intro-section{
+        padding: 40px 0;
+
+    }
+
     .inputs-wrapper {
-        padding: 48px 0;
+        padding: 24px 0;
 
         .field-wrapper {
             display: inline-flex;
@@ -48,11 +63,13 @@
                         width: 25px;
                         height: 25px;
                         margin: 0 0 0 12px;
-                        fill: #da4167;
+                        // fill: #da4167;
+                        fill: #acacac;
                         cursor: pointer;
 
                         &:hover{
-                           fill: #940025;
+                           fill: #da4167;
+                        //    fill: #940025;
                         }
                     }
                 }
@@ -97,6 +114,22 @@
                         text-align: center;
 
                         .label {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            .question-mark-wrapper {
+                    
+                                display: flex;
+                                svg {
+                                    width: 15px;
+                                    height: 15px;
+                                    margin: 0 0 0 6px;
+                                    // fill: #da4167;
+                                    fill: white;
+                                    cursor: pointer;
+                                }
+                            }
                         }
 
                         .value {

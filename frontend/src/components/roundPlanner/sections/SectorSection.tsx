@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import NumberFormat from 'react-number-format'
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, Input, InputAdornment, InputLabel, ListItem, MenuItem, OutlinedInput, Paper, Select, Slider, Table, TableBody, TableCell, TableHead, TableRow, TextField, Tooltip } from '@material-ui/core'
 import FinancialsLineChart from './FinancialsLineChart'
+import { ReactComponent as QuestionMark } from '../../../images/question-mark.svg'
 
 interface InputProps {
     roundDetails: App.RoundDetails
@@ -21,7 +22,7 @@ const SectorSection = (props: InputProps) => {
     return (
         <div className="sector-section">
             <div className="content">
-                <h1>Sector.</h1>
+                <span className="page-subtitle">Sector.</span>
                 <div className="inputs-wrapper">
                     <div className="field-wrapper">
                         <FormControl variant="outlined" required>
@@ -79,13 +80,13 @@ const SectorSection = (props: InputProps) => {
                                 onChange={(event) => props.setRoundDetails({ ...props.roundDetails, stage: String(event.target.value) })}
                                 label="Stage"
                             >
-                                <ListItem value="PRE">Pre-Startup/MVP</ListItem>
-                                <ListItem value="PRODUCT">Finished Product</ListItem>
-                                <ListItem value="SALES">Achieving Sales</ListItem>
-                                <ListItem value="BREAKEVEN">Breaking Even</ListItem>
-                                <ListItem value="PROFIT">Profitable</ListItem>
+                                <ListItem value="Pre-Startup/MVP">Pre-Startup/MVP</ListItem>
+                                <ListItem value="Finished Product">Finished Product</ListItem>
+                                <ListItem value="Achieving Sales">Achieving Sales</ListItem>
+                                <ListItem value="Breaking Even">Breaking Even</ListItem>
+                                <ListItem value="Profitable">Profitable</ListItem>
                             </Select>
-                            <FormHelperText>"Please select what stage your business is at."</FormHelperText>
+                            <FormHelperText>Please select what stage your business is at.</FormHelperText>
                         </FormControl>
                     </div>
 
@@ -233,7 +234,19 @@ const SectorSection = (props: InputProps) => {
 
                             </div>
                             <div className="figures">
-                                <span className="label">Valuation / Rev</span>
+                                <span className="label">
+                                    Valuation / Rev
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "🏦 Valuation to Revenue Multiple",
+                                            message: "Your valuation as a multiple of your current revenue."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                </span>
                                 {(
                                     props.roundDetails.preMoneyValuation === 0 ||
                                     typeof (props.roundDetails.preMoneyValuation) === "undefined" ||
@@ -251,7 +264,19 @@ const SectorSection = (props: InputProps) => {
                                 🚀
                             </div>
                             <div className="figures">
-                                <span className="label">Growth Rate</span>
+                                <span className="label">
+                                    Growth Rate
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "🚀 Growth Rate",
+                                            message: "Your revenue after 12 months as a multiple of the current month's revenue."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                    </span>
                                 {(
                                     props.roundDetails.month12Revenue === 0 ||
                                     typeof (props.roundDetails.month12Revenue) === "undefined" ||
@@ -265,12 +290,23 @@ const SectorSection = (props: InputProps) => {
 
                         </div>
                         <div className="result">
-                        <div className="emoji">
-                            📈
+                            <div className="emoji">
+                                📈
                         </div>
                             <div className="figures">
-                                <span className="label">Monthly Growth Rate</span>
-
+                                <span className="label">
+                                    Monthly Growth Rate
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "📈 Monthly Compound Growth Rate",
+                                            message: "Your valuation as a multiple of your current revenue."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                    </span>
                                 {(
                                     props.roundDetails.month12Revenue === 0 ||
                                     typeof (props.roundDetails.month12Revenue) === "undefined" ||
@@ -278,14 +314,16 @@ const SectorSection = (props: InputProps) => {
                                     typeof (props.roundDetails.monthlyRevenue) === "undefined"
                                 ) ?
                                     <span className="value error">Please complete monthly revenue and month 12 revenue.</span> :
-                                    <span className="value">{`${((Math.pow(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue, (1/11)) - 1) * 100).toFixed(0)}%`}</span>
+                                    <span className="value">{`${((Math.pow(props.roundDetails.month12Revenue / props.roundDetails.monthlyRevenue, (1 / 11)) - 1) * 100).toFixed(0)}%`}</span>
                                 }
                             </div>
-                            
+
                         </div>
 
                     </div>
                     <div className="tooltip-wrapper">
+                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.` }} />
+                        {/* <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</b> will get you to a <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</b> valuation.` }} /> */}
                     </div>
                 </div>
             </div>

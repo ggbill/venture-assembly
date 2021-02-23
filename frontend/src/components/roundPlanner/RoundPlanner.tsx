@@ -27,10 +27,11 @@ const registerFont = () => {
 const RoundPlanner = () => {
     const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "" })
     const [roundDetails, setRoundDetails] = useState<App.RoundDetails>({
-        name: "Bill",
+        name: "William Oliver Hamilton",
         email: "wohamilton@gmail.com",
         phone: "07123 123456",
-        companyName: "BillCo",
+        companyName: "Bill's Long Company Name Ltd",
+        companyWebsite: "www.longwebsitename.com",
         companyIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         preMoneyValuation: 1500000,
         amountRaising: 150000,
@@ -55,10 +56,15 @@ const RoundPlanner = () => {
         <div className="round-planner-page">
             <MenuBar />
 
-            <div className="content top-page-margin">
-                <h1>Round Planner.</h1>
-                <p>We built a free tool designed to help founders understand the key metrics required for raising capital. Enter your information into the sections below to see
-                    tour company's key metrics generated in real time. If you are struggling to understand and need advice reach out.</p>
+            <div className="content top-page-margin intro-section">
+                <span className="page-title">Round Planner.</span>
+                <p>Round Planner is a <u>free</u> tool designed to help founders better understand the key metrics that investors will ask for
+                when deciding whether or not to invest in a company. Simply enter your information below and let the tool calculate
+                your company's key metrics in real time. Your results can then be downloaded as a PDF or you can book a 15 minute intro session
+                with us to help decide what to do next. All this completely free - not bad eh?</p>
+                {/* <p>We built a free tool designed to help founders understand the key metrics required for raising capital.
+                    Enter your information into the sections below to see your company's key metrics generated in real time.
+                     If you are struggling to understand and need advice feel free to reach out.</p> */}
             </div>
 
             <FundamentalsSection
@@ -109,7 +115,6 @@ const RoundPlanner = () => {
                 handleClose={() => setIsDownloadPDFDialogOpen(false)}
                 isDialogOpen={isDownloadPDFDialogOpen}
                 roundDetails={roundDetails}
-
                 setRoundDetails={setRoundDetails}
             // radarChartBase64String={radarChartBase64String}
             // pdfObject={pdfObject}

@@ -1,12 +1,12 @@
 import './fundamentalsSection.scss'
 import React from 'react'
 import NumberFormat from 'react-number-format'
-import { InputAdornment, TextField} from '@material-ui/core'
+import { InputAdornment, TextField } from '@material-ui/core'
 import CustomVASlider from '../../shared/CustomVASlider'
 import { ReactComponent as QuestionMark } from '../../../images/question-mark.svg'
 import useRoundPlannerCalculator from '../../../hooks/useRoundPlannerCalculator'
 
-interface InputProps{
+interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
     setNotificationDialogProperties: (any: any) => void
@@ -19,7 +19,7 @@ const FundamentalsSection = (props: InputProps) => {
     return (
         <div className="fundamentals-section">
             <div className="content">
-                <h2>Fundamentals.</h2>
+                <span className="page-subtitle">Fundamentals.</span>
                 <div className="inputs-wrapper">
                     <div className="field-wrapper with-question-mark">
                         <NumberFormat
@@ -46,7 +46,7 @@ const FundamentalsSection = (props: InputProps) => {
                                             message: "If you are unsure, enter a value. The average funding round gives away about 15% for the amount they are raising."
                                         })
                                     }}>
-                                        <QuestionMark/>
+                                        <QuestionMark />
                                     </div>
 
                                 </InputAdornment>,
@@ -120,7 +120,19 @@ const FundamentalsSection = (props: InputProps) => {
                                 🗞️
                             </div>
                             <div className="figures">
-                                <span className="label">Equity to be Sold</span>
+                                <div className="label">
+                                    Equity to be Sold
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "🗞️ Equity to be Sold",
+                                            message: "This is the amount of equity in your company you will have to give away in order to raise the required amount, according to the pre-money valuation of your company."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                </div>
                                 <span className="value">{`${roundPlannerCalculator.calculateEquity(props.roundDetails.preMoneyValuation, props.roundDetails.amountRaising)}%`}</span>
                             </div>
 
@@ -130,7 +142,19 @@ const FundamentalsSection = (props: InputProps) => {
                                 🏷️
                             </div>
                             <div className="figures">
-                                <span className="label">Post Money Valuation</span>
+                                <span className="label">
+                                    Post Money Valuation
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "🏷️ Post Money Valuation",
+                                            message: "How much your company will be worth immediately after the successful fundraise."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                </span>
                                 <span className="value">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundPlannerCalculator.calculatePostMoney(props.roundDetails.preMoneyValuation, props.roundDetails.amountRaising))}</span>
                             </div>
                         </div>
@@ -142,14 +166,26 @@ const FundamentalsSection = (props: InputProps) => {
                                 {roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank) > 6 && <span>😎</span>}
                             </div>
                             <div className="figures">
-                                <span className="label">Runway (months)</span>
+                                <span className="label">
+                                    Runway (months)
+                                    <div className="question-mark-wrapper" onClick={() => {
+                                        props.setNotificationDialogProperties({
+                                            isOpen: true,
+                                            type: "NOTIFICATION",
+                                            title: "🛬 Runway",
+                                            message: "This is the amount of time you can afford to keep the company running based on the amount of cash you currently have in the bank versus the amount you are spending (burn) each month."
+                                        })
+                                    }}>
+                                        <QuestionMark />
+                                    </div>
+                                </span>
                                 <span className="value">{`${roundPlannerCalculator.calculateBurn(props.roundDetails.monthlyBurnRate, props.roundDetails.cashInBank)}`}</span>
                             </div>
                         </div>
                     </div>
                     <div className="tooltip-wrapper">
-                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</u></b> will get you to a <b><u>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</u></b> valuation.` }}>
-                        </span>
+                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised in your current fundraising round should lead to a 2x uplift in your company's valuation by the next round. So, according to the values entered, an investment of <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</b> should enable you to create a company valued at <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</b> by your next round.` }} />
+                        {/* <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</b> will get you to a <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</b> valuation.` }} /> */}
                     </div>
                 </div>
             </div>
