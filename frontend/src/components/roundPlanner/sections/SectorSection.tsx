@@ -322,7 +322,7 @@ const SectorSection = (props: InputProps) => {
 
                     </div>
                     <div className="tooltip-wrapper">
-                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.` }} />
+                        <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> We understand not all growth stories are aligned with revenue multiples. Be aware and make a mental note at which point you might be priced in accordance with them. This will help you avoid a down round.` }} />
                         {/* <span dangerouslySetInnerHTML={{ __html: `<span style="font-size: 2em">💡☝️</span> As a rule of thumb the money raised now should give a 2x uplift in valuation by the next round. According to the values above <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.amountRaising)}</b> will get you to a <b>${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.preMoneyValuation * 2)}</b> valuation.` }} /> */}
                     </div>
                 </div>
