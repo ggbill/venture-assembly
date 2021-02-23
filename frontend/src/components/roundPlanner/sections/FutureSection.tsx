@@ -49,7 +49,7 @@ const FutureSection = (props: InputProps) => {
                                 </TableRow>
                             </TableBody>
                         </Table>
-                        <FormHelperText>Angels typically look for 10x returns. So it's worth being able to explain your route to these numbers.</FormHelperText>
+                        <FormHelperText>Angels typically look for 10x returns. So it's worth being able to explain your route to these numbers. This doesn't account for dilution.</FormHelperText>
                     </Paper>
                     <div></div>
                 </div>

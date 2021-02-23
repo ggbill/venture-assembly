@@ -3,57 +3,29 @@ import React, { useEffect, useRef } from 'react'
 import RadarChart from './RadarChart';
 import CustomVASlider from '../../shared/CustomVASlider';
 import useSwotHelperTextGenerator from './useSwotHelperTextGenerator';
-import html2canvas from 'html2canvas';
+import useSwotTooltipGenerator from './useSwotTooltipGenerator';
 
 interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
     setNotificationDialogProperties: (any: any) => void
-    // setRadarChartBase64String: (base64String: string) => void
-
-    // pdfObject: App.PdfObject
-    // setPdfObject: (pdfObject: App.PdfObject) => void
 }
 
 const SwotSection = (props: InputProps) => {
 
     const swotHelperTextGenerator = useSwotHelperTextGenerator()
+    const swotTooltipGenerator = useSwotTooltipGenerator()
 
     const handleSwotChange = (name, value) => {
-        // console.log("handle swot change")
         let tempSwot = { ...props.roundDetails.swot }
         tempSwot[name] = value
-
         props.setRoundDetails({ ...props.roundDetails, swot: tempSwot })
     }
-
-    // useEffect(() => {
-    //     const swotSlidersElement: any = document.getElementById('swot-sliders');
-
-    //     html2canvas(swotSlidersElement, {
-    //         scrollX: -window.scrollX,
-    //         scrollY: -window.scrollY,
-    //         windowWidth: document.documentElement.offsetWidth,
-    //         windowHeight: document.documentElement.offsetHeight,
-    //         onclone: function(canvas) {
-    //             const newSwotSlidersElement: any = canvas.getElementById('swot-sliders');
-    //             newSwotSlidersElement.style.padding = '12px';
-    //             // newSwotSlidersElement.style.marginBottom = '24px';
-    //         }
-            
-    //     }).then((canvas) => {
-    //         // console.log("SETSWOTSLIDER64")
-    //         // console.log(canvas.toDataURL("image/png"))
-    //         props.setRoundDetails({...props.roundDetails, swotSlidersBase64String: canvas.toDataURL("image/png")})
-    //     });
-
-
-    // }, [props.roundDetails.swot]);
 
     return (
         <div id="swot-section" className="swot-section">
             <div className="content">
-                <h1>SWOT.</h1>
+                <span className="page-subtitle">Stengths & Weaknesses.</span>
                 <div className="row-wrapper">
                     <div id="swot-sliders" className="inputs-wrapper">
                         <div className="slider-wrapper">
@@ -206,10 +178,19 @@ const SwotSection = (props: InputProps) => {
                     </div>
 
                 </div>
-
-
-
             </div>
+
+
+            <div className="results-wrapper">
+                <div className="results content">
+                    <div className="swot-tooltip-wrapper">
+                        {swotTooltipGenerator.getTooltip(props.roundDetails.swot)}
+                        {/* <span>😎 Wow all 5s - this looks like it could be the next unicorn!</span>  */}
+                        {/* <span>🦇 THE BATMAN - xxx</span>  */}
+                    </div>
+                </div>
+            </div>
+            
         </div>
     )
 }
