@@ -58,7 +58,7 @@ const RoundPlanner = () => {
 
             <div className="content top-page-margin intro-section">
                 <span className="page-title">Round Planner.</span>
-                <p>Round Planner is a <u>free</u> tool designed to help founders better understand the key metrics that investors will ask for
+                <p>Round Planner is a <b>free</b> tool designed to help founders better understand the key metrics that investors will ask for
                 when deciding whether or not to invest in a company. Simply enter your information below and let the tool calculate
                 your company's key metrics in real time. Your results can then be downloaded as a PDF or you can book a 15 minute intro session
                 with us to help decide what to do next. All this completely free - not bad eh?</p>
@@ -88,11 +88,11 @@ const RoundPlanner = () => {
 
             />
 
-            <FutureSection
+            {/* <FutureSection
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}
-            />
+            /> */}
 
             <PurchaseSection
                 roundDetails={roundDetails}

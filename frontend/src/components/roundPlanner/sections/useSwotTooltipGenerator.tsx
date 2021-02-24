@@ -22,7 +22,7 @@ const useSwotTooltipGenerator = () => {
         } else if (swotResults.traction ===2){
             tooltip = "Investors are looking to make a return on their investment. What better way to convince them that this is possible than to demonstrate a growing list of revenue generating customers."
         } else if (swotResults.team === 2){
-            tooltip = "At this stage, Enhancements to the team are worth consideration to include strong, relevant industry experience to build on early traction or to help build a platform for further growth."
+            tooltip = "At this stage, consider developing the team to include strong, relevant industry experience building on early traction or to help build a platform for further growth."
         } else if (swotResults.traction === 3){
             tooltip = "Look to grow you revenue generating customer base to deomstrate strong growth in line with forecasts."
         } else if (swotResults.team === 5 && swotResults.technology===5 && swotResults.advisors ===5 && swotResults.market === 5 && swotResults.traction=== 5) {

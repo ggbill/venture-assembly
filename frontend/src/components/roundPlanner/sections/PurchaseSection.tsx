@@ -41,22 +41,23 @@ const PurchaseSection = (props: InputProps) => {
     return (
         <div className="purchase-section">
             <div className="content">
-                <h1>Still looking for more?</h1>
+                <span className="page-subtitle">Next Steps</span>
 
                 <div className="row-wrapper">
                     <Card>
                         {/* <CardActionArea> */}
                         <CardContent>
-                            <span className="level">Basic</span>
+                            {/* <span className="level">Basic</span> */}
                             <span className="title">Download Round Planner PDF</span>
                             <DownloadSVG className="logo" />
                             <span className="price">Free</span>
-                            <Button className="va-button" onClick={() => {props.setIsDownloadPDFDialogOpen(true)}}>Buy</Button>
+                            <Button className="va-button" onClick={() => {props.setIsDownloadPDFDialogOpen(true)}}>Download</Button>
                             <span className="description">
-                                Round Planner Pack includes:
+                                Details:
                                 <ul>
-                                    <li>All information and insights included in this page in shareable pdf format (see example <a href='#'>here</a>)</li>
-                                    <li>A list of ten questions likely to be asked by potential investors, generated based on the information provided in the form above.</li>
+                                    <li>Instantly download all the information entered in the form above.</li>
+                                    <li>Customise for your company, optionally adding contact details and logo.</li>
+                                    <li>No messing around or faff, just download a PDF to do whatever you like with.</li>
                                 </ul>
 
                             </span>
@@ -66,23 +67,26 @@ const PurchaseSection = (props: InputProps) => {
                     </Card>
                     <Card>
                         <CardContent>
-                            <span className="level">Intermediate</span>
-                            <span className="title">Planner Pack Reviewed with Questions</span>
+                            {/* <span className="level">Intermediate</span> */}
+                            <span className="title">15 Minute "What Next?" Call</span>
                             <QuestionSVG className="logo" />
-                            <span className="price">£25</span>
-                            <Button className="va-button">Buy</Button>
+                            <span className="price">Free</span>
+                            <Button className="va-button">Book</Button>
                             <span className="description">
-                                Round Planner Pack includes:
+                                Details:
                                 <ul>
-                                    <li>All information and insights included in this page in shareable pdf format (see example <a href='#'>here</a>)</li>
-                                    <li>A list of ten questions likely to be asked by potential investors, generated based on the information provided in the form above.</li>
+                                    <li>Book a 15 minute slot to have a chat with us about your company, whether you are looking to raise capital or not.</li>
+                                    <li>We have over 10 years experience and can offer help and advice on the next steps on your journey.</li>
+                                    <li>Why are we offering this free? We are just starting our VA journey so understanding the types of things our users are 
+                                        looking for will help to shape the future roadmap of our product. It probably won't last forever so make the most of it!</li>
+                                    <li>You will need to upload a round planner pdf in order to book a slot.</li>
                                 </ul>
 
                             </span>
                         </CardContent>
 
                     </Card>
-                    <Card>
+                    {/* <Card>
                         <CardContent>
                             <span className="level">Advanced</span>
                             <span className="title">Planner Pack and Pitch Deck Online Review Session</span>
@@ -98,7 +102,7 @@ const PurchaseSection = (props: InputProps) => {
                             </span>
                         </CardContent>
 
-                    </Card>
+                    </Card> */}
                 </div>
             </div>
         </div>

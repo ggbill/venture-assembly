@@ -2,6 +2,7 @@
     .row-wrapper {
         display: flex;
         flex-direction: row;
+        margin-top: 24px;
 
         .MuiCard-root {
             flex-grow: 1;
@@ -26,7 +27,8 @@
                     font-weight: bold;
                     margin-bottom: 12px;
                     min-height: 48px;
-                    font-size: 1.2em;
+                    font-size: 1.5em;
+                    // color: #d81747;
                 }
 
                 svg {
@@ -51,6 +53,7 @@
 
                 .description {
                     text-align: left;
+                    font-size: 0.95em;
                 }
             }
         }
