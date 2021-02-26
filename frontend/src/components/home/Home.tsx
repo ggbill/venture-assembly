@@ -3,10 +3,13 @@ import React from 'react'
 import MenuBar from '../shared/MenuBar'
 import Typist from 'react-typist'
 import 'react-typist/dist/Typist.css'
-import { Button } from '@material-ui/core'
+import { Button, Card } from '@material-ui/core'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 import { Link } from 'react-router-dom'
+import RocketImage from '../../images/startups.png'
+import EdImage from '../../images/ed-small-square.png'
+import BillImage from '../../images/bill-square.jpg'
 
 const Home = () => {
     return (
@@ -51,6 +54,9 @@ const Home = () => {
                             </Link>
                         </div>
 
+                        <div className="image-wrapper">
+                            <img src={RocketImage} />
+                        </div>
                     </div>
 
                 </div>
@@ -58,6 +64,39 @@ const Home = () => {
                     <span>read more</span>
                     <ArrowDownwardIcon />
                 </div>
+            </section>
+            <section className="body-section">
+
+                <div className="intro-wrapper content">
+                    <span>We are on a mission to try and help startups. To plan, network or grow. Bit by bit and tool by tool we're going to try and make the process of growing a startup easier. Why? Because it's just the way we think it should be...</span>
+                </div>
+                <div className="team-wrapper content">
+                    <span className="sub-title">Who we are.</span>
+                    <div className="card-wrapper">
+                    <Card>
+                        <img src={EdImage}></img>
+                        <div className="name-wrapper">
+                            <span>Ed Stephens</span>
+                        </div>
+                        <div className="description-wrapper">
+                            Head of Brokerage at the Angel Investment Network (AIN). Over 10 years' experience working with startups, successfully raising over
+                            £50 million of funding.
+                        </div>
+                    </Card>
+                    <Card>
+                        <img src={BillImage}></img>
+                        <div className="name-wrapper">
+                            <span>Bill Hamilton</span>
+                        </div>
+                        <div className="description-wrapper">
+                            Head of Technology at the Wealth Holdings. Spent a career in technology Desiging and building systems for a variety of companies of all sizes.
+                        </div>
+                    </Card>
+                    </div>
+                    
+
+                </div>
+
             </section>
         </div>
     )

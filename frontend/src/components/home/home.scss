@@ -44,6 +44,13 @@
                     font-size: 1.4em;
                 }
             }
+
+            .image-wrapper {
+                margin-top: 48px;
+                img {
+                    width: 300px;
+                }
+            }
         }
         .read-more {
             color: white;
@@ -67,6 +74,52 @@
             }
         }
     }
+
+    .body-section {
+        .sub-title {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .intro-wrapper {
+            margin-top: 96px;
+            // max-width: 400px;
+        }
+
+        .team-wrapper {
+            margin-top: 96px;
+            .card-wrapper {
+                margin-top: 24px;
+                display: flex;
+                align-content: space-evenly;
+
+                .MuiCard-root {
+                    max-width: 600px;
+                    padding: 12px;
+
+                    img {
+                        border-radius: 4px;
+                        height: 120px;
+                        margin-bottom: 12px;
+                    }
+
+                    .name-wrapper {
+                        font-weight: bold;
+                        font-size: 1.1em;
+                        margin-bottom: 12px;
+                    }
+
+                    .description-wrapper {
+                        font-size: 0.9em;
+                    }
+
+                    &:nth-child(odd) {
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -78,6 +131,19 @@
                     margin-top: 12px;
                     flex-direction: column;
                     font-size: 1.5em;
+                }
+            }
+        }
+        .body-section {
+            .team-wrapper {
+                .card-wrapper {
+                    flex-direction: column;
+                    &:nth-child(odd) {
+                        margin-right: 0;
+                    }
+                    .MuiCard-root {
+                        margin-bottom: 12px;
+                    }
                 }
             }
         }
