@@ -4,6 +4,8 @@ import { Button, Card, CardActionArea, CardContent } from '@material-ui/core'
 import { ReactComponent as DownloadSVG } from '../../../images/download.svg'
 import { ReactComponent as QuestionSVG } from '../../../images/question.svg'
 import { ReactComponent as CallSVG } from '../../../images/call.svg'
+import RocketSmall from '../../../images/rocket-small.png'
+import RocketMedium from '../../../images/rocket-med.png'
 
 import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe("pk_test_IUtytCqkv6fvF1xxCSdFkaXf");
@@ -37,7 +39,7 @@ const PurchaseSection = (props: InputProps) => {
         }
     }, []);
 
-    
+
     return (
         <div className="purchase-section">
             <div className="content">
@@ -49,9 +51,12 @@ const PurchaseSection = (props: InputProps) => {
                         <CardContent>
                             {/* <span className="level">Basic</span> */}
                             <span className="title">Download Round Planner PDF</span>
-                            <DownloadSVG className="logo" />
-                            <span className="price">Free</span>
-                            <Button className="va-button" onClick={() => {props.setIsDownloadPDFDialogOpen(true)}}>Download</Button>
+                            {/* <DownloadSVG className="logo" /> */}
+                            <div className="image-wrapper">
+                                <img className="image" src={RocketSmall} />
+                            </div>
+                            <div className="price">Free <span className="always">(Always)</span></div>
+                            <Button className="va-button" onClick={() => { props.setIsDownloadPDFDialogOpen(true) }}>Download</Button>
                             <span className="description">
                                 Details:
                                 <ul>
@@ -61,7 +66,7 @@ const PurchaseSection = (props: InputProps) => {
                                 </ul>
 
                             </span>
-                            </CardContent>
+                        </CardContent>
                         {/* </CardActionArea> */}
 
                     </Card>
@@ -69,17 +74,20 @@ const PurchaseSection = (props: InputProps) => {
                         <CardContent>
                             {/* <span className="level">Intermediate</span> */}
                             <span className="title">15 Minute "What Next?" Call</span>
-                            <QuestionSVG className="logo" />
-                            <span className="price">Free</span>
+                            {/* <QuestionSVG className="logo" /> */}
+                            <div className="image-wrapper">
+                                <img className="image" src={RocketMedium} />
+                            </div>
+
+                            <div className="price">Free <span className="limited-time">(Limited time only)</span></div>
                             <Button className="va-button">Book</Button>
                             <span className="description">
                                 Details:
                                 <ul>
                                     <li>Book a 15 minute slot to have a chat with us about your company, whether you are looking to raise capital or not.</li>
                                     <li>We have over 10 years experience and can offer help and advice on the next steps on your journey.</li>
-                                    <li>Why are we offering this free? We are just starting our VA journey so understanding the types of things our users are 
-                                        looking for will help to shape the future roadmap of our product. It probably won't last forever so make the most of it!</li>
-                                    <li>You will need to upload a round planner pdf in order to book a slot.</li>
+                                    <li>Why are we offering this free? We are just starting out on our own startup journey so understanding the types of things our users are
+                                        looking for will help to shape the future roadmap of our product. It won't last forever so make the most of it!</li>
                                 </ul>
 
                             </span>
