@@ -94,9 +94,22 @@ const usePdfGenerator = () => {
                                         </Text>
                                     </View>
 
+                                    <View style={{ display: "flex", flexDirection: "row", fontFamily: "Poppins", color: "#333333", fontSize: 9, marginBottom: 10 }}>
+                                        <Text style={{ fontWeight: 'bold' }}>
+                                            {`Business Type: `}
+                                        </Text>
+                                        <Text style={{ marginRight: 12 }}>
+                                            {roundDetails.businessType}
+                                        </Text>
+                                        <Text style={{ fontWeight: 'bold' }}>
+                                            {`Business Model: `}
+                                        </Text>
+                                        <Text>
+                                            {roundDetails.businessModel}
+                                        </Text>
+                                    </View>
 
-
-                                    <Text style={{ fontSize: 9, fontFamily: "Poppins", color: "#333333", marginBottom: 16 }}>
+                                    <Text style={{ fontSize: 8, fontFamily: "Poppins", color: "#333333", marginBottom: 10 }}>
                                         {roundDetails.companyIntro}
                                     </Text>
 

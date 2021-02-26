@@ -13,6 +13,8 @@ declare module App {
         monthlyBurnRate: number,
         sector: string, 
         stage: string, 
+        businessType: string, 
+        businessModel: string, 
         monthlyRevenue: number,
         month12Revenue: number,
         isUsesTech: boolean,

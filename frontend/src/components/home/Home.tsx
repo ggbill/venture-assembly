@@ -46,12 +46,12 @@ const Home = () => {
                                     {/* <span>Get Started</span> <ArrowForwardIcon /> */}
                                 </Button>
                             </Link>
-                            <Link to={'/round-planner'}>
+                            <a href="mailto: hello@ventureassembly.co">
                                 <Button className="va-button cta secondary">
-                                    <span>Talk to an expert</span>
+                                    <span>Get in touch</span>
                                     {/* <span>Get Started</span> <ArrowForwardIcon /> */}
                                 </Button>
-                            </Link>
+                            </a>
                         </div>
 
                         <div className="image-wrapper">

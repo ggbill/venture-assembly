@@ -22,9 +22,9 @@ const SectorSection = (props: InputProps) => {
     return (
         <div className="sector-section">
             <div className="content">
-                <span className="page-subtitle">Sector.</span>
+                <span className="page-subtitle">Under the Hood.</span>
                 <div className="inputs-wrapper">
-                    <div className="field-wrapper">
+                    <div className="field-wrapper sector">
                         <FormControl variant="outlined" required>
                             <InputLabel id="sector-label">Sector</InputLabel>
                             <Select
@@ -86,7 +86,46 @@ const SectorSection = (props: InputProps) => {
                                 <ListItem value="Breaking Even">Breaking Even</ListItem>
                                 <ListItem value="Profitable">Profitable</ListItem>
                             </Select>
-                            <FormHelperText>Please select what stage your business is at.</FormHelperText>
+                            {/* <FormHelperText>Please select what stage your business is at.</FormHelperText> */}
+                        </FormControl>
+                    </div>
+                    
+                    <div className="field-wrapper">
+                        <FormControl variant="outlined" required>
+                            <InputLabel id="business-type-label">Business Type</InputLabel>
+                            <Select
+                                labelId="business-type-label"
+                                id="businessType"
+                                name="businessType"
+                                value={props.roundDetails.businessType}
+                                onChange={(event) => props.setRoundDetails({ ...props.roundDetails, businessType: String(event.target.value) })}
+                                label="Business Type *"
+                            >
+                                <ListItem value="B2B">B2B</ListItem>
+                                <ListItem value="B2C">B2C</ListItem>
+                                <ListItem value="B2B2C">B2B2C</ListItem>
+                            </Select>
+
+                        </FormControl>
+                    </div>
+                    <div className="field-wrapper">
+                        <FormControl variant="outlined" required>
+                            <InputLabel id="business-model-label">Business Model</InputLabel>
+                            <Select
+                                labelId="business-model-label"
+                                id="businessModel"
+                                name="businessModel"
+                                value={props.roundDetails.businessModel}
+                                onChange={(event) => props.setRoundDetails({ ...props.roundDetails, businessModel: String(event.target.value) })}
+                                label="Business Model *"
+                            >
+                                <ListItem value="Transactional">Transactional</ListItem>
+                                <ListItem value="Commission Based">Commission</ListItem>
+                                <ListItem value="Recurring Revenue">Recurring Revenue</ListItem>
+                                <ListItem value="Licensing">Licensing</ListItem>
+                                <ListItem value="Other">Other</ListItem>
+                            </Select>
+
                         </FormControl>
                     </div>
 
