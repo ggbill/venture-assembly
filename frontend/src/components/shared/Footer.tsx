@@ -9,30 +9,16 @@ interface InputProps {
 const Footer = (props: InputProps) => {
     return (
         <section className="footer-section">
-            <div className="left-content">
-                {/* <div className="ghost-div"></div> */}
-                {/* <span>The Marriage Bureau is a brand that is wholly owned and operated by <a target="_blank" rel="noreferrer" href='https://www.wealthholdings.co.uk'>Wealth Holdings Inc Ltd</a>.</span> */}
-                {/* <a target="_blank" rel="noreferrer" href='https://www.wealthholdings.co.uk'>Wealth Holdings Inc Lts.</a> */}
-                {/* <Link to={'/privacy-policy'}>Privacy Policy</Link> */}
 
+            <div className="links-wrapper">
+                <span><b>© 2021 Venture Assembly Ltd.</b></span>
+                <a href="#">Privacy Policy</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div className="disclaimer">
+                All product and company names are trademarks or registered trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.
+            </div>
 
-            </div>
-            <div className="middle-content">
-                {/* <Link to={'/'}>
-                    <img alt="" src={Logo} />
-                </Link> */}
-                <span>© 2021 Venture Assembly</span>
-                {/* <br/> */}
-
-            </div>
-            <div className="right-content">
-                <div className="social-wrapper">
-                    {/* <a href='https://www.facebook.com' target="_blank" rel="noreferrer"><img className="social-icon" alt="" src={facebookImage} /></a> */}
-                    {/* <a href='https://www.instagram.com' target="_blank" rel="noreferrer"><img className="social-icon" alt="" src={instagramImage} /></a> */}
-                    {/* <a href='https://www.linkedin.com/company/70573670' target="_blank" rel="noreferrer"><img className="social-icon" alt="" src={linkedInImage} /></a> */}
-                </div>
-                
-            </div>
         </section>
     )
 }
