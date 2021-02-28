@@ -1,47 +1,51 @@
 var mongoose = require('mongoose');
 
-import PdfPurchase, { IPdfPurchase } from '../models/pdfPurchase.model';
+import PlannedRound, { IPlannedRound } from '../models/plannedRound.model';
 
 export namespace RoundPlannerController {
-    export async function CreatePdfPurchase(payload: any): Promise<IPdfPurchase> {
-        console.log("createPdfPurchase")
+    export async function CreatePlannedRound(round: any): Promise<IPlannedRound> {
+        console.log("createPlannedRound")
+        console.log(round)
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
-            PdfPurchase.create({
-                name: payload.metadata.name,
-                email: payload.customer_details.email,
-                companyName: payload.metadata.companyName,
-                preMoneyValuation: payload.metadata.preMoneyValuation,
-                amountRaising: payload.metadata.amountRaising,
-                cashInBank: payload.metadata.cashInBank,
-                monthlyBurnRate: payload.metadata.monthlyBurnRate,
-                sector: payload.metadata.sector,
-                stage: payload.metadata.stage,
-                monthlyRevenue: payload.metadata.monthlyRevenue,
-                month12Revenue: payload.metadata.month12Revenue,
-                isUsesTech: payload.metadata.isUsesTech,
-                year1Revenue: payload.metadata.year1Revenue,
-                year1Ebitda: payload.metadata.year1Ebitda,
-                year2Revenue: payload.metadata.year2Revenue,
-                year2Ebitda: payload.metadata.year2Ebitda,
-                year3Revenue: payload.metadata.year3Revenue,
-                year3Ebitda: payload.metadata.year3Ebitda,
-                swotTeam: payload.metadata.swotTeam,
-                swotTechnology: payload.metadata.swotTechnology,
-                swotAdvisors: payload.metadata.swotAdvisors,
-                swotTraction: payload.metadata.swotTraction,
-                swotMarket: payload.metadata.swotMarket,
-                stripePaymentIntentId: payload.payment_intent,
-                purchaseDate: new Date(),
+            PlannedRound.create({
+                name: round.name,
+                email: round.email,
+                companyName: round.companyName,
+                companyWebsite: round.companyWebsite,
+                preMoneyValuation: round.preMoneyValuation,
+                amountRaising: round.amountRaising,
+                cashInBank: round.cashInBank,
+                monthlyBurnRate: round.monthlyBurnRate,
+                sector: round.sector,
+                stage: round.stage,
+                businessType: round.businessType,
+                businessModel: round.businessModel,
+                monthlyRevenue: round.monthlyRevenue,
+                month12Revenue: round.month12Revenue,
+                isUsesTech: round.isUsesTech,
+                financials: round.financials,
+                swot: round.swot,
+                calendlyEventUri: round.calendlyEventUri,
+                calendlyInviteeUri: round.calendlyInviteeUri
+                // year1Revenue: round.financials[0].revenue,
+                // year1Ebitda: round.financials[0].ebitda,
+                // year2Revenue: round.financials[1].revenue,
+                // year2Ebitda: round.financials[1].ebitda,
+                // year3Revenue: round.financials[2].revenue,
+                // year3Ebitda: round.financials[2].ebitda,
+                // swotTeam: round.swot.team,
+                // swotTechnology: round.swot.technology,
+                // swotAdvisors: round.swot.advisors,
+                // swotTraction: round.swot.traction,
+                // swotMarket: round.swot.market,
+                // stripePaymentIntentId: payload.payment_intent,
+                // purchaseDate: new Date(),
             }, function (err, result) {      
                 if (err) {
                     console.error("Error: " + err);
                     reject(err)
                 }
-
-                
-
-
-
+                console.log(result)
                 resolve(result);
             })
         });

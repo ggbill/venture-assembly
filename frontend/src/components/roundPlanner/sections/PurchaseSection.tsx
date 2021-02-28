@@ -14,8 +14,8 @@ interface InputProps {
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
     setNotificationDialogProperties: (any: any) => void
-    // setIsPitchDeckBookingDialogOpen: (boolean: boolean) => void
     setIsDownloadPDFDialogOpen: (boolean: boolean) => void
+    setIsCallBookingDialogOpen: (boolean: boolean) => void
 }
 
 const PurchaseSection = (props: InputProps) => {
@@ -80,7 +80,7 @@ const PurchaseSection = (props: InputProps) => {
                             </div>
 
                             <div className="price">Free <span className="limited-time">(Limited time only)</span></div>
-                            <Button className="va-button">Book</Button>
+                            <Button className="va-button" onClick={() => { props.setIsCallBookingDialogOpen(true) }}>Book</Button>
                             <span className="description">
                                 Details:
                                 <ul>

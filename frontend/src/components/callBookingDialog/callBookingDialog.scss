@@ -1,0 +1,89 @@
+.call-booking-dialog {
+    .MuiPaper-root {
+        max-width: 1050px;
+        
+        .step{
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .intro-text {
+            margin-bottom: 24px;
+            font-size: 0.9em;
+        }
+
+        .inputs-wrapper {
+            .MuiFormControl-root {
+                // margin-bottom: 12px;
+
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
+            }
+
+            .field-wrapper.logo-upload {
+                .MuiInputBase-root:hover {
+                    .MuiOutlinedInput-notchedOutline {
+                        border-color: black !important;
+                    }
+                }
+
+                &.no-image {
+                    .MuiInputBase-input {
+                        color: rgba(0, 0, 0, 0.57);
+                        cursor: text;
+                    }
+                }
+                &.image {
+                    .MuiInputBase-input {
+                        color: rgba(0, 0, 0, 0.87);
+                        cursor: text;
+                    }
+                }
+            }
+
+            .select-image-placeholder {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                background-color: #ececec;
+                color: rgba(0, 0, 0, 0.7);
+                border-radius: 4px;
+            }
+
+            // weirdness caused by cropper - TODO FIX--------------
+            .company-intro.no-image {
+                position: relative;
+                top: -70px;
+                margin-bottom: -70px;
+            }
+            .company-intro.image {
+                position: relative;
+                top: -175px;
+                margin-bottom: -175px;
+            }
+
+            .image-cropper-wrapper {
+                min-height: 200px;
+                .cropper-wrapper {
+                    width: 100%;
+                    .helper-text {
+                        font-size: 0.8em;
+                        color: #797979;
+                    }
+                }
+            }
+            //------------
+        }
+
+        .MuiFormControlLabel-label {
+            font-size: 0.8rem;
+        }
+
+        .ts-and-cs-error {
+            color: red;
+            margin: -6px 0 0 0;
+        }
+    }
+}

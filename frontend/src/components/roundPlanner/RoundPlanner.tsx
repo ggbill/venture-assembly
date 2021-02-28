@@ -9,6 +9,7 @@ import PurchaseSection from './sections/PurchaseSection'
 import SwotSection from './sections/SwotSection'
 import PdfDownloadDialog from '../shared/PdfDownloadDialog'
 import { Font } from '@react-pdf/renderer';
+import CallBookingDialog from '../callBookingDialog/CallBookingDialog'
 
 const registerFont = () => {
     Font.register({
@@ -39,6 +40,8 @@ const RoundPlanner = () => {
         monthlyBurnRate: 5000,
         sector: "",
         stage: "",
+        businessType: "",
+        businessModel: "",
         monthlyRevenue: 0,
         month12Revenue: 0,
         isUsesTech: false,
@@ -46,6 +49,7 @@ const RoundPlanner = () => {
         swot: { team: 1, technology: 1, advisors: 1, traction: 1, market: 1 }
     } as App.RoundDetails)
     const [isDownloadPDFDialogOpen, setIsDownloadPDFDialogOpen] = useState<boolean>(false)
+    const [isCallBookingDialogOpen, setIsCallBookingDialogOpen] = useState<boolean>(false)
 
     useEffect(() => {
         registerFont();
@@ -82,24 +86,14 @@ const RoundPlanner = () => {
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}
-            // setRadarChartBase64String={setRadarChartBase64String}
-            // pdfObject={pdfObject}
-            // setPdfObject={setPdfObject}
-
             />
-
-            {/* <FutureSection
-                roundDetails={roundDetails}
-                setNotificationDialogProperties={setNotificationDialogProperties}
-                setRoundDetails={setRoundDetails}
-            /> */}
 
             <PurchaseSection
                 roundDetails={roundDetails}
                 setNotificationDialogProperties={setNotificationDialogProperties}
                 setRoundDetails={setRoundDetails}
-                // setIsPitchDeckBookingDialogOpen={setIsPitchDeckBookingDialogOpen}
                 setIsDownloadPDFDialogOpen={setIsDownloadPDFDialogOpen}
+                setIsCallBookingDialogOpen={setIsCallBookingDialogOpen}
             />
 
             <NotificationDialog
@@ -116,10 +110,13 @@ const RoundPlanner = () => {
                 isDialogOpen={isDownloadPDFDialogOpen}
                 roundDetails={roundDetails}
                 setRoundDetails={setRoundDetails}
-            // radarChartBase64String={radarChartBase64String}
-            // pdfObject={pdfObject}
-            // setPdfObject={setPdfObject}
+            />
 
+            <CallBookingDialog
+                handleClose={() => setIsCallBookingDialogOpen(false)}
+                isDialogOpen={isCallBookingDialogOpen}
+                roundDetails={roundDetails}
+                setRoundDetails={setRoundDetails}
             />
 
 

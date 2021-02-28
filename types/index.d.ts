@@ -22,6 +22,8 @@ declare module App {
         swot: SwotObject,
         radarBase64String: string,
         financialsBase64String: string,
+        // calendlyEventUri: string, 
+        // calendlyInviteeUri: string,
 
     }
 

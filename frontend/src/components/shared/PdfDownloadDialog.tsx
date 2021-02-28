@@ -242,7 +242,7 @@ const PdfDowloadDialog = (props: InputProps) => {
 
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => props.handleClose(false)} >
+                <Button className="va-button" onClick={() => props.handleClose(false)} >
                     Cancel
                 </Button>
                 <Button id="submit" className="va-button" onClick={generatePdf}>

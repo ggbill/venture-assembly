@@ -4,9 +4,9 @@ interface Options {
     body: any
 }
 
-const useFetch = () => {
-    const url = "https://www.angelinvestmentnetwork.co.uk/rest/mobile/api/brokingsubmission/broking_step_submission"
-    const stub = `${url}`
+const useFetch = (collection: string) => {
+    const url = process.env.PUBLIC_URL || "http://localhost:8080"
+    const stub = `${url}/${collection}`
 
     const defaultHeader = {
         Accept: "application/json",
@@ -20,11 +20,11 @@ const useFetch = () => {
             body
         };
 
-        console.log(body)
+        // console.log(body)
 
         if (body) {
             options.body = JSON.stringify(body)
-            console.log(options.body)
+            // console.log(options.body)
         }
 
         return fetch(url, options)
@@ -42,10 +42,10 @@ const useFetch = () => {
         return customFetch(url, "GET", null, defaultHeader);
     };
 
-    const post = (body) => {
+    const post = (id, body) => {
         if (!body) throw new Error("to make a post you must provide a body");
-        console.log(body)
-        return customFetch(stub, "POST", body, defaultHeader);
+        const url = `${stub}${id ? `/${id}` : ""}`;
+        return customFetch(url, "POST", body, defaultHeader);
     };
 
     const put = (id, body) => {
