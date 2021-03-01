@@ -119,21 +119,6 @@ const PdfDowloadDialog = (props: InputProps) => {
                             helperText={!pdfDownloadValidation.getValidation("email").isValid && pdfDownloadValidation.getValidation("email").validationMessage}
                         />
                     </div>
-                    <div className="field-wrapper">
-                        <TextField
-                            id="phone"
-                            name="phone"
-                            className=""
-                            label="Your Phone Number"
-                            variant="outlined"
-                            value={props.roundDetails.phone}
-                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, phone: event.target.value })}
-                            required
-                            fullWidth
-                            error={!pdfDownloadValidation.getValidation("phone").isValid}
-                            helperText={!pdfDownloadValidation.getValidation("phone").isValid && pdfDownloadValidation.getValidation("phone").validationMessage}
-                        />
-                    </div>
 
                     <div className="field-wrapper">
                         <TextField
@@ -151,6 +136,24 @@ const PdfDowloadDialog = (props: InputProps) => {
                             inputProps={{ maxLength: 28 }}
                         />
                     </div>
+
+                    <div className="field-wrapper">
+                        <TextField
+                            id="phone"
+                            name="phone"
+                            className=""
+                            label="Your Phone Number"
+                            variant="outlined"
+                            value={props.roundDetails.phone}
+                            onChange={(event) => props.setRoundDetails({ ...props.roundDetails, phone: event.target.value })}
+                            // required
+                            fullWidth
+                            error={!pdfDownloadValidation.getValidation("phone").isValid}
+                            helperText={!pdfDownloadValidation.getValidation("phone").isValid && pdfDownloadValidation.getValidation("phone").validationMessage}
+                        />
+                    </div>
+
+
                     <div className="field-wrapper">
                         <TextField
                             id="companyWebsite"
@@ -163,7 +166,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             fullWidth
                         />
                     </div>
-                    
+
                     <div className={selectedLogo ? "field-wrapper logo-upload image" : "field-wrapper logo-upload no-image"} onClick={openFileDialog}>
                         <input
                             accept="image/*"

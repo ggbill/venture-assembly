@@ -68,32 +68,53 @@ const Home = () => {
             <section className="body-section">
 
                 <div className="intro-wrapper content">
-                    <span>We are on a mission to try and help startups. To plan, network or grow. Bit by bit and tool by tool we're going to try and make the process of growing a startup easier. Why? Because it's just the way we think it should be...</span>
+                    <div className="intro-header">
+                        <div className="pink-line"></div>
+                        <span>Waging war on startup bloat.</span>
+                        <div className="pink-line"></div>
+                    </div>
+
+                    {/* <span>We are on a mission to try and help startups. To plan, network or grow. Bit by bit and tool by tool we're going to try and make the process of growing a startup easier. Why? Because it's just the way we think it should be...</span> */}
+                    <p>
+                        Some aspects of starting a company are really hard. Coming up with a compelling idea, bla bla bla.
+                        Other aspects of starting a company are actually pretty straight as long as you understand the process and have the right people and tools at your fingertips.</p>
+                    <p>
+                        We are on a mission to help startups succeed. We can’t help you with the really hard stuff, you have to do that on your own. But what we can do is make sure that you don’t trip up on the easy stuff.
+                        So many startups fail because the waste time and money: doing completely unnecessary things, doing the right things in the wrong order or doing the right things, badly.</p>
+                    {/* <ul>
+                        <li>Doing completely unnecessary things.</li>
+                        <li>Doing the right things in the wrong order.</li>
+                        <li>Doing the right things, badly.</li>
+                    </ul> */}
+                    <p>
+                        Wasting time and money in the early stages of a startup can be terminal. That’s where we come in. We are building a toolkit, a knowledge base,
+                        a community to make sure you nail the easy things quickly and efficiently – leaving you to focus on the hard stuff to make your startup a success.
+                    </p>
                 </div>
                 <div className="team-wrapper content">
                     <span className="sub-title">Who we are.</span>
                     <div className="card-wrapper">
-                    <Card>
-                        <img src={EdImage}></img>
-                        <div className="name-wrapper">
-                            <span>Ed Stephens</span>
+                        <Card>
+                            <img src={EdImage}></img>
+                            <div className="name-wrapper">
+                                <span>Ed Stephens</span>
+                            </div>
+                            <div className="description-wrapper">
+                                Head of Brokerage at the Angel Investment Network (AIN). Over 10 years' experience working with startups, successfully raising over
+                                £50 million of funding.
                         </div>
-                        <div className="description-wrapper">
-                            Head of Brokerage at the Angel Investment Network (AIN). Over 10 years' experience working with startups, successfully raising over
-                            £50 million of funding.
+                        </Card>
+                        <Card>
+                            <img src={BillImage}></img>
+                            <div className="name-wrapper">
+                                <span>Bill Hamilton</span>
+                            </div>
+                            <div className="description-wrapper">
+                                Head of Technology at the Wealth Holdings. Spent a career in technology Desiging and building systems for a variety of companies of all sizes.
                         </div>
-                    </Card>
-                    <Card>
-                        <img src={BillImage}></img>
-                        <div className="name-wrapper">
-                            <span>Bill Hamilton</span>
-                        </div>
-                        <div className="description-wrapper">
-                            Head of Technology at the Wealth Holdings. Spent a career in technology Desiging and building systems for a variety of companies of all sizes.
-                        </div>
-                    </Card>
+                        </Card>
                     </div>
-                    
+
 
                 </div>
 

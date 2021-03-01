@@ -103,6 +103,7 @@ const SectorSection = (props: InputProps) => {
                             >
                                 <ListItem value="B2B">B2B</ListItem>
                                 <ListItem value="B2C">B2C</ListItem>
+                                <ListItem value="B2C & B2C">B2C & B2C</ListItem>
                                 <ListItem value="B2B2C">B2B2C</ListItem>
                             </Select>
 

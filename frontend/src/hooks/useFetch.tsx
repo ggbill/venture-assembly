@@ -5,8 +5,7 @@ interface Options {
 }
 
 const useFetch = (collection: string) => {
-    const url = process.env.PUBLIC_URL
-    // const url = process.env.PUBLIC_URL || "http://localhost:8080"
+    const url = process.env.PUBLIC_URL || "http://localhost:8080"
     const stub = `${url}/${collection}`
 
     const defaultHeader = {

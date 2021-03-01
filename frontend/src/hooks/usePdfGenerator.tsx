@@ -253,7 +253,7 @@ const usePdfGenerator = () => {
 
                         <View style={styles.middleSection}>
                             <View style={styles.pageRow}>
-                                <View style={{marginLeft: 48, flexBasis: 0, flexGrow: 1 }}>
+                                <View style={{ marginLeft: 48, flexBasis: 0, flexGrow: 1 }}>
                                     <View style={{ display: "flex", flexDirection: "column" }}>
                                         <Text style={styles.subtitle}>Financial Forecast</Text>
                                         <View style={[styles.table, { borderStyle: "solid", borderWidth: 1, borderRightWidth: 0, borderBottomWidth: 0, borderColor: "#eaeaea" }]}>
@@ -317,7 +317,7 @@ const usePdfGenerator = () => {
                                         </View>
                                     </View>
                                 </View>
-                                <View style={{marginLeft: 12, marginRight: 48, flexBasis: 0, flexGrow: 1 }}>
+                                <View style={{ marginLeft: 12, marginRight: 48, flexBasis: 0, flexGrow: 1 }}>
                                     <Image
                                         src={roundDetails.financialsBase64String}
                                     // style={{  width: 80 }}
@@ -442,22 +442,27 @@ const usePdfGenerator = () => {
                                                 {roundDetails.email}
                                             </Text>
                                         </View>
-                                        <View style={{ display: "flex", flexDirection: "row", marginBottom: 6, fontSize: 10, fontFamily: "Poppins", color: "#333333" }}>
-                                            <Text style={{ fontWeight: "bold" }}>
-                                                {`☎️     Phone: `}
-                                            </Text>
-                                            <Text >
-                                                {roundDetails.phone}
-                                            </Text>
-                                        </View>
-                                        <View style={{ display: "flex", flexDirection: "row", marginBottom: 6, fontSize: 10, fontFamily: "Poppins", color: "#333333" }}>
-                                            <Text style={{ fontWeight: "bold" }}>
-                                                {`🌐     Website: `}
-                                            </Text>
-                                            <Text >
-                                                {roundDetails.companyWebsite}
-                                            </Text>
-                                        </View>
+                                        {roundDetails.phone !== "" &&
+                                            <View style={{ display: "flex", flexDirection: "row", marginBottom: 6, fontSize: 10, fontFamily: "Poppins", color: "#333333" }}>
+                                                <Text style={{ fontWeight: "bold" }}>
+                                                    {`☎️     Phone: `}
+                                                </Text>
+                                                <Text >
+                                                    {roundDetails.phone}
+                                                </Text>
+                                            </View>
+                                         }
+                                        {roundDetails.companyWebsite !== "" &&
+                                            <View style={{ display: "flex", flexDirection: "row", marginBottom: 6, fontSize: 10, fontFamily: "Poppins", color: "#333333" }}>
+                                                <Text style={{ fontWeight: "bold" }}>
+                                                    {`🌐     Website: `}
+                                                </Text>
+                                                <Text >
+                                                    {roundDetails.companyWebsite}
+                                                </Text>
+                                            </View>
+                                         }
+
 
                                     </View>
 
@@ -466,7 +471,7 @@ const usePdfGenerator = () => {
                         </View>
                     </View>
 
-                    <View style={[styles.header, { marginBottom: 0, paddingVertical: 18 }]}>
+                    <View style={[styles.header, { marginBottom: 0, paddingVertical: 6 }]}>
                         <Text style={{ fontSize: 8, fontFamily: "Poppins" }}>
                             www.ventureassembly.co
                         </Text>

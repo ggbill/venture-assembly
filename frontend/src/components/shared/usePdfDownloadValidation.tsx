@@ -64,7 +64,7 @@ const usePdfPurchaseValidation = () => {
         }
 
         if (roundDetails.phone === "" || typeof (roundDetails.phone) === "undefined") {
-            setFailedValidation("phone", "Please enter your phone number.")
+            // setFailedValidation("phone", "Please enter your phone number.")
         } else {
 
             let phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
