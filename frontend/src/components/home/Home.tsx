@@ -9,7 +9,7 @@ import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 import { Link } from 'react-router-dom'
 import RocketImage from '../../images/startups.png'
 import EdImage from '../../images/ed-small-square.png'
-import BillImage from '../../images/bill-square.jpg'
+import BillImage from '../../images/bill-small-square.jpeg'
 
 const Home = () => {
     return (
@@ -101,7 +101,7 @@ const Home = () => {
                         <Card>
                             <img src={EdImage}></img>
                             <div className="name-wrapper">
-                                <span>Ed Stephens</span>
+                                <span>Ed Stephens 👨‍🔧</span>
                             </div>
                             <div className="description-wrapper">
                                 Head of Brokerage at the Angel Investment Network (AIN). Over 10 years' experience working with startups, successfully raising over
@@ -111,7 +111,7 @@ const Home = () => {
                         <Card>
                             <img src={BillImage}></img>
                             <div className="name-wrapper">
-                                <span>Bill Hamilton</span>
+                                <span>Bill Hamilton 👨‍💻</span>
                             </div>
                             <div className="description-wrapper">
                                 Head of Technology at the Wealth Holdings. Spent a career in technology desiging and building systems for a variety of companies of all sizes.

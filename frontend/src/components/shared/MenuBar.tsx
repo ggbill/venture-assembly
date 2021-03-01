@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { AppBar, Toolbar, Button, Drawer, MenuItem } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 import "./menuBar.scss"
-import MenuIcon from '@material-ui/icons/Menu'
+// import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
-import AINLogo from '../../images/ain-white.png'
+import MenuIconWhite from '../../images/menu-circle.png'
+import { ReactComponent as LightningSVG } from '../../images/menu-icon.svg'
+
+
 
 const MenuBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -74,7 +77,9 @@ const MenuBar = () => {
                         <div className="clickable-icon hamburger-menu" aria-controls="simple-menu" aria-haspopup="true"
                             onClick={toggleDrawer(true)}
                         >
-                            <MenuIcon />
+                            {/* <MenuIcon /> */}
+                            <img src={MenuIconWhite} />
+                            {/* <LightningSVG style={{fill: "whie"}} /> */}
                         </div>
                     </Toolbar>
                 </AppBar>

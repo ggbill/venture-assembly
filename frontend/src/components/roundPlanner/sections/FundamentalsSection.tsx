@@ -42,8 +42,8 @@ const FundamentalsSection = (props: InputProps) => {
                                         props.setNotificationDialogProperties({
                                             isOpen: true,
                                             type: "NOTIFICATION",
-                                            title: "Company Valuation",
-                                            message: "If you are unsure, enter a value. The average funding round gives away about 15% for the amount they are raising."
+                                            title: "📈 Company Valuation",
+                                            message: "The average funding round gives away about 15% for the amount they are raising. If you need help with valuing your company, why not book a free 15 minute session with us at the bottom of the page."
                                         })
                                     }}>
                                         <QuestionMark />

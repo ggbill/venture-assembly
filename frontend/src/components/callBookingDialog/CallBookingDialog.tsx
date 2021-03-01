@@ -8,6 +8,7 @@ import { saveAs } from 'file-saver';
 import ImageCropper from '../imageCropper/ImageCropper';
 import CallBooking from './CallBooking';
 import useFetch from '../../hooks/useFetch';
+import { isNoSubstitutionTemplateLiteral } from 'typescript';
 
 
 
@@ -20,7 +21,7 @@ interface InputProps {
 
 const CallBookingDialog = (props: InputProps) => {
 
-    const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(true)
+    const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(false)
     const [stepNumber, setStepNumber] = useState<number>(1)
     const [isBookingSuccess, setIsBookingSuccess] = useState<boolean>(false)
 
@@ -49,6 +50,12 @@ const CallBookingDialog = (props: InputProps) => {
         }).catch((err: Error) => {
             console.log(err)
         })
+    }
+
+    const submit = () => {
+        if (callBookingValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
+            setStepNumber(stepNumber + 1)
+        }
     }
 
 
@@ -124,7 +131,7 @@ const CallBookingDialog = (props: InputProps) => {
                                     id="companyName"
                                     name="companyName"
                                     className=""
-                                    label={`Your Company's Name (${28 - props.roundDetails.companyName.length} characters remaining)`}
+                                    label={`Your Company's Name`}
                                     variant="outlined"
                                     value={props.roundDetails.companyName}
                                     onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyName: event.target.value })}
@@ -132,7 +139,6 @@ const CallBookingDialog = (props: InputProps) => {
                                     fullWidth
                                     error={!callBookingValidation.getValidation("companyName").isValid}
                                     helperText={!callBookingValidation.getValidation("companyName").isValid && callBookingValidation.getValidation("companyName").validationMessage}
-                                    inputProps={{ maxLength: 28 }}
                                 />
                             </div>
                             <div className="field-wrapper">
@@ -149,6 +155,9 @@ const CallBookingDialog = (props: InputProps) => {
                             </div>
                         </div>
 
+                        {!callBookingValidation.getValidation("isTermsAgreed").isValid &&
+                            <FormHelperText className="ts-and-cs-error">{callBookingValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
+                        }
                         <FormControlLabel
                             control={
                                 <Checkbox
@@ -163,9 +172,7 @@ const CallBookingDialog = (props: InputProps) => {
 
 
                         />
-                        {!callBookingValidation.getValidation("isTermsAgreed").isValid &&
-                            <FormHelperText className="ts-and-cs-error">{callBookingValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
-                        }
+
                     </>
                     :
                     <>
@@ -185,25 +192,44 @@ const CallBookingDialog = (props: InputProps) => {
             </DialogContent>
 
 
+
+
             {stepNumber === 1 ?
+                // <DialogActions>
+                //     <Button className="va-button" onClick={() => props.handleClose()} >
+                //         Cancel
+                //  </Button>
+                //     <Button id="submit" className="va-button" onClick={submit} >
+                //         Next
+                //  </Button>
+                // </DialogActions>
                 <DialogActions>
-                    <Button className="va-button" onClick={() => props.handleClose()} >
-                        Cancel
-                 </Button>
-                    <Button id="submit" className="va-button" onClick={() => setStepNumber(stepNumber + 1)} >
-                        Next
-                 </Button>
+                    {!callBookingValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
+                    <div className="button-wrapper">
+                        <Button className="va-button cancel" onClick={() => props.handleClose()} >
+                            Cancel
+                        </Button>
+                        <Button id="submit" className="va-button confirm" onClick={submit}>
+                            Next
+                        </Button>
+                    </div>
                 </DialogActions>
                 :
                 <DialogActions>
                     {isBookingSuccess ?
-                        <Button className="va-button" onClick={closeSuccessDialog} >
-                            Done
+                        <div className="button-wrapper">
+                            <Button className="va-button confirm" onClick={closeSuccessDialog} >
+                                Done
                          </Button>
+                        </div>
+
                         :
-                        <Button className="va-button" onClick={() => setStepNumber(stepNumber - 1)} >
-                            Back
+                        <div className="button-wrapper">
+                            <Button className="va-button cancel" onClick={() => setStepNumber(stepNumber - 1)} >
+                                Back
                          </Button>
+                        </div>
+
                     }
 
                 </DialogActions>

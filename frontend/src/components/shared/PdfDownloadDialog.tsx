@@ -28,7 +28,7 @@ const PdfDowloadDialog = (props: InputProps) => {
     //     companyName: "BillCo",
     //     companyIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     // } as App.PdfObject);
-    const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(true);
+    const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(false);
     const [selectedLogoBase64String, setSelectedLogoBase64String] = useState<string>("");
     const [selectedLogo, setSelectedLogo] = useState<any>(null);
     const pdfDownloadValidation = usePdfDownloadValidation()
@@ -89,7 +89,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                 </div>
 
                 <div className="inputs-wrapper">
-                    <div className="field-wrapper">
+                    <div className="field-wrapper name">
                         <TextField
                             id="name"
                             name="name"
@@ -104,7 +104,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             helperText={!pdfDownloadValidation.getValidation("name").isValid && pdfDownloadValidation.getValidation("name").validationMessage}
                         />
                     </div>
-                    <div className="field-wrapper">
+                    <div className="field-wrapper email">
                         <TextField
                             id="email"
                             name="email"
@@ -120,24 +120,28 @@ const PdfDowloadDialog = (props: InputProps) => {
                         />
                     </div>
 
-                    <div className="field-wrapper">
+                    <div className="field-wrapper companyName">
                         <TextField
                             id="companyName"
                             name="companyName"
                             className=""
-                            label={`Your Company's Name (${28 - props.roundDetails.companyName.length} characters remaining)`}
+                            label={`Your Company's Name`}
                             variant="outlined"
                             value={props.roundDetails.companyName}
                             onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyName: event.target.value })}
                             required
                             fullWidth
                             error={!pdfDownloadValidation.getValidation("companyName").isValid}
-                            helperText={!pdfDownloadValidation.getValidation("companyName").isValid && pdfDownloadValidation.getValidation("companyName").validationMessage}
+                            helperText={pdfDownloadValidation.getValidation("companyName").isValid ?
+                                `${28 - props.roundDetails.companyName.length} characters remaining`
+                                :
+                                `${pdfDownloadValidation.getValidation("companyName").validationMessage} (${28 - props.roundDetails.companyName.length} characters remaining)`
+                            }
                             inputProps={{ maxLength: 28 }}
                         />
                     </div>
 
-                    <div className="field-wrapper">
+                    <div className="field-wrapper phone">
                         <TextField
                             id="phone"
                             name="phone"
@@ -154,7 +158,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                     </div>
 
 
-                    <div className="field-wrapper">
+                    <div className="field-wrapper companyWebsite">
                         <TextField
                             id="companyWebsite"
                             name="companyWebsite"
@@ -201,6 +205,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             rows={8}
                             rowsMax={8}
                             inputProps={{ maxLength: 250 }}
+                            helperText={`${250 - props.roundDetails.companyIntro.length} characters remaining`}
                         />
                     </div>
 
@@ -221,7 +226,9 @@ const PdfDowloadDialog = (props: InputProps) => {
 
 
 
-
+                {!pdfDownloadValidation.getValidation("isTermsAgreed").isValid &&
+                    <FormHelperText className="ts-and-cs-error">{pdfDownloadValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
+                }
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -236,22 +243,22 @@ const PdfDowloadDialog = (props: InputProps) => {
 
 
                 />
-                {!pdfDownloadValidation.getValidation("isTermsAgreed").isValid &&
-                    <FormHelperText className="ts-and-cs-error">{pdfDownloadValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
-                }
+
 
                 {/* here: {JSON.stringify(props.roundDetails.radarBase64String)} */}
                 {/* <img style={{width: 200, height:200}} src={props.roundDetails.radarBase64String}/> */}
 
             </DialogContent>
             <DialogActions>
-                <Button className="va-button" onClick={() => props.handleClose(false)} >
-                    Cancel
+                {!pdfDownloadValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
+                <div className="button-wrapper">
+                    <Button className="va-button cancel" onClick={() => props.handleClose(false)} >
+                        Cancel
                 </Button>
-                <Button id="submit" className="va-button" onClick={generatePdf}>
-                    Generate PDF
+                    <Button id="submit" className="va-button confirm" onClick={generatePdf}>
+                        Generate PDF
                 </Button>
-
+                </div>
             </DialogActions>
 
         </Dialog>

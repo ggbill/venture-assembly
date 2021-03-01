@@ -28,6 +28,11 @@
     }
 }
 
+.validation-text{
+    color: red;
+    font-size: 0.8em;
+}
+
 .MuiFormControl-root {
     width: 100%;
 
@@ -102,4 +107,18 @@
         min-height: calc(100vh - 215px); /* will cover the 100% of viewport minus (header + footer) */
         // margin-top: 68px;
     } 
+
+    .field-wrapper {
+        display: flex;
+        flex-direction: column;
+    
+        // width: calc(50% - 6px);
+        width: unset;
+        margin-bottom: 12px;
+    
+        &:nth-child(odd) {
+            margin-right: unset;
+        }
+
+    }
 }

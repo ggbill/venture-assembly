@@ -4,18 +4,18 @@ const useCallBookingValidation = () => {
     const [validationObject, setValidationObject] = useState<App.ValidationObject[]>([
         { name: "name", isValid: true, validationMessage: "" },
         { name: "email", isValid: true, validationMessage: "" },
-        { name: "phone", isValid: true, validationMessage: "" },
+        // { name: "phone", isValid: true, validationMessage: "" },
         { name: "companyName", isValid: true, validationMessage: "" },
         { name: "isTermsAgreed", isValid: true, validationMessage: "" },
     ])
-    const [isValidationPassed, setIsValidationPassed] = useState<boolean>(false)
+    const [isValidationPassed, setIsValidationPassed] = useState<boolean>(true)
 
     const generateInitialValidationObject = (): void => {
 
         let tempValidationObject: App.ValidationObject[] = [
             { name: "name", isValid: true, validationMessage: "" },
             { name: "email", isValid: true, validationMessage: "" },
-            { name: "phone", isValid: true, validationMessage: "" },
+            // { name: "phone", isValid: true, validationMessage: "" },
             { name: "companyName", isValid: true, validationMessage: "" },
             { name: "isTermsAgreed", isValid: true, validationMessage: "" },
         ]
@@ -29,7 +29,7 @@ const useCallBookingValidation = () => {
         let tempValidationObject: App.ValidationObject[] = [
             { name: "name", isValid: true, validationMessage: "" },
             { name: "email", isValid: true, validationMessage: "" },
-            { name: "phone", isValid: true, validationMessage: "" },
+            // { name: "phone", isValid: true, validationMessage: "" },
             { name: "companyName", isValid: true, validationMessage: "" },
             { name: "isTermsAgreed", isValid: true, validationMessage: "" },
         ]
@@ -37,6 +37,7 @@ const useCallBookingValidation = () => {
         let tempIsValidationPassed = true
 
         const setFailedValidation = (name, message) => {
+            // console.log(`failed: ${name}`)
             tempIsValidationPassed = false
             tempValidationObject.forEach(element => {
                 if (element.name === name) {
@@ -60,33 +61,6 @@ const useCallBookingValidation = () => {
             if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(roundDetails.email)) {
             } else {
                 setFailedValidation("email", "Invalid email address.")
-            }
-        }
-
-        if (roundDetails.phone === "" || typeof (roundDetails.phone) === "undefined") {
-            setFailedValidation("phone", "Please enter your phone number.")
-        } else {
-
-            let phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
-            let number;
-
-            try {
-                if (roundDetails.phone.substring(0, 3) === "+44") {
-                    number = phoneUtil.parseAndKeepRawInput(roundDetails.phone);
-                } else if (roundDetails.phone.substring(0, 4) === "0044") {
-                    var updatedNumber = `+44 ${roundDetails.phone.substring(4, roundDetails.phone.length)}`
-                    number = phoneUtil.parseAndKeepRawInput(updatedNumber);
-                } else {
-                    number = phoneUtil.parseAndKeepRawInput(`+44 ${roundDetails.phone}`);
-                }
-
-                if (!phoneUtil.isValidNumber(number)) {
-                    setFailedValidation("phone", "Invalid UK phone number")
-                }
-
-            }
-            catch (err) {
-                setFailedValidation("phone", "Invalid UK phone number")
             }
         }
 

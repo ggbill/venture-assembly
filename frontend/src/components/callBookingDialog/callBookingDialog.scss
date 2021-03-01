@@ -1,80 +1,19 @@
 .call-booking-dialog {
     .MuiPaper-root {
         max-width: 1050px;
-        
+
         .step{
             font-size: 1.1em;
             font-weight: bold;
         }
 
         .intro-text {
-            margin-bottom: 24px;
+            // margin-bottom: 24px;
             font-size: 0.9em;
         }
 
-        .inputs-wrapper {
-            .MuiFormControl-root {
-                // margin-bottom: 12px;
-
-                &:not(:last-child) {
-                    margin-bottom: 12px;
-                }
-            }
-
-            .field-wrapper.logo-upload {
-                .MuiInputBase-root:hover {
-                    .MuiOutlinedInput-notchedOutline {
-                        border-color: black !important;
-                    }
-                }
-
-                &.no-image {
-                    .MuiInputBase-input {
-                        color: rgba(0, 0, 0, 0.57);
-                        cursor: text;
-                    }
-                }
-                &.image {
-                    .MuiInputBase-input {
-                        color: rgba(0, 0, 0, 0.87);
-                        cursor: text;
-                    }
-                }
-            }
-
-            .select-image-placeholder {
-                display: flex;
-                width: 100%;
-                justify-content: center;
-                align-items: center;
-                background-color: #ececec;
-                color: rgba(0, 0, 0, 0.7);
-                border-radius: 4px;
-            }
-
-            // weirdness caused by cropper - TODO FIX--------------
-            .company-intro.no-image {
-                position: relative;
-                top: -70px;
-                margin-bottom: -70px;
-            }
-            .company-intro.image {
-                position: relative;
-                top: -175px;
-                margin-bottom: -175px;
-            }
-
-            .image-cropper-wrapper {
-                min-height: 200px;
-                .cropper-wrapper {
-                    width: 100%;
-                    .helper-text {
-                        font-size: 0.8em;
-                        color: #797979;
-                    }
-                }
-            }
-            //------------
+        .inputs-wrapper{
+            margin-top: 12px;
         }
 
         .MuiFormControlLabel-label {
@@ -83,7 +22,63 @@
 
         .ts-and-cs-error {
             color: red;
-            margin: -6px 0 0 0;
+            margin: 6px 0 -9px 0;
         }
+
+        .MuiDialogActions-root{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .validation-text {
+                margin-bottom: 6px;
+            }
+
+            .MuiButton-root.confirm{
+                margin-left: 12px;
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .call-booking-dialog {
+        .MuiDialog-paper {
+            margin: 12px;
+
+
+            .ts-and-cs-error {
+                color: red;
+                margin: 6px 0 0px 0;
+            }
+
+            .MuiDialogActions-root {
+                align-items: center;
+    
+                
+    
+                .button-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+    
+                    .MuiButton-root {
+                        &.confirm {
+                            order: 1;
+                            margin-bottom: 6px;
+                            margin-left: 0;
+                        }
+                        &.cancel {
+                            order: 2;
+                        }
+                    }
+                }
+            }
+        }
+
+        .MuiDialogActions-spacing > :not(:first-child) {
+            margin-left: 0px;
+        }   
     }
 }

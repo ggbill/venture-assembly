@@ -8,7 +8,7 @@ const usePdfPurchaseValidation = () => {
         { name: "companyName", isValid: true, validationMessage: "" },
         { name: "isTermsAgreed", isValid: true, validationMessage: "" },
     ])
-    const [isValidationPassed, setIsValidationPassed] = useState<boolean>(false)
+    const [isValidationPassed, setIsValidationPassed] = useState<boolean>(true)
 
     const generateInitialValidationObject = (): void => {
 

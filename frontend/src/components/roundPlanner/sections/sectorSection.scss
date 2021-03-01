@@ -1,4 +1,6 @@
 .sector-section {
+    padding-top: 20px;
+    padding-bottom: 20px;
     .inputs-wrapper{
         .sector{
             margin-bottom: 0;
@@ -7,7 +9,7 @@
     .financials-wrapper {
         display: flex;
         flex-direction: row;
-        // align-items: stretch;
+        padding-bottom: 48px;
 
         .financials-table-wrapper {
             display: flex;
@@ -16,6 +18,14 @@
 
             .financials-table {
                 padding: 12px;
+
+                .MuiTableCell-root{
+                    padding: 6px 2px;
+
+                    .MuiOutlinedInput-input {
+                        padding: 18.5px 6px;
+                    }
+                }
 
                 .MuiFormControl-root {
                     width: 100%;

@@ -13,8 +13,8 @@
     }
 
     .intro-section{
-        padding: 40px 0;
-
+        padding-top: 40px;
+        padding-bottom: 20px;
     }
 
     .inputs-wrapper {
@@ -81,7 +81,7 @@
         display: flex;
         background-color: #da4167;
         padding: 60px 0;
-        margin: 60px 0;
+        // margin: 60px 0;
         color: white;
 
         .results {
@@ -154,6 +154,41 @@
                 .emoji {
                     font-size: 2em;
                 }
+
+                .figures {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        text-align: center;
+
+                        .label {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: center;
+                            .question-mark-wrapper {
+                    
+                                display: flex;
+                                svg {
+                                    width: 15px;
+                                    height: 15px;
+                                    margin: 0 0 0 6px;
+                                    // fill: #da4167;
+                                    fill: white;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        .value {
+                            font-size: 2.5em;
+                            font-weight: 800;
+
+                            &.error{
+                                font-size: 1em;
+                            }
+                        }
+                    }
             }
         }
     }
@@ -193,6 +228,7 @@
 
                 &:nth-child(odd) {
                     margin-right: 0;
+                    margin-bottom: 12px;
                 }
 
                 .slider-wrapper {
@@ -210,7 +246,7 @@
 
         .results-wrapper {
             padding: 24px 0;
-            margin: 24px 0;
+            // margin: 24px 0;
             .results {
                 .figures-wrapper {
                     flex-direction: column;
@@ -222,6 +258,21 @@
 
                         .emoji {
                             margin-right: 0;
+                        }
+
+                        .figures {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            text-align: center;
+    
+                            .label {
+                               
+                            }
+    
+                            .value {
+                                font-size: 2em;
+                            }
                         }
                     }
                 }

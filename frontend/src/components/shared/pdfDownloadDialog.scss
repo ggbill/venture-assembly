@@ -64,8 +64,16 @@
                 .cropper-wrapper {
                     width: 100%;
                     .helper-text {
-                        font-size: 0.8em;
-                        color: #797979;
+                        color: rgba(0, 0, 0, 0.54);
+                        font-size: 0.75rem;
+                        margin-top: 3px;
+                        text-align: left;
+                        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                        font-weight: 400;
+                        line-height: 1.66;
+                        letter-spacing: 0.03333em;
+                        margin-left: 14px;
+                        margin-right: 14px;
                     }
                 }
             }
@@ -78,7 +86,116 @@
 
         .ts-and-cs-error {
             color: red;
-            margin: -6px 0 0 0;
+            margin: 6px 0 -9px 0;
         }
+
+        .MuiDialogActions-root{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .validation-text {
+                margin-bottom: 6px;
+            }
+
+            .MuiButton-root.confirm{
+                margin-left: 12px;
+            }
+
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .pdf-purchase-dialog {
+        .MuiDialog-paper {
+            margin: 12px;
+
+            .inputs-wrapper {
+                display: flex;
+                flex-direction: column;
+                .MuiFormControl-root {
+                    margin-bottom: 12px;
+
+                    // &:not(:last-child) {
+                    //     margin-bottom: 12px;
+                    // }
+                }
+
+                .field-wrapper.name {
+                    order: 1;
+                }
+                .field-wrapper.email {
+                    order: 2;
+                }
+                .field-wrapper.companyName {
+                    order: 3;
+                }
+                .field-wrapper.phone {
+                    order: 4;
+                }
+                .field-wrapper.companyWebsite {
+                    order: 5;
+                }
+                .field-wrapper.logo-upload {
+                    order: 7;
+                }
+
+                .field-wrapper.company-intro {
+                    order: 6;
+                }
+                .field-wrapper.image-cropper-wrapper {
+                    order: 8;
+                    .select-image-placeholder {
+                        flex-grow: 1;
+                    }
+                }
+
+                .company-intro.no-image {
+                    top: 0;
+                    margin-bottom: 12px;
+                }
+
+                .company-intro.image {
+                    top: 0;
+                    margin-bottom: 12px;
+                }
+            }
+
+            .ts-and-cs-error {
+                color: red;
+                margin: 6px 0 0px 0;
+            }
+
+            .MuiDialogActions-root {
+                align-items: center;
+    
+                
+    
+                .button-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+    
+                    .MuiButton-root {
+                        &.confirm {
+                            order: 1;
+                            margin-bottom: 6px;
+                            margin-left: 0;
+                        }
+                        &.cancel {
+                            order: 2;
+                        }
+                    }
+                }
+            }
+        }
+
+        .MuiDialogActions-spacing > :not(:first-child) {
+            margin-left: 0px;
+        }
+
+        
+        
     }
 }
