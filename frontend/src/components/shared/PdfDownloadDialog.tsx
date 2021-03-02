@@ -41,9 +41,11 @@ const PdfDowloadDialog = (props: InputProps) => {
     const generatePdf = () => {
         // pdfObject.roundDetails = props.roundDetails
         // pdfObject.radarBase64String = props.radarChartBase64String
-        googleAnalytics.trackButtonClick("Generate PDF")
+        
 
         if (pdfDownloadValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
+            googleAnalytics.trackButtonClick(`Generate PDF - ${props.roundDetails.companyName}`)
+
             pdf(pdfGenerator.generateRoundPlannerPdf(props.roundDetails)).toBlob().then((blob) => {
                 saveAs(blob, `${props.roundDetails.companyName} - Round Planner.pdf`)
             })

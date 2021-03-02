@@ -5,7 +5,7 @@ import "./menuBar.scss"
 // import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import MenuIconWhite from '../../images/menu-circle.png'
-import { ReactComponent as LightningSVG } from '../../images/menu-icon.svg'
+import { ReactComponent as VALogoBeta } from '../../images/VA-Logo-White-Pink-Beta.svg'
 
 
 
@@ -55,7 +55,8 @@ const MenuBar = () => {
                     <Toolbar>
                         <div className="logo-wrapper">
                             <Link to={'/'}>
-                                <span>VA <span className="full-stop">.</span></span>
+                                {/* <span>VA <span className="full-stop">.</span></span> */}
+                                <VALogoBeta />
                             </Link>
                         </div>
                         <div className="menu-items">

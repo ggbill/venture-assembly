@@ -18,7 +18,7 @@ const CallBooking = (props: InputProps) => {
         // console.log(event.data)
 
         if (event.data.event === "calendly.event_scheduled") {
-            googleAnalytics.trackButtonClick("Calendly Schedule Event")
+            googleAnalytics.trackButtonClick(`Calendly Schedule Event - ${props.roundDetails.companyName}`)
             props.setIsBookingSuccess(true)
             props.persistRoundToDb(event.data.payload.event.uri, event.data.payload.invitee.uri)
         }

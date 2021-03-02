@@ -61,7 +61,7 @@ const Home = () => {
                         </div>
 
                         <div className="image-wrapper">
-                            <img src={RocketImage} />
+                            <img src={RocketImage} alt="VA Rocket"/>
                         </div>
                     </div>
 
@@ -107,7 +107,7 @@ const Home = () => {
                     </div>
                     <div className="card-wrapper">
                         <Card>
-                            <img src={EdImage}></img>
+                            <img src={EdImage} alt="VA Ed Stephens"></img>
                             <div className="name-wrapper">
                                 <span>Ed Stephens 👨‍🔧</span>
                             </div>
@@ -117,7 +117,7 @@ const Home = () => {
                         </div>
                         </Card>
                         <Card>
-                            <img src={BillImage}></img>
+                            <img src={BillImage} alt="VA Bill Hamilton"></img>
                             <div className="name-wrapper">
                                 <span>Bill Hamilton 👨‍💻</span>
                             </div>

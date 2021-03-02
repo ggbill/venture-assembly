@@ -4,7 +4,6 @@ import MenuBar from '../shared/MenuBar'
 import NotificationDialog from '../shared/NotificationDialog'
 import FundamentalsSection from './sections/FundamentalsSection'
 import SectorSection from './sections/SectorSection'
-import FutureSection from './sections/FutureSection'
 import PurchaseSection from './sections/PurchaseSection'
 import SwotSection from './sections/SwotSection'
 import PdfDownloadDialog from '../shared/PdfDownloadDialog'
@@ -72,9 +71,6 @@ const RoundPlanner = () => {
                 when deciding whether or not to invest in a company. Simply enter your information below and let the tool calculate
                 your company's key metrics in real time. Your results can then be downloaded as a PDF or you can book a 15 minute intro session
                 with us to help decide what to do next. All this completely free - not bad eh?</p>
-                {/* <p>We built a free tool designed to help founders understand the key metrics required for raising capital.
-                    Enter your information into the sections below to see your company's key metrics generated in real time.
-                     If you are struggling to understand and need advice feel free to reach out.</p> */}
             </div>
 
             <FundamentalsSection

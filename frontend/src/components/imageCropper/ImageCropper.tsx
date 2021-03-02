@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './imageCropper.scss'
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.min.css";

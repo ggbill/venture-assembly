@@ -34,7 +34,7 @@ const usePdfGenerator = () => {
     const generateRoundPlannerPdf = (roundDetails: App.RoundDetails): any => {
 
         // console.log(pdfObject.companyLogoBase64String)
-        console.log(roundDetails)
+        // console.log(roundDetails)
 
         return (
             <Document>
@@ -261,56 +261,56 @@ const usePdfGenerator = () => {
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>Year 1</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>Year 1</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>Year 2</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>Year 2</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>Year 3</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>Year 3</Text>
                                                 </View>
                                             </View>
 
                                             <View style={styles.tableRow}>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9, fontWeight: "bold" }]}>Revenue</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2, fontWeight: "bold" }]}>Revenue</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].revenue)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].revenue)}</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].revenue)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].revenue)}</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].revenue)}</Text>
-                                                </View>
-                                            </View>
-                                            <View style={styles.tableRow}>
-                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9, fontWeight: "bold" }]}>EBITDA</Text>
-                                                </View>
-                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].ebitda)}</Text>
-                                                </View>
-                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].ebitda)}</Text>
-                                                </View>
-                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].ebitda)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].revenue)}</Text>
                                                 </View>
                                             </View>
                                             <View style={styles.tableRow}>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9, fontWeight: "bold" }]}>Costs</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2, fontWeight: "bold" }]}>EBITDA</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].revenue - roundDetails.financials[0].ebitda)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].ebitda)}</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].revenue - roundDetails.financials[1].ebitda)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].ebitda)}</Text>
                                                 </View>
                                                 <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
-                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 9 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].revenue - roundDetails.financials[2].ebitda)}</Text>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].ebitda)}</Text>
+                                                </View>
+                                            </View>
+                                            <View style={styles.tableRow}>
+                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2, fontWeight: "bold" }]}>Costs</Text>
+                                                </View>
+                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2}]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[0].revenue - roundDetails.financials[0].ebitda)}</Text>
+                                                </View>
+                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[1].revenue - roundDetails.financials[1].ebitda)}</Text>
+                                                </View>
+                                                <View style={{ width: "25%", borderStyle: "solid", borderWidth: 1, borderLeftWidth: 0, borderTopWidth: 0, borderColor: "#eaeaea" }}>
+                                                    <Text style={[styles.tableCell, { fontSize: 10, paddingVertical: 6, paddingHorizontal: 2 }]}>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(roundDetails.financials[2].revenue - roundDetails.financials[2].ebitda)}</Text>
                                                 </View>
                                             </View>
 
