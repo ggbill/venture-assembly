@@ -25,7 +25,7 @@ const registerFont = () => {
 };
 
 const RoundPlanner = () => {
-    const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "" })
+    const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "", isShowDonateButton: false })
     const [roundDetails, setRoundDetails] = useState<App.RoundDetails>({
         name: "",
         email: "",
@@ -104,6 +104,7 @@ const RoundPlanner = () => {
                 message={notificationDialogProperties.message}
                 title={notificationDialogProperties.title}
                 type={notificationDialogProperties.type}
+                isShowDonateButton={notificationDialogProperties.isShowDonateButton}
             />
 
 
@@ -112,6 +113,7 @@ const RoundPlanner = () => {
                 isDialogOpen={isDownloadPDFDialogOpen}
                 roundDetails={roundDetails}
                 setRoundDetails={setRoundDetails}
+                setNotificationDialogProperties={setNotificationDialogProperties}
             />
 
             <CallBookingDialog

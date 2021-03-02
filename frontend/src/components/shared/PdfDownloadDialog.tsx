@@ -10,9 +10,10 @@ import useGoogleAnalytics from '../../hooks/useGoogleAnalytics';
 
 interface InputProps {
     isDialogOpen: boolean,
-    handleClose: (boolean: boolean) => void,
+    handleClose: () => void,
     roundDetails: App.RoundDetails
     setRoundDetails: (roundDetails: App.RoundDetails) => void
+    setNotificationDialogProperties: (props: any) => void
     // radarChartBase64String: string
     // pdfObject: App.PdfObject
     // setPdfObject: (pdfObject: App.PdfObject) => void
@@ -41,13 +42,22 @@ const PdfDowloadDialog = (props: InputProps) => {
     const generatePdf = () => {
         // pdfObject.roundDetails = props.roundDetails
         // pdfObject.radarBase64String = props.radarChartBase64String
-        
+
 
         if (pdfDownloadValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
             googleAnalytics.trackButtonClick(`Generate PDF - ${props.roundDetails.companyName}`)
 
             pdf(pdfGenerator.generateRoundPlannerPdf(props.roundDetails)).toBlob().then((blob) => {
                 saveAs(blob, `${props.roundDetails.companyName} - Round Planner.pdf`)
+                props.handleClose()
+                props.setNotificationDialogProperties({
+                    isOpen: true,
+                    type: "NOTIFICATION",
+                    title: "🎉 Your PDF was downloaded successfully!",
+                    message: `Feel free to tweak your settings and download as many times as is required.
+                    If you are enjoying this tool, please use the button below to support us to keep improving our service!`,
+                    isShowDonateButton: true
+                })
             })
         }
     };
@@ -258,12 +268,12 @@ const PdfDowloadDialog = (props: InputProps) => {
             <DialogActions>
                 {!pdfDownloadValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
                 <div className="button-wrapper">
-                    <Button className="va-button cancel" onClick={() => props.handleClose(false)} >
+                    <Button className="va-button cancel" onClick={() => props.handleClose()} >
                         Cancel
-                </Button>
+                    </Button>
                     <Button id="submit" className="va-button confirm" onClick={generatePdf}>
                         Generate PDF
-                </Button>
+                    </Button>
                 </div>
             </DialogActions>
 

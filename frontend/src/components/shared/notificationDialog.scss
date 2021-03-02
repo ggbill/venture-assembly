@@ -1,0 +1,14 @@
+.notification-dialog {
+    .MuiDialogContent-root {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        a {
+            // text-align: center;
+            img {
+                margin-top: 12px;
+            }
+        }
+    }
+}
