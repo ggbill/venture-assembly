@@ -1,16 +1,9 @@
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, FormHelperText, TextField } from '@material-ui/core'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import usePdfGenerator from '../../hooks/usePdfGenerator';
+import React, { useState } from 'react'
 import './callBookingDialog.scss'
 import useCallBookingValidation from './useCallBookingValidation';
-import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
-import { saveAs } from 'file-saver';
-import ImageCropper from '../imageCropper/ImageCropper';
 import CallBooking from './CallBooking';
 import useFetch from '../../hooks/useFetch';
-import { isNoSubstitutionTemplateLiteral } from 'typescript';
-
-
 
 interface InputProps {
     isDialogOpen: boolean,
@@ -26,6 +19,7 @@ const CallBookingDialog = (props: InputProps) => {
     const [isBookingSuccess, setIsBookingSuccess] = useState<boolean>(false)
 
     const roundPlannerApi = useFetch("roundPlanner")
+    
 
     const callBookingValidation = useCallBookingValidation()
 

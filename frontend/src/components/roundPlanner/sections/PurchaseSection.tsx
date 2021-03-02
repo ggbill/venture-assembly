@@ -1,14 +1,12 @@
 import './purchaseSection.scss'
 import React, { useEffect, useState } from 'react'
-import { Button, Card, CardActionArea, CardContent } from '@material-ui/core'
-import { ReactComponent as DownloadSVG } from '../../../images/download.svg'
-import { ReactComponent as QuestionSVG } from '../../../images/question.svg'
-import { ReactComponent as CallSVG } from '../../../images/call.svg'
+import { Button, Card, CardContent } from '@material-ui/core'
 import RocketSmall from '../../../images/rocket-small.png'
 import RocketMedium from '../../../images/rocket-med.png'
+import useGoogleAnalytics from '../../../hooks/useGoogleAnalytics'
 
-import { loadStripe } from "@stripe/stripe-js";
-const stripePromise = loadStripe("pk_test_IUtytCqkv6fvF1xxCSdFkaXf");
+// import { loadStripe } from "@stripe/stripe-js";
+// const stripePromise = loadStripe("pk_test_IUtytCqkv6fvF1xxCSdFkaXf");
 
 interface InputProps {
     roundDetails: App.RoundDetails
@@ -21,6 +19,8 @@ interface InputProps {
 const PurchaseSection = (props: InputProps) => {
 
     const [message, setMessage] = useState("");
+
+    const googleAnalytics = useGoogleAnalytics()
 
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
@@ -39,6 +39,16 @@ const PurchaseSection = (props: InputProps) => {
         }
     }, []);
 
+    const handleOpenPdfDownloadDialog = () => {
+        googleAnalytics.trackButtonClick("Open PDF Download Dialog")
+        props.setIsDownloadPDFDialogOpen(true)
+    }
+
+    const handleOpen15MinCallBookingDialog = () => {
+        googleAnalytics.trackButtonClick("Open 15 Min Call Booking Dialog")
+        props.setIsCallBookingDialogOpen(true)
+    }
+
 
     return (
         <div className="purchase-section">
@@ -56,7 +66,7 @@ const PurchaseSection = (props: InputProps) => {
                                 <img className="image" src={RocketSmall} />
                             </div>
                             <div className="price">Free <span className="always">(Always)</span></div>
-                            <Button className="va-button" onClick={() => { props.setIsDownloadPDFDialogOpen(true) }}>Download</Button>
+                            <Button className="va-button" onClick={handleOpenPdfDownloadDialog}>Download</Button>
                             <span className="description">
                                 Details:
                                 <ul>
@@ -80,7 +90,7 @@ const PurchaseSection = (props: InputProps) => {
                             </div>
 
                             <div className="price">Free <span className="limited-time">(Limited time only)</span></div>
-                            <Button className="va-button" onClick={() => { props.setIsCallBookingDialogOpen(true) }}>Book</Button>
+                            <Button className="va-button" onClick={handleOpen15MinCallBookingDialog}>Book</Button>
                             <span className="description">
                                 Details:
                                 <ul>

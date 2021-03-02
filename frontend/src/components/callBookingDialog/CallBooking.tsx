@@ -1,8 +1,7 @@
 import './callBooking.scss'
 import React from 'react'
 import { CalendlyEventListener } from 'react-calendly'
-import { Link } from 'react-router-dom'
-
+import useGoogleAnalytics from '../../hooks/useGoogleAnalytics'
 
 interface InputProps {
     roundDetails: App.RoundDetails,
@@ -11,14 +10,15 @@ interface InputProps {
     persistRoundToDb: (calendlyEventUri, calendlyInviteeUri) => void,
 }
 
-
-
 const CallBooking = (props: InputProps) => {
+
+    const googleAnalytics = useGoogleAnalytics()
 
     const listenToCalendlyEvent = (event) => {
         // console.log(event.data)
 
         if (event.data.event === "calendly.event_scheduled") {
+            googleAnalytics.trackButtonClick("Calendly Schedule Event")
             props.setIsBookingSuccess(true)
             props.persistRoundToDb(event.data.payload.event.uri, event.data.payload.invitee.uri)
         }

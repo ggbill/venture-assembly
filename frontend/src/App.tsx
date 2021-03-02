@@ -6,9 +6,16 @@ import Home from './components/home/Home'
 import Footer from './components/shared/Footer'
 import { createBrowserHistory } from 'history'
 import RoundPlanner from './components/roundPlanner/RoundPlanner'
+import ReactGA from'react-ga'
 
 
 const history = createBrowserHistory();
+ReactGA.initialize('UA-190905983-1');
+
+history.listen((location) => {
+    ReactGA.set({ page: location.pathname + location.search })
+    ReactGA.pageview(location.pathname + location.search)
+});
 
 function App() {
     return (

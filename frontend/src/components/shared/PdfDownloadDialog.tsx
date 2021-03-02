@@ -6,8 +6,7 @@ import usePdfDownloadValidation from './usePdfDownloadValidation';
 import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
 import ImageCropper from '../imageCropper/ImageCropper';
-
-
+import useGoogleAnalytics from '../../hooks/useGoogleAnalytics';
 
 interface InputProps {
     isDialogOpen: boolean,
@@ -18,6 +17,8 @@ interface InputProps {
     // pdfObject: App.PdfObject
     // setPdfObject: (pdfObject: App.PdfObject) => void
 }
+
+
 
 const PdfDowloadDialog = (props: InputProps) => {
 
@@ -34,10 +35,13 @@ const PdfDowloadDialog = (props: InputProps) => {
     const pdfDownloadValidation = usePdfDownloadValidation()
     const pdfGenerator = usePdfGenerator()
 
+    const googleAnalytics = useGoogleAnalytics()
+
 
     const generatePdf = () => {
         // pdfObject.roundDetails = props.roundDetails
         // pdfObject.radarBase64String = props.radarChartBase64String
+        googleAnalytics.trackButtonClick("Generate PDF")
 
         if (pdfDownloadValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
             pdf(pdfGenerator.generateRoundPlannerPdf(props.roundDetails)).toBlob().then((blob) => {
