@@ -109,7 +109,7 @@ const usePdfGenerator = () => {
                                         </Text>
                                     </View>
 
-                                    <Text style={{ fontSize: 8, fontFamily: "Poppins", color: "#333333", marginBottom: 10 }}>
+                                    <Text style={{ fontSize: 8, fontFamily: "Poppins", color: "#333333", marginBottom: 10, minHeight: 45 }}>
                                         {roundDetails.companyIntro}
                                     </Text>
 
@@ -337,9 +337,22 @@ const usePdfGenerator = () => {
                                             <Text style={{ fontSize: 10 }}>
                                                 Valuation / Rev
                                         </Text>
-                                            <Text style={{ fontWeight: "bold" }}>
-                                                {`${(roundDetails.preMoneyValuation / roundDetails.financials[0].revenue).toFixed(0)}x`}
-                                            </Text>
+                                            {(
+                                                roundDetails.preMoneyValuation === 0 ||
+                                                typeof (roundDetails.preMoneyValuation) === "undefined" ||
+                                                roundDetails.financials[0].revenue === 0 ||
+                                                typeof (roundDetails.financials[0].revenue) === "undefined"
+                                            ) ?
+                                                <Text style={{ fontWeight: "bold" }}>
+                                                    N/A
+                                                </Text>
+                                                :
+                                                <Text style={{ fontWeight: "bold" }}>
+                                                    {`${(roundDetails.preMoneyValuation / roundDetails.financials[0].revenue).toFixed(0)}x`}
+                                                </Text>
+
+                                            }
+
                                         </View>
                                     </View>
                                     {(
@@ -451,7 +464,7 @@ const usePdfGenerator = () => {
                                                     {roundDetails.phone}
                                                 </Text>
                                             </View>
-                                         }
+                                        }
                                         {roundDetails.companyWebsite !== "" &&
                                             <View style={{ display: "flex", flexDirection: "row", marginBottom: 6, fontSize: 10, fontFamily: "Poppins", color: "#333333" }}>
                                                 <Text style={{ fontWeight: "bold" }}>
@@ -461,7 +474,7 @@ const usePdfGenerator = () => {
                                                     {roundDetails.companyWebsite}
                                                 </Text>
                                             </View>
-                                         }
+                                        }
 
 
                                     </View>

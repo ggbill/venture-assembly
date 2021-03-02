@@ -68,9 +68,19 @@ const FinancialsLineChart = (props: InputProps) => {
                             },
                             formatter: (value, context) => {
                                 if (Number(ebitdaDataSet[context.dataIndex]) < 0) {
-                                    return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) - 100 + '%')
+                                    if (value > 0) {
+                                        return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) - 100 + '%')
+                                    } else {
+                                        return '0%'
+                                    }
+                                    
                                 } else {
-                                    return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) + '%')
+                                    if (value > 0) {
+                                        return (Math.round((Number(ebitdaDataSet[context.dataIndex]) / value) * 100) + '%')
+                                    } else {
+                                        return '0%'
+                                    }
+                                    
                                 }
                             }
                         }
@@ -82,12 +92,20 @@ const FinancialsLineChart = (props: InputProps) => {
                                 return (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(tooltipItem.value))
                             },
                             afterLabel: function (tooltipItem, data) {
-                                console.log(tooltipItem)
+                                // console.log(tooltipItem)
                                 if (tooltipItem.datasetIndex === 0) {
                                     if (Number(ebitdaDataSet[tooltipItem.index]) < 0) {
-                                        return (`Margin:  ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100) - 100}%`)
+                                        if (tooltipItem.value > 0) {
+                                            return (`Margin:  ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100) - 100}%`)
+                                        } else {
+                                            return 'Margin: 0%'
+                                        }
                                     } else {
-                                        return (`Margin: ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100)}%`)
+                                        if (tooltipItem.value > 0) {
+                                            return (`Margin: ${Math.round((Number(ebitdaDataSet[tooltipItem.index]) / tooltipItem.value) * 100)}%`)
+                                        } else {
+                                            return 'Margin: 0%'
+                                        }
                                     }
                                 }
                             }

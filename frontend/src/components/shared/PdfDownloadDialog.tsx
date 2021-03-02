@@ -242,7 +242,7 @@ const PdfDowloadDialog = (props: InputProps) => {
 
                         />
                     }
-                    label="I agree to Venture Assembly's Terms of Use, Privacy Policy and Cookie Policy"
+                    label="I agree to Venture Assembly's Privacy Policy"
                     className="tech-checkbox"
 
 
