@@ -46,7 +46,8 @@
     .call-booking-dialog {
         .MuiDialog-paper {
             margin: 12px;
-            max-height: calc(100% - 24px);
+            height: calc(100% - 24px);
+            max-height: unset;
 
             .ts-and-cs-error {
                 color: red;

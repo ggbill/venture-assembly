@@ -110,7 +110,8 @@
     .pdf-purchase-dialog {
         .MuiDialog-paper {
             margin: 12px;
-            max-height: calc(100% - 24px);
+            height: calc(100% - 24px);
+            max-height: unset;
 
             .inputs-wrapper {
                 display: flex;
