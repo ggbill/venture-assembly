@@ -1,9 +1,7 @@
 .menu-bar {
-   
     .MuiAppBar-root {
         position: fixed;
         box-shadow: none;
-        
     }
 
     .MuiAppBar-colorPrimary {
@@ -12,37 +10,35 @@
         color: white;
     }
 
-    
-
     .MuiToolbar-root {
         justify-content: space-between;
         padding: 6px 24px;
 
-        .logo-wrapper{
+        .logo-wrapper {
             font-size: 1.2em;
-            a{
+            a {
                 display: flex;
                 color: unset;
                 text-decoration: none;
                 font-size: 1.7em;
                 font-weight: 700;
-                .full-stop{
+                .full-stop {
                     color: #d81747;
                 }
             }
         }
 
-        .menu-items{
+        .menu-items {
             display: flex;
             flex-direction: row;
             align-items: center;
-            a{
+            a {
                 color: unset;
-                text-decoration: none;  
+                text-decoration: none;
                 font-weight: 700;
                 margin-left: 24px;
 
-                &:hover{
+                &:hover {
                     text-decoration: underline #d81747 2px;
                 }
 
@@ -66,35 +62,35 @@
                 background-color: transparent;
                 color: #e2e2e2;
             }
-    
+
             .MuiButton-base {
                 .MuiButton-label {
                     width: 24px;
                 }
             }
         }
-    }   
+    }
 }
 
-.menu-drawer{
-    .MuiDrawer-paper{
+.menu-drawer {
+    .MuiDrawer-paper {
         background-color: #071013;
         padding-bottom: 24px;
 
-        a{
+        a {
             color: white;
             text-decoration: none;
-            .MuiListItem-root{
+            .MuiListItem-root {
                 font-weight: 600;
                 font-size: 1.3em;
             }
         }
 
-        .close-icon-container{
+        .close-icon-container {
             height: 56px;
             display: flex;
             justify-content: flex-end;
-            svg{
+            svg {
                 color: white;
             }
         }
@@ -107,14 +103,12 @@
             // padding-left: 12px;
             .hamburger-menu {
                 display: flex;
-                width: 25px;
-                height: 25px;
-                // svg{
-                //     height: 20px;
-                //     width: 20px;
-                // }
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
             }
-    
+
             .menu-items {
                 display: none;
             }

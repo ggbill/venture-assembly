@@ -1,10 +1,9 @@
 import './home.scss'
-import React from 'react'
+import React, { useRef } from 'react'
 import MenuBar from '../shared/MenuBar'
 import Typist from 'react-typist'
 import 'react-typist/dist/Typist.css'
 import { Button, Card } from '@material-ui/core'
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward'
 import { Link } from 'react-router-dom'
 import RocketImage from '../../images/startups.png'
@@ -12,6 +11,13 @@ import EdImage from '../../images/ed-small-square.png'
 import BillImage from '../../images/bill-small-square.jpeg'
 
 const Home = () => {
+
+    const myRef: any = useRef(null)
+
+   const executeScroll = () => myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })    
+   // run this function from an event handler or an effect to execute scroll 
+
+
     return (
         <div className="home-page">
             <MenuBar />
@@ -60,15 +66,17 @@ const Home = () => {
                     </div>
 
                 </div>
-                <div className="read-more">
+                <div className="read-more" onClick={executeScroll}>
                     <span>read more</span>
                     <ArrowDownwardIcon />
                 </div>
             </section>
-            <section className="body-section">
+            <section className="body-section" >
 
-                <div className="intro-wrapper content">
-                    <div className="section-title">
+            <div id="scroll-anchor" ref={myRef} style={{position: "relative", top: -100, left: 0}}></div>
+
+                <div  className="intro-wrapper content">
+                    <div className="section-title" >
                         <div className="pink-line"></div>
                         <span>Waging war on startup bloat.</span>
                         <div className="pink-line"></div>
