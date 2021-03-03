@@ -40,7 +40,7 @@ const CallBooking = (props: InputProps) => {
                             title="calendly-iframe"
                             frameBorder="0"
                             height="100%"
-                            src={`https://calendly.com/ventureassembly/15min?embed_domain=https://www.ventureassembly.co&embed_type=Inline&name=${encodeURI(props.roundDetails.name)}&email=${encodeURI(props.roundDetails.email)}&location=44${encodeURI(props.roundDetails.phone)}`}
+                            src={`https://calendly.com/venture-assembly/free-call-what-next?embed_domain=https://www.ventureassembly.co&embed_type=Inline&name=${encodeURI(props.roundDetails.name)}&email=${encodeURI(props.roundDetails.email)}&location=44${encodeURI(props.roundDetails.phone)}`}
                             width="100%"
                         />
                     </div>
