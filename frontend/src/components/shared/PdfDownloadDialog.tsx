@@ -54,8 +54,8 @@ const PdfDowloadDialog = (props: InputProps) => {
                     isOpen: true,
                     type: "NOTIFICATION",
                     title: "🎉 Your PDF was downloaded successfully!",
-                    message: `Feel free to tweak your settings and download as many times as is required.
-                    If you are enjoying this tool, please use the button below to support us to keep improving our service!`,
+                    message: `Feel free to tweak your settings and download as many times as you want.
+                    If you are enjoying this tool, please buy us a coffee or two to help keep us keep the lights on...`,
                     isShowDonateButton: true
                 })
             })
