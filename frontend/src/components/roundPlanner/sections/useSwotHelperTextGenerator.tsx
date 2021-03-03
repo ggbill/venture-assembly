@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useSwotHelperTextGenerator = () => {
-    const [helperObject, setHelperObject] = useState<any[]>([
+    const [helperObject] = useState<any[]>([
         {
             category: "team",
             helperTextList: [

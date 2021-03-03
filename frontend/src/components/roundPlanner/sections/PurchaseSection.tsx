@@ -1,5 +1,5 @@
 import './purchaseSection.scss'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button, Card, CardContent } from '@material-ui/core'
 import RocketSmall from '../../../images/rocket-small.png'
 import RocketMedium from '../../../images/rocket-med.png'
@@ -18,26 +18,26 @@ interface InputProps {
 
 const PurchaseSection = (props: InputProps) => {
 
-    const [message, setMessage] = useState("");
+    // const [message, setMessage] = useState("");
 
     const googleAnalytics = useGoogleAnalytics()
 
-    useEffect(() => {
-        // Check to see if this is a redirect back from Checkout
-        const query = new URLSearchParams(window.location.search);
-        if (query.get("success")) {
-            setMessage("Order placed! You will receive an email confirmation.");
-            // alert("Order placed! You will receive an email confirmation.");
-        }
-        if (query.get("canceled")) {
-            setMessage(
-                "Order canceled -- continue to shop around and checkout when you're ready."
-            );
-            // alert(
-            //     "Order canceled -- continue to shop around and checkout when you're ready."
-            // );
-        }
-    }, []);
+    // useEffect(() => {
+    //     // Check to see if this is a redirect back from Checkout
+    //     const query = new URLSearchParams(window.location.search);
+    //     if (query.get("success")) {
+    //         setMessage("Order placed! You will receive an email confirmation.");
+    //         // alert("Order placed! You will receive an email confirmation.");
+    //     }
+    //     if (query.get("canceled")) {
+    //         setMessage(
+    //             "Order canceled -- continue to shop around and checkout when you're ready."
+    //         );
+    //         // alert(
+    //         //     "Order canceled -- continue to shop around and checkout when you're ready."
+    //         // );
+    //     }
+    // }, []);
 
     const handleOpenPdfDownloadDialog = () => {
         googleAnalytics.trackButtonClick("Open PDF Download Dialog")
@@ -63,7 +63,7 @@ const PurchaseSection = (props: InputProps) => {
                             <span className="title">Download Round Planner PDF</span>
                             {/* <DownloadSVG className="logo" /> */}
                             <div className="image-wrapper">
-                                <img className="image" src={RocketSmall} />
+                                <img className="image" src={RocketSmall} alt="VA Download Round Planner Rocket" />
                             </div>
                             <div className="price">Free <span className="always">(Always)</span></div>
                             <Button className="va-button" onClick={handleOpenPdfDownloadDialog}>Download</Button>
@@ -86,7 +86,7 @@ const PurchaseSection = (props: InputProps) => {
                             <span className="title">15 Minute "What Next?" Call</span>
                             {/* <QuestionSVG className="logo" /> */}
                             <div className="image-wrapper">
-                                <img className="image" src={RocketMedium} />
+                                <img className="image" src={RocketMedium} alt="VA Book 15 Min Call Rocket"/>
                             </div>
 
                             <div className="price">Free <span className="limited-time">(Limited time only)</span></div>

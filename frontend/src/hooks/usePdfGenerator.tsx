@@ -1,6 +1,5 @@
 import React from 'react'
-import ReactPDF, { Page, Text, View, Document, StyleSheet, Image, PDFViewer, Font } from '@react-pdf/renderer';
-import moment from 'moment'
+import { Page, Text, View, Document, StyleSheet, Image} from '@react-pdf/renderer';
 import useSwotHelperTextGenerator from '../components/roundPlanner/sections/useSwotHelperTextGenerator';
 import VaLogoGrey from '../images/VA-Logo-Grey-Square.png'
 import useRoundPlannerCalculator from './useRoundPlannerCalculator';

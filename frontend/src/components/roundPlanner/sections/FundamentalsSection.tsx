@@ -65,7 +65,8 @@ const FundamentalsSection = (props: InputProps) => {
                             </div>
 
                             <CustomVASlider
-                                defaultValue={props.roundDetails.amountRaising}
+                                value={props.roundDetails.amountRaising}
+                                // defaultValue={props.roundDetails.amountRaising}
                                 aria-labelledby="discrete-slider"
                                 step={5000}
                                 min={10000}

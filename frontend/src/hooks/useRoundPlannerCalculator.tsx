@@ -1,5 +1,3 @@
-import React, {useState} from 'react'
-
 const useRoundPlannerCalculator = () => {
     
     const calculateEquity = (preMoneyValuation: number, amountRaising: number) => {

@@ -84,12 +84,20 @@
             font-size: 0.8rem;
         }
 
-        .ts-and-cs-error {
-            color: red;
-            margin: 6px 0 -9px 0;
+        .ts-and-cs-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+
+            .ts-and-cs-error {
+                color: red;
+                margin: 6px 0 -9px 0;
+                text-align: right;
+            }
         }
 
-        .MuiDialogActions-root{
+        .MuiDialogActions-root {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -98,10 +106,9 @@
                 margin-bottom: 6px;
             }
 
-            .MuiButton-root.confirm{
+            .MuiButton-root.confirm {
                 margin-left: 12px;
             }
-
         }
     }
 }
@@ -171,14 +178,12 @@
 
             .MuiDialogActions-root {
                 align-items: center;
-    
-                
-    
+
                 .button-wrapper {
                     display: flex;
                     flex-direction: column;
                     width: 100%;
-    
+
                     .MuiButton-root {
                         &.confirm {
                             order: 1;
@@ -196,8 +201,5 @@
         .MuiDialogActions-spacing > :not(:first-child) {
             margin-left: 0px;
         }
-
-        
-        
     }
 }

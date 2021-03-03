@@ -35,7 +35,8 @@ const ImageCropper = (props: InputProps) => {
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps  
-    }, [props.src]);
+    // }, [props.src]);
+    }, []);
 
     return (
         <div className="image-cropper">

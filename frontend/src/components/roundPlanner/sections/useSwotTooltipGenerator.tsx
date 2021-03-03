@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const useSwotTooltipGenerator = () => {
 
     const getTooltip = (swotResults: App.SwotObject): string => {

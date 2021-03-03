@@ -1,6 +1,6 @@
 import { Paper } from '@material-ui/core'
-import React, { useEffect, useRef } from 'react'
-import { Line, Radar } from "react-chartjs-2"
+import React, { useRef } from 'react'
+import { Radar } from "react-chartjs-2"
 import './radarChart.scss'
 import "chartjs-plugin-datalabels"
 

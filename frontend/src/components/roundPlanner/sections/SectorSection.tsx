@@ -1,7 +1,7 @@
 import './sectorSection.scss'
-import React, { useState } from 'react'
+import React from 'react'
 import NumberFormat from 'react-number-format'
-import { Checkbox, FormControl, FormControlLabel, FormHelperText, Input, InputAdornment, InputLabel, ListItem, MenuItem, OutlinedInput, Paper, Select, Slider, Table, TableBody, TableCell, TableHead, TableRow, TextField, Tooltip } from '@material-ui/core'
+import { Checkbox, FormControl, FormControlLabel, FormHelperText, InputLabel, ListItem, Paper, Select, Table, TableBody, TableCell, TableHead, TableRow, TextField } from '@material-ui/core'
 import FinancialsLineChart from './FinancialsLineChart'
 import { ReactComponent as QuestionMark } from '../../../images/question-mark.svg'
 
@@ -191,7 +191,7 @@ const SectorSection = (props: InputProps) => {
                                             Revenue
                                     </TableCell>
                                         {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
-                                            <TableCell>
+                                            <TableCell key={index}>
                                                 <NumberFormat
                                                     value={props.roundDetails.financials[index].revenue}
                                                     name="monthlyRevenue"
@@ -213,7 +213,7 @@ const SectorSection = (props: InputProps) => {
                                             EBITDA
                                     </TableCell>
                                         {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
-                                            <TableCell>
+                                            <TableCell key={index}>
                                                 <NumberFormat
                                                     value={props.roundDetails.financials[index].ebitda}
                                                     name="monthlyRevenue"
@@ -239,7 +239,7 @@ const SectorSection = (props: InputProps) => {
                                             Costs
                                     </TableCell>
                                         {props.roundDetails.financials.map((element: App.FinancialDetails, index: number) => (
-                                            <TableCell>
+                                            <TableCell key={index}>
                                                 <div className={(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda) < 0 ? "cost red" : "cost"}>
                                                     {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(props.roundDetails.financials[index].revenue - props.roundDetails.financials[index].ebitda)}
                                                 </div>

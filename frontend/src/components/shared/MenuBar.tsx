@@ -35,9 +35,9 @@ const MenuBar = () => {
         // }
     };
 
-    const handleClose = () => {
-        setIsDrawerOpen(false);
-    };
+    // const handleClose = () => {
+    //     setIsDrawerOpen(false);
+    // };
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
@@ -79,8 +79,7 @@ const MenuBar = () => {
                             onClick={toggleDrawer(true)}
                         >
                             {/* <MenuIcon /> */}
-                            <img src={MenuIconWhite} />
-                            {/* <LightningSVG style={{fill: "whie"}} /> */}
+                            <img src={MenuIconWhite} alt="hamburger icon"/>
                         </div>
                     </Toolbar>
                 </AppBar>

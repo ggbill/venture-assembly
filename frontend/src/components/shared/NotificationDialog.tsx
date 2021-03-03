@@ -24,7 +24,7 @@ const NotificationDialog = (props: InputProps) => {
             <DialogContent>
                 <span>{props.message}</span>
                 {props.isShowDonateButton &&
-                    <a href="https://www.buymeacoffee.com/ventureassembly" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{ height: 46, width: 158 }} /></a>
+                    <a href="https://www.buymeacoffee.com/ventureassembly" target="_blank" rel="noreferrer"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style={{ height: 46, width: 158 }} /></a>
                 }
             </DialogContent>
             <DialogActions>

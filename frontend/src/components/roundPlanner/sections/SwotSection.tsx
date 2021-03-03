@@ -1,5 +1,5 @@
 import './swotSection.scss'
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import RadarChart from './RadarChart';
 import CustomVASlider from '../../shared/CustomVASlider';
 import useSwotHelperTextGenerator from './useSwotHelperTextGenerator';

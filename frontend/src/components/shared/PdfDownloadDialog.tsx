@@ -1,9 +1,9 @@
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, FormHelperText, TextField } from '@material-ui/core'
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import usePdfGenerator from '../../hooks/usePdfGenerator';
 import './pdfDownloadDialog.scss'
 import usePdfDownloadValidation from './usePdfDownloadValidation';
-import { PDFDownloadLink, pdf } from '@react-pdf/renderer';
+import { pdf } from '@react-pdf/renderer';
 import { saveAs } from 'file-saver';
 import ImageCropper from '../imageCropper/ImageCropper';
 import useGoogleAnalytics from '../../hooks/useGoogleAnalytics';
@@ -96,14 +96,14 @@ const PdfDowloadDialog = (props: InputProps) => {
             aria-labelledby="form-dialog-title"
             className="pdf-purchase-dialog"
         >
-            <DialogTitle id="form-dialog-title">Download Round Planner PDF - Free!</DialogTitle>
+            <DialogTitle id="form-dialog-title">Download Free Round Planner PDF</DialogTitle>
 
             <DialogContent>
                 <div className="intro-text">
                     To download your bespoke Round Planner PDF simply enter the information below and click 'GENERATE PDF'. This information will be use to populate
                     your pdf so feel free to tweak the data and regenerate as many times as you need.
                 </div>
-
+                
                 <div className="inputs-wrapper">
                     <div className="field-wrapper name">
                         <TextField
@@ -212,7 +212,7 @@ const PdfDowloadDialog = (props: InputProps) => {
                             id="companyIntro"
                             name="companyIntro"
                             className=""
-                            label={`Short Company Intro (${250 - props.roundDetails.companyIntro.length} characters remaining)`}
+                            label={`Short Company Intro`}
                             variant="outlined"
                             value={props.roundDetails.companyIntro}
                             onChange={(event) => props.setRoundDetails({ ...props.roundDetails, companyIntro: event.target.value })}
@@ -242,23 +242,25 @@ const PdfDowloadDialog = (props: InputProps) => {
 
 
 
-                {!pdfDownloadValidation.getValidation("isTermsAgreed").isValid &&
-                    <FormHelperText className="ts-and-cs-error">{pdfDownloadValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
-                }
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={isAgreedTerms}
-                            onChange={(event) => setIsAgreedTerms(event.target.checked)}
-                            name="isAgreedTerms"
-
-                        />
+                <div className="ts-and-cs-wrapper">
+                    {!pdfDownloadValidation.getValidation("isTermsAgreed").isValid &&
+                        <FormHelperText className="ts-and-cs-error">{pdfDownloadValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
                     }
-                    label="I agree to Venture Assembly's Privacy Policy"
-                    className="tech-checkbox"
+                    <FormControlLabel
+                        labelPlacement="start"
+                        control={
+                            <Checkbox
+                                checked={isAgreedTerms}
+                                onChange={(event) => setIsAgreedTerms(event.target.checked)}
+                                name="isAgreedTerms"
 
+                            />
+                        }
+                        label="I agree to Venture Assembly's Privacy Policy"
+                        className="tech-checkbox"
+                    />
+                </div>
 
-                />
 
 
                 {/* here: {JSON.stringify(props.roundDetails.radarBase64String)} */}

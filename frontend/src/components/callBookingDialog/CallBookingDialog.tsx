@@ -19,7 +19,7 @@ const CallBookingDialog = (props: InputProps) => {
     const [isBookingSuccess, setIsBookingSuccess] = useState<boolean>(false)
 
     const roundPlannerApi = useFetch("roundPlanner")
-    
+
 
     const callBookingValidation = useCallBookingValidation()
 
@@ -149,23 +149,24 @@ const CallBookingDialog = (props: InputProps) => {
                             </div>
                         </div>
 
-                        {!callBookingValidation.getValidation("isTermsAgreed").isValid &&
-                            <FormHelperText className="ts-and-cs-error">{callBookingValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
-                        }
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    checked={isAgreedTerms}
-                                    onChange={(event) => setIsAgreedTerms(event.target.checked)}
-                                    name="isAgreedTerms"
-
-                                />
+                        <div className="ts-and-cs-wrapper">
+                            {!callBookingValidation.getValidation("isTermsAgreed").isValid &&
+                                <FormHelperText className="ts-and-cs-error">{callBookingValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
                             }
-                            label="I agree to Venture Assembly's Privacy Policy"
-                            className="tech-checkbox"
+                            <FormControlLabel
+                                labelPlacement="start"
+                                control={
+                                    <Checkbox
+                                        checked={isAgreedTerms}
+                                        onChange={(event) => setIsAgreedTerms(event.target.checked)}
+                                        name="isAgreedTerms"
 
-
-                        />
+                                    />
+                                }
+                                label="I agree to Venture Assembly's Privacy Policy"
+                                className="tech-checkbox"
+                            />
+                        </div>
 
                     </>
                     :
