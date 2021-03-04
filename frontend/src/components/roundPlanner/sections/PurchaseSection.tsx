@@ -1,6 +1,6 @@
 import './purchaseSection.scss'
-import React from 'react'
-import { Button, Card, CardContent } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Button, Card, CardActionArea, CardContent } from '@material-ui/core'
 import RocketSmall from '../../../images/rocket-small.png'
 import RocketMedium from '../../../images/rocket-med.png'
 import useGoogleAnalytics from '../../../hooks/useGoogleAnalytics'
@@ -19,6 +19,8 @@ interface InputProps {
 const PurchaseSection = (props: InputProps) => {
 
     // const [message, setMessage] = useState("");
+    const [raised1, setRaised1] = useState(false);
+    const [raised2, setRaised2] = useState(false);
 
     const googleAnalytics = useGoogleAnalytics()
 
@@ -56,8 +58,10 @@ const PurchaseSection = (props: InputProps) => {
                 <span className="page-subtitle">Next Steps</span>
 
                 <div className="row-wrapper">
-                    <Card>
-                        {/* <CardActionArea> */}
+                    <Card onMouseOver={() => setRaised1(!raised1)}
+                        onMouseOut={() => setRaised1(!raised1)}
+                        raised={raised1}
+                        onClick={handleOpenPdfDownloadDialog}>
                         <CardContent>
                             {/* <span className="level">Basic</span> */}
                             <span className="title">Download Round Planner PDF</span>
@@ -77,16 +81,19 @@ const PurchaseSection = (props: InputProps) => {
 
                             </span>
                         </CardContent>
-                        {/* </CardActionArea> */}
 
                     </Card>
-                    <Card>
+                    <Card onMouseOver={() => setRaised2(!raised2)}
+                        onMouseOut={() => setRaised2(!raised2)}
+                        raised={raised2}
+                        onClick={handleOpen15MinCallBookingDialog}
+                    >
                         <CardContent>
                             {/* <span className="level">Intermediate</span> */}
                             <span className="title">15 Minute "What Next?" Call</span>
                             {/* <QuestionSVG className="logo" /> */}
                             <div className="image-wrapper">
-                                <img className="image" src={RocketMedium} alt="VA Book 15 Min Call Rocket"/>
+                                <img className="image" src={RocketMedium} alt="VA Book 15 Min Call Rocket" />
                             </div>
 
                             <div className="price">Free <span className="limited-time">(Limited time only)</span></div>
