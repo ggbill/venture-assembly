@@ -6,10 +6,12 @@
     .page-title{
         font-size: 2em;
         font-weight: 700;
+        color: black;
     }
     .page-subtitle{
         font-size: 1.5em;
         font-weight: 700;
+        color: black;
     }
 
     .intro-section{
@@ -209,44 +211,15 @@
         }
         .value {
             font-size: 1.4em;
-            font-weight: 600;   
+            font-weight: 600;  
+            color: black; 
         }
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 950px) {
     .round-planner-page {
-        .inputs-wrapper {
-            display: flex;
-            flex-direction: column;
-            padding: 24px 0;
-
-            .field-wrapper {
-                display: inline-flex;
-                width: 100%;
-                margin-bottom: 24px;
-
-                &:nth-child(odd) {
-                    margin-right: 0;
-                    margin-bottom: 12px;
-                }
-
-                .slider-wrapper {
-                    margin: 24px 0 0 0;
-                }
-
-                .tech-checkbox {
-                    position: relative;
-                    top: 0;
-                    .MuiFormControlLabel-label {
-                    }
-                }
-            }
-        }
-
         .results-wrapper {
-            padding: 24px 0;
-            // margin: 24px 0;
             .results {
                 .figures-wrapper {
                     flex-direction: column;
@@ -280,6 +253,38 @@
 
             .tooltip-wrapper {
                 line-height: 1.7em;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .round-planner-page {
+        .inputs-wrapper {
+            display: flex;
+            flex-direction: column;
+            padding: 24px 0;
+
+            .field-wrapper {
+                display: inline-flex;
+                width: 100%;
+                margin-bottom: 24px;
+
+                &:nth-child(odd) {
+                    margin-right: 0;
+                    margin-bottom: 12px;
+                }
+
+                .slider-wrapper {
+                    margin: 24px 0 0 0;
+                }
+
+                .tech-checkbox {
+                    position: relative;
+                    top: 0;
+                    .MuiFormControlLabel-label {
+                    }
+                }
             }
         }
     }

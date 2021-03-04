@@ -72,7 +72,6 @@ const PurchaseSection = (props: InputProps) => {
                             <div className="price">Free <span className="always">(Always)</span></div>
                             <Button className="va-button" onClick={handleOpenPdfDownloadDialog}>Download</Button>
                             <span className="description">
-                                Details:
                                 <ul>
                                     <li>Instantly download all the information entered in the form above.</li>
                                     <li>Customise for your company, optionally adding contact details and logo.</li>
@@ -99,13 +98,14 @@ const PurchaseSection = (props: InputProps) => {
                             <div className="price">Free <span className="limited-time">(Limited time only)</span></div>
                             <Button className="va-button" onClick={handleOpen15MinCallBookingDialog}>Book</Button>
                             <span className="description">
-                                Details:
                                 <ul>
                                     <li>Book a 15 minute slot to have a chat with us about your company, whether you are looking to raise capital or not.</li>
                                     <li>We have over 10 years experience and can offer help and advice on the next steps on your journey.</li>
-                                    <li>Why are we offering this free? We are just starting out on our own startup journey so understanding the types of things our users are
-                                        looking for will help to shape the future roadmap of our product. It won't last forever so make the most of it!</li>
+                                    {/* <li>Why are we offering this free? We are just starting out on our own startup journey so understanding the types of things our users are
+                                        looking for will help to shape the future roadmap of our product. It won't last forever so make the most of it!</li> */}
                                 </ul>
+                                <div className="extra-info">* Why are we offering this free? We are just starting out on our own startup journey so understanding the types of things our users are
+                                        looking for will help to shape the future roadmap of our product. It won't last forever so make the most of it!</div>
 
                             </span>
                         </CardContent>

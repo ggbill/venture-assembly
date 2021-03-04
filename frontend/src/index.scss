@@ -4,6 +4,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   font-family: 'Poppins', 'Helvetica', sans-serif;
+  color: #636363;
+  // font-family: 'Sen', Helvetica, Arial, sans-serif !important;
+  text-rendering: optimizelegibility;
 
   a{
     color: #DA4167;

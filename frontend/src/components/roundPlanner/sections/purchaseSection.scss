@@ -73,6 +73,13 @@
                 .description {
                     text-align: left;
                     font-size: 0.95em;
+
+                    .extra-info {
+                        font-size: 0.8em;
+                        line-height: 17px;
+                        text-align: justify;
+                        color: #636363;
+                    }
                 }
             }
         }

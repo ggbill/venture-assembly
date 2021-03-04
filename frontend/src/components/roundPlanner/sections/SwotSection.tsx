@@ -25,7 +25,7 @@ const SwotSection = (props: InputProps) => {
     return (
         <div id="swot-section" className="swot-section">
             <div className="content">
-                <span className="page-subtitle">Stengths & Weaknesses.</span>
+                <span className="page-subtitle">Strengths & Weaknesses.</span>
                 <div className="row-wrapper">
                     <div id="swot-sliders" className="inputs-wrapper">
                         <div className="slider-wrapper">
