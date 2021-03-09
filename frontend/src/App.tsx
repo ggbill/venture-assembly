@@ -8,6 +8,7 @@ import { createBrowserHistory } from 'history'
 import RoundPlanner from './components/roundPlanner/RoundPlanner'
 import ReactGA from'react-ga'
 import ScrollToTop from './components/shared/scrollToTop'
+import Podcasts from './components/podcasts/Podcasts'
 
 
 const history = createBrowserHistory();
@@ -33,6 +34,11 @@ function App() {
                         <Route
                             path="/round-planner"
                             component={RoundPlanner}
+                            exact
+                        />
+                        <Route
+                            path="/podcasts"
+                            component={Podcasts}
                             exact
                         />
                     </Switch>
