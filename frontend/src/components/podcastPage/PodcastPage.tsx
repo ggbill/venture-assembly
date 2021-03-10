@@ -48,7 +48,7 @@ const PodcastPage = ({ match }) => {
                 <YouTube className="youtube-player" videoId={match.params.videoId} opts={opts} />
                 <div className="description-wrapper">
                     <div className="page-subtitle">Description.</div>
-                    <span>{video.snippet && video.snippet.description}</span>
+                    <div className="description-text">{video.snippet && video.snippet.description}</div>
                 </div>
 
             </div>
