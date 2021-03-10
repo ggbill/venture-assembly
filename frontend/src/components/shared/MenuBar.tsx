@@ -69,10 +69,11 @@ const MenuBar = () => {
                             <Link to={'/round-planner'}>
                                 <span>Checklists</span>
                             </Link> */}
+                            {/* <Link to={'/podcasts'}>
+                                <span>Podcasts</span>
+                            </Link> */}
                             <Link to={'/round-planner'}>
-                                {/* <div className="cta-wrapper"> */}
                                 <span>Round Planner</span>
-                                {/* </div> */}
                             </Link>
                         </div>
                         <div className="clickable-icon hamburger-menu" aria-controls="simple-menu" aria-haspopup="true"

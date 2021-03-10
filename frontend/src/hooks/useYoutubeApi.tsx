@@ -7,7 +7,7 @@ const useYoutubeApi = () => {
             key: key,
             part: 'snippet,contentDetails',
             playlistId: playlistId,
-            order: "date",
+            // order: "date",
             maxResults: "50"
 
         })
@@ -35,7 +35,7 @@ const useYoutubeApi = () => {
             key: key,
             part: 'snippet,contentDetails,statistics',
             id: csvVideoIds,
-            order: "date",
+            // order: "date",
             maxResults: "50"
 
         })
@@ -51,7 +51,8 @@ const useYoutubeApi = () => {
     }
 
     return {
-        getVideosInPlaylist
+        getVideosInPlaylist,
+        getVideoDetails
     };
 };
 export default useYoutubeApi;

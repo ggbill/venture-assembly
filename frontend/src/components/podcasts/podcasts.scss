@@ -1,20 +1,22 @@
-.podcast-page {
+.podcasts-page {
+    .intro-wrapper{
+        padding-top: 40px;
+    }
     .video-list {
         display: grid;
         grid-gap: 36px;
         grid-template-columns: repeat(auto-fill, 275px);
         justify-content: center;
         align-items: flex-start;
-        padding: 0 24px;
+        padding: 40px 0 0 0;
 
         .video-wrapper {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 40px;
+            
 
             &:hover {
-                
                 cursor: pointer;
 
                 .title {
