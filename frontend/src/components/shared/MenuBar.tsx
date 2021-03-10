@@ -69,9 +69,9 @@ const MenuBar = () => {
                             <Link to={'/round-planner'}>
                                 <span>Checklists</span>
                             </Link> */}
-                            {/* <Link to={'/podcasts'}>
+                            <Link to={'/podcasts'}>
                                 <span>Podcasts</span>
-                            </Link> */}
+                            </Link>
                             <Link to={'/round-planner'}>
                                 <span>Round Planner</span>
                             </Link>
@@ -114,6 +114,9 @@ const MenuBar = () => {
                         <Link to={`/`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Checklists</MenuItem>
                         </Link> */}
+                        <Link to={`/podcasts`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Podcasts</MenuItem>
+                        </Link>
                         <Link to={`/round-planner`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>
                         </Link>
