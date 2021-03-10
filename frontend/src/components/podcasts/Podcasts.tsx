@@ -4,7 +4,9 @@ import MenuBar from '../shared/MenuBar'
 import './podcasts.scss'
 import moment from 'moment'
 import 'moment-duration-format';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const Podcasts = () => {
 
@@ -40,7 +42,7 @@ const Podcasts = () => {
                     {videoList && videoList.map((video, index) => {
                         return (
                             <div key={index} className="video-wrapper" onClick={() => history.push(`/podcasts/${video.id}`)}>
-                                <img className="thumbnail" src={video.snippet.thumbnails.medium.url} />
+                                <LazyLoadImage className="thumbnail" src={video.snippet.thumbnails.standard.url} effect="blur" alt={video.snippet.title}/>
                                 <div className="duration-wrapper">
                                     <div className="duration">{moment.duration(video.contentDetails.duration).format('hh:mm:ss')}</div>
                                 </div>
