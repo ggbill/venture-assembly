@@ -33,7 +33,7 @@ const Podcasts = () => {
                 <div className="intro-wrapper">
                     <span className="page-title">🎧 Podcasts</span>
                     <p>One of our founders, Ed, is co-host of the Startup Microdose podcast series - interviewing leading startup founders, unpacking their stories,
-                         opinions, quirks and wisdom. Look out for exclusive Venture Assembly conent on its way very soon.</p>
+                         opinions, quirks and wisdom. Look out for exclusive Venture Assembly content on its way very soon.</p>
                 </div>
 
                 <div className="video-list">

@@ -3,7 +3,7 @@ import useYoutubeApi from '../../hooks/useYoutubeApi'
 import MenuBar from '../shared/MenuBar'
 import './podcastPage.scss'
 import YouTube from 'react-youtube';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const PodcastPage = ({ match }) => {
@@ -46,7 +46,11 @@ const PodcastPage = ({ match }) => {
                     <div className="back-link"> Back to list</div>
                 </Link>
                 <YouTube className="youtube-player" videoId={match.params.videoId} opts={opts} />
-                <p>{video.snippet && video.snippet.description}</p>
+                <div className="description-wrapper">
+                    <div className="page-subtitle">Description.</div>
+                    <span>{video.snippet && video.snippet.description}</span>
+                </div>
+
             </div>
         </div>
     )
