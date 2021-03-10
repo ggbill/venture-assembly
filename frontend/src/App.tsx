@@ -10,6 +10,7 @@ import ReactGA from'react-ga'
 import ScrollToTop from './components/shared/scrollToTop'
 import Podcasts from './components/podcasts/Podcasts'
 import PodcastPage from './components/podcastPage/PodcastPage'
+import PitchDeckReview from './components/pitchDeckReview/PitchDeckReview'
 
 
 const history = createBrowserHistory();
@@ -45,6 +46,11 @@ function App() {
                         <Route
                             path="/podcasts/:videoId"
                             component={PodcastPage}
+                            exact
+                        />
+                        <Route
+                            path="/pitch-deck-review"
+                            component={PitchDeckReview}
                             exact
                         />
                     </Switch>

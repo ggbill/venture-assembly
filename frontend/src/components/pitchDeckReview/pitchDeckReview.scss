@@ -1,0 +1,67 @@
+.pitch-deck-review-page {
+    .intro-wrapper {
+        padding: 40px 0 20px;
+    }
+
+    .how-it-works-wrapper {
+        padding: 20px 0;
+
+        .steps-wrapper {
+            padding-top: 12px;
+            display: flex;
+            flex-direction: row;
+
+            .step-card {
+                flex-basis: 0;
+                flex-grow: 1;
+                padding: 12px 24px;
+                display: flex;
+                flex-direction: column;
+                &:not(:last-child) {
+                    margin-right: 12px;
+                }
+
+                .title {
+                    font-weight: bold;
+                }
+
+                .description {
+                    font-size: 0.9em;
+                }
+            }
+        }
+    }
+
+    .faq-wrapper{
+        padding: 20px 0;
+
+        .accordion-wrapper{
+            padding-top: 12px;
+
+            .MuiAccordionDetails-root{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .pitch-deck-review-page {
+        .how-it-works-wrapper {
+            .steps-wrapper {
+                display: flex;
+                flex-direction: column;
+
+                .step-card {
+                    padding: 12px;
+                    flex-basis: unset;
+                    margin-bottom: 12px;
+                    &:not(:last-child) {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
