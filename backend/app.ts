@@ -2,16 +2,16 @@ import * as express from 'express';
 import * as cors from 'cors';
 // import * as bodyparser from 'body-parser';
 import requestLoggerMiddleware from './request.logger.middleware';
-// const stripe = require("stripe")("sk_test_BxKQ9cg1p2v9Tl3z05gX3GFi");
+const stripe = require("stripe")("sk_test_BxKQ9cg1p2v9Tl3z05gX3GFi");
 
 // Find your endpoint's secret in your Dashboard's webhook settings
-// const endpointSecret = 'whsec_ioinbLILYitGVhnB6Y3JyrjVH4mMgDPP';
+const endpointSecret = 'whsec_ioinbLILYitGVhnB6Y3JyrjVH4mMgDPP';
 
 const path = require('path');
 const shrinkRay = require('shrink-ray-current');
 const bodyParser = require('body-parser');
 
-// import stripeRouter from './routes/stripe';
+import stripeRouter from './routes/stripe';
 import roundPlannerRouter from './routes/roundPlanner';
 
 
@@ -27,15 +27,15 @@ app.use(requestLoggerMiddleware);
 
 // only use the raw bodyParser for webhooks
 app.use((req, res, next) => {
-  console.log(`req.originalUrl: ${req.originalUrl}`)
-  if (req.originalUrl === '/webhook') {
-    bodyParser.raw({ type: 'application/json' })(req, res, next)
-  } else {
-    bodyParser.json({ limit: '50mb' })(req, res, next);
-  }
+	console.log(`req.originalUrl: ${req.originalUrl}`)
+	if (req.originalUrl === '/webhook') {
+		bodyParser.raw({ type: 'application/json' })(req, res, next)
+	} else {
+		bodyParser.json({ limit: '50mb' })(req, res, next);
+	}
 });
 
-// app.use('/stripe', stripeRouter);
+app.use('/stripe', stripeRouter);
 app.use('/roundPlanner', roundPlannerRouter);
 
 // app.post('/webhook', (request, response) => {
@@ -75,13 +75,13 @@ app.use('/roundPlanner', roundPlannerRouter);
 
 if (process.env.NODE_ENV === 'production') {
 
-  // Declare the path to frontend's static assets
-  app.use(express.static(path.resolve("..", "frontend", "build")));
+	// Declare the path to frontend's static assets
+	app.use(express.static(path.resolve("..", "frontend", "build")));
 
-  // Intercept requests to return the frontend's static entry point
-  app.get("*", (_, response) => {
-    response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
-  });
+	// Intercept requests to return the frontend's static entry point
+	app.get("*", (_, response) => {
+		response.sendFile(path.resolve("..", "frontend", "build", "index.html"));
+	});
 }
 
-export default app; 
+export default app;

@@ -193,7 +193,6 @@ const PdfDowloadDialog = (props: InputProps) => {
                             // className={classes.input}
                             style={{ display: 'none' }}
                             id="raised-button-file"
-                            multiple
                             type="file"
                             onChange={(event) => uploadFile(event)}
                             ref={inputFile}

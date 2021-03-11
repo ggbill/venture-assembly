@@ -65,3 +65,13 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .pitch-deck-review-page {
+        .intro-wrapper{
+            .va-button{
+                width: 100%;
+            }
+        }
+    }
+}
