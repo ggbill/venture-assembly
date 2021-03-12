@@ -72,6 +72,9 @@ const MenuBar = () => {
                             <Link to={'/podcasts'}>
                                 <span>Podcasts</span>
                             </Link>
+                            <Link to={'/pitch-deck-review'}>
+                                <span>Pitch Deck Review</span>
+                            </Link>
                             <Link to={'/round-planner'}>
                                 <span>Round Planner</span>
                             </Link>
@@ -116,6 +119,9 @@ const MenuBar = () => {
                         </Link> */}
                         <Link to={`/podcasts`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Podcasts</MenuItem>
+                        </Link>
+                        <Link to={`/pitch-deck-review`}>
+                            <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Pitch Deck Review</MenuItem>
                         </Link>
                         <Link to={`/round-planner`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>

@@ -2,7 +2,7 @@ import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Fo
 import React, { useState } from 'react'
 import './callBookingDialog.scss'
 import useCallBookingValidation from './useCallBookingValidation';
-import CallBooking from './CallBooking';
+import Calendly from '../shared/Calendly';
 import useFetch from '../../hooks/useFetch';
 
 interface InputProps {
@@ -17,10 +17,9 @@ const CallBookingDialog = (props: InputProps) => {
     const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(false)
     const [stepNumber, setStepNumber] = useState<number>(1)
     const [isBookingSuccess, setIsBookingSuccess] = useState<boolean>(false)
+    // const [calendlyEventDetails, setCalendlyEventDetails] = useState<any>({})
 
     const roundPlannerApi = useFetch("roundPlanner")
-
-
     const callBookingValidation = useCallBookingValidation()
 
     const closeSuccessDialog = () => {
@@ -29,16 +28,16 @@ const CallBookingDialog = (props: InputProps) => {
         props.handleClose()
     }
 
-    const persistRoundToDB = (calendlyEventUri: string, calendlyInviteeUri: string) => {
-
+    const persistRoundToDB = (eventUri, inviteeUri) => {
+        setIsBookingSuccess(true)
         console.log(props.roundDetails)
 
         roundPlannerApi.post("create", {
             ...props.roundDetails,
             financialsBase64String: "",
             radarBase64String: "",
-            calendlyEventUri: calendlyEventUri,
-            calendlyInviteeUri: calendlyInviteeUri
+            calendlyEventUri: eventUri,
+            calendlyInviteeUri: inviteeUri
         }).then((result) => {
             // console.log(result)
         }).catch((err: Error) => {
@@ -46,11 +45,15 @@ const CallBookingDialog = (props: InputProps) => {
         })
     }
 
-    const submit = () => {
+    const goToNextStep = () => {
         if (callBookingValidation.validateInputs(props.roundDetails, isAgreedTerms)) {
             setStepNumber(stepNumber + 1)
         }
     }
+
+    // const updateCalendlyEventDetails = (eventUri, inviteeUri) => {
+    //     setCalendlyEventDetails({ eventUri: eventUri, inviteeUri: inviteeUri })
+    // }
 
 
     return (
@@ -104,22 +107,6 @@ const CallBookingDialog = (props: InputProps) => {
                                     helperText={!callBookingValidation.getValidation("email").isValid && callBookingValidation.getValidation("email").validationMessage}
                                 />
                             </div>
-                            {/* <div className="field-wrapper">
-                                <TextField
-                                    id="phone"
-                                    name="phone"
-                                    className=""
-                                    label="Your Phone Number"
-                                    variant="outlined"
-                                    value={props.roundDetails.phone}
-                                    onChange={(event) => props.setRoundDetails({ ...props.roundDetails, phone: event.target.value })}
-                                    required
-                                    fullWidth
-                                    error={!callBookingValidation.getValidation("phone").isValid}
-                                    helperText={!callBookingValidation.getValidation("phone").isValid && callBookingValidation.getValidation("phone").validationMessage}
-                                />
-                            </div> */}
-
                             <div className="field-wrapper">
                                 <TextField
                                     id="companyName"
@@ -175,36 +162,27 @@ const CallBookingDialog = (props: InputProps) => {
                             Next, please select an available slot in which to book the call. We will add a Google Hangouts link to the meeting in advance of the call.
                         </div>
 
-                        <CallBooking roundDetails={props.roundDetails} setRoundDetails={props.setRoundDetails} setIsBookingSuccess={setIsBookingSuccess} persistRoundToDb={persistRoundToDB} />
+                        <Calendly
+                            name={props.roundDetails.name}
+                            companyName={props.roundDetails.companyName}
+                            email={props.roundDetails.email}
+                            eventType="15 Min What's Next"
+                            calendlySrc={`${process.env.REACT_APP_CALENDLY_15MIN_URL}?embed_domain=https://www.ventureassembly.co&embed_type=Inline&name=${encodeURI(props.roundDetails.name)}&email=${encodeURI(props.roundDetails.email)}`}
+                            // setCalendlyEventDetails={updateCalendlyEventDetails}
+                            onBookingSuccess={persistRoundToDB}
+                        />
                     </>
 
                 }
-
-
-
-
-
             </DialogContent>
-
-
-
-
             {stepNumber === 1 ?
-                // <DialogActions>
-                //     <Button className="va-button" onClick={() => props.handleClose()} >
-                //         Cancel
-                //  </Button>
-                //     <Button id="submit" className="va-button" onClick={submit} >
-                //         Next
-                //  </Button>
-                // </DialogActions>
                 <DialogActions>
                     {!callBookingValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
                     <div className="button-wrapper">
                         <Button className="va-button cancel" onClick={() => props.handleClose()} >
                             Cancel
                         </Button>
-                        <Button id="submit" className="va-button confirm" onClick={submit}>
+                        <Button id="submit" className="va-button confirm" onClick={goToNextStep}>
                             Next
                         </Button>
                     </div>

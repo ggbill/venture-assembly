@@ -113,6 +113,72 @@
     }
 }
 
+.MuiDialog-container .MuiDialog-paper {
+    max-width: 1050px;
+
+    .MuiTypography-h6{
+        font-family: "Poppins", "Helvetica", sans-serif;
+        font-weight: bold;
+    }
+
+    .step {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .intro-text {
+        // margin-bottom: 24px;
+        font-size: 0.9em;
+    }
+
+    .inputs-wrapper {
+        margin-top: 12px;
+    }
+
+    .MuiFormControl-root{
+        margin-bottom: 12px;
+    }
+
+    .MuiFormControlLabel-label {
+        font-size: 0.8rem;
+    }
+
+    .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+        border-color: #f44336;
+    }
+
+    .MuiInputBase-input.Mui-disabled {
+        color: rgba(0, 0, 0, 0.87)!important;
+    }
+
+    .ts-and-cs-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        .ts-and-cs-error {
+            color: red;
+            margin: 6px 0 -9px 0;
+            text-align: right;
+        }
+    }
+
+    .MuiDialogActions-root {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .validation-text {
+            margin-bottom: 6px;
+        }
+
+        .MuiButton-root.confirm {
+            margin-left: 12px;
+        }
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .full-height-content {
         min-height: calc(100vh - 215px); /* will cover the 100% of viewport minus (header + footer) */
@@ -129,6 +195,42 @@
 
         &:nth-child(odd) {
             margin-right: unset;
+        }
+    }
+
+    .MuiDialog-paper {
+        margin: 12px;
+        height: calc(100% - 24px);
+        max-height: unset;
+
+        .ts-and-cs-error {
+            color: red;
+            margin: 6px 0 0px 0;
+        }
+
+        .MuiDialogActions-root {
+            align-items: center;
+
+            .button-wrapper {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .MuiButton-root {
+                    &.confirm {
+                        order: 1;
+                        margin-bottom: 6px;
+                        margin-left: 0;
+                    }
+                    &.cancel {
+                        order: 2;
+                    }
+                }
+            }
+        }
+
+        .MuiDialogActions-spacing > :not(:first-child) {
+            margin-left: 0px;
         }
     }
 }

@@ -49,20 +49,20 @@ const PitchDeckReview = () => {
                     <span className="page-subtitle">How it works.</span>
                     <div className="steps-wrapper">
                         <Card className="step-card">
-                            <span className="title">1. Upload Deck 📤</span>
-                            <span className="description">Enter your details at the bottom of this page and upload your pitch deck.</span>
+                            <span className="title">1. Book a Session 📆</span>
+                            <span className="description">Upload your pitch deck and find a slot in the calendar to book a session.</span>
                         </Card>
                         <Card className="step-card">
-                            <span className="title">2. Fee Payment 💰</span>
-                            <span className="description">You will be directed to our secure payment portal powered by Stripe. Each review costs £50.</span>
+                            <span className="title">2. Fee Payment (£60) 💰</span>
+                            <span className="description">Once you have booked, we will email you an online invoice powered by Stripe. Please ensure payment has gone through prior to the call.</span>
                         </Card>
                         <Card className="step-card">
                             <span className="title">3. Deck Review 🔎</span>
-                            <span className="description">We will aim to have your deck reviewed within 2 working days.</span>
+                            <span className="description">We will review your deck in advance of the call.</span>
                         </Card>
                         <Card className="step-card">
-                            <span className="title">4. Receive Feedback 📧</span>
-                            <span className="description">We will send the review feedback to the email address provided.</span>
+                            <span className="title">4. Feedback Session 💻</span>
+                            <span className="description">We will step through your deck with you via video call, providing comments and feedback.</span>
                         </Card>
                     </div>
                 </div>
@@ -78,7 +78,19 @@ const PitchDeckReview = () => {
                                 ❓ How much does a pitch deck review cost?
                         </AccordionSummary>
                             <AccordionDetails>
-                                📣 Each pitch deck review is £50.
+                                📣 Each pitch deck review is £60.
+                        </AccordionDetails>
+                        </Accordion>
+                        <Accordion>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                ❓ How long will the review session be?
+                        </AccordionSummary>
+                            <AccordionDetails>
+                                📣 Each pitch deck review is roughly 40 minutes.
                         </AccordionDetails>
                         </Accordion>
                         <Accordion>
@@ -90,20 +102,8 @@ const PitchDeckReview = () => {
                                 ❓ How will I receive my feedback?
                         </AccordionSummary>
                             <AccordionDetails>
-                                📣 We will send you an email including a video review talking through your deck, along with a 1 page document outlining a summary of the feedback.
+                                📣 Having reviewed your deck in advance we will step through your deck with you, providing comments and feedback on each slide.
                         </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                ❓ What should I do if I have not had a response within 2 working days?
-                        </AccordionSummary>
-                            <AccordionDetails>
-                                <div>📣 In the extremely unlikely scenario that you have not heard back fro us in 2 working days please drop us an email to <a href="mailto:hello@ventureassembly.co">hello@ventureassembly.co</a> to notify us of the situation.</div>
-                            </AccordionDetails>
                         </Accordion>
                         <Accordion>
                             <AccordionSummary

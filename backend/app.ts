@@ -13,6 +13,7 @@ const bodyParser = require('body-parser');
 
 import stripeRouter from './routes/stripe';
 import roundPlannerRouter from './routes/roundPlanner';
+import pitchDeckReviewRouter from './routes/pitchDeckReview';
 
 
 const app = express();
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
 
 app.use('/stripe', stripeRouter);
 app.use('/roundPlanner', roundPlannerRouter);
+app.use('/pitchDeckReview', pitchDeckReviewRouter);
 
 // app.post('/webhook', (request, response) => {
 

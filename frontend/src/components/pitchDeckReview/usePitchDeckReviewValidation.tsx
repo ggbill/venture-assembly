@@ -6,7 +6,7 @@ const useBookingValidation = () => {
         { name: "companyName", isValid: true, validationMessage: "" },
         { name: "email", isValid: true, validationMessage: "" },
         { name: "pitchDeckFile", isValid: true, validationMessage: "" },
-        // { name: "message", isValid: true, validationMessage: "" },
+        { name: "isTermsAgreed", isValid: true, validationMessage: "" },
     ])
     const [isValidationPassed, setIsValidationPassed] = useState<boolean>(true)
 
@@ -17,21 +17,21 @@ const useBookingValidation = () => {
             { name: "companyName", isValid: true, validationMessage: "" },
             { name: "email", isValid: true, validationMessage: "" },
             { name: "pitchDeckFile", isValid: true, validationMessage: "" },
-            // { name: "message", isValid: true, validationMessage: "" },
+            { name: "isTermsAgreed", isValid: true, validationMessage: "" },
         ]
 
         setValidationObject(tempValidationObject)
 
     }
 
-    const validateInputs = (reviewDetails): boolean => {
+    const validateInputs = (reviewDetails, isTermsAgreed: boolean): boolean => {
 
         let tempValidationObject: App.ValidationObject[] = [
             { name: "name", isValid: true, validationMessage: "" },
             { name: "companyName", isValid: true, validationMessage: "" },
             { name: "email", isValid: true, validationMessage: "" },
             { name: "pitchDeckFile", isValid: true, validationMessage: "" },
-            // { name: "message", isValid: true, validationMessage: "" },
+            { name: "isTermsAgreed", isValid: true, validationMessage: "" },
         ]
 
         let tempIsValidationPassed = true
@@ -48,6 +48,10 @@ const useBookingValidation = () => {
 
         if (reviewDetails.name === "" || typeof (reviewDetails.name) === "undefined") {
             setFailedValidation("name", "Please enter your name.")
+        }
+
+        if (!isTermsAgreed) {
+            setFailedValidation("isTermsAgreed", "You must agree to continue.")
         }
 
         if (reviewDetails.companyName === "" || typeof (reviewDetails.companyName) === "undefined") {
