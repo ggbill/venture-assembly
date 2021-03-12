@@ -198,7 +198,7 @@
         }
     }
 
-    .MuiDialog-paper {
+    .MuiDialog-container .MuiDialog-paper {
         margin: 12px;
         height: calc(100% - 24px);
         max-height: unset;
