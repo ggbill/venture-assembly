@@ -6,6 +6,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PitchDeckReviewDialog from './PitchDeckReviewDialog';
 import NotificationDialog from '../shared/NotificationDialog';
 import { useHistory } from 'react-router-dom'
+import LlwelynImage from '../../images/Llewellyn.jpg'
+import SwitchdImage from '../../images/switchd-250-x250.png'
 
 const PitchDeckReview = () => {
 
@@ -41,9 +43,38 @@ const PitchDeckReview = () => {
             <div className="content top-page-margin">
                 <div className="intro-wrapper">
                     <span className="page-title">🕵️ Pitch Deck Review.</span>
-                    <p>We see hundreds of pitch decks every year and work with investors on a daily basis so we are well placed to provide unbiased opinions and suggestions.
-                        The quality of your pitch deck can be instrumental in whether or not you're successful in your fundraising round.</p>
+                    <p>
+                        Have one of our expert team review your pitch deck for you before presenting it to potential investors.
+                        We see hundreds of pitch decks every year and work with investors on a daily basis so we are well placed to provide unbiased
+                        opinions and suggestions, that could help you secure that much needed cash injection.
+                    </p>
                     <Button className="va-button" onClick={() => setIsPitchDeckReviewDialogOpen(true)}>Let's Go</Button>
+                </div>
+                <div className="feedback-wrapper">
+                    <span className="feedback">
+                        "Ed's experience and the sheer number of decks he's seen mean he and the team are in a brilliant position to be able to give really
+                        useful and practical advice on how to improve a pitch deck. He provided some really excellent pointers that I never would have thought
+                        of myself!"
+                    </span>
+                    <div className="feedbacker-wrapper">
+                        <div className="images-wrapper">
+                            <a href="https://www.switchd.co.uk" target="_blank" rel="noreferrer">
+                                <img className="logo" src={SwitchdImage} alt="Switchd Logo" />
+                                <img className="avatar" src={LlwelynImage} alt="Llwelynn Kinch" />
+                            </a>
+
+                        </div>
+                        <div className="name-wrapper">
+                            <span className="name">
+                                Llewellyn Kinch
+                             </span>
+                            <span className="position">
+                                Co-Founder <a href="https://www.switchd.co.uk" target="_blank" rel="noreferrer">Switchd</a>
+                            </span>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div className="how-it-works-wrapper">
                     <span className="page-subtitle">How it works.</span>
@@ -54,7 +85,7 @@ const PitchDeckReview = () => {
                         </Card>
                         <Card className="step-card">
                             <span className="title">2. Fee Payment (£60) 💰</span>
-                            <span className="description">Once you have booked, we will email you an online invoice powered by Stripe. Please ensure payment has gone through prior to the call.</span>
+                            <span className="description">Once you have booked, we will email you an online invoice.</span>
                         </Card>
                         <Card className="step-card">
                             <span className="title">3. Deck Review 🔎</span>

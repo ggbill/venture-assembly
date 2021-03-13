@@ -3,6 +3,55 @@
         padding: 40px 0 20px;
     }
 
+    .feedback-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 60px 0;
+        font-size: 0.9em;
+
+        .feedback {
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .feedbacker-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .images-wrapper{
+                display: flex;
+                flex-direction: row;
+
+                img{
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+
+                    &.avatar{
+                        position: relative;
+                        left: -12px;
+                    }
+                }
+
+
+
+            }
+
+            .name-wrapper {
+                display: flex;
+                flex-direction: column;
+
+                .name {
+                    font-weight: bold;
+                    color: #1f1f1f;
+                }
+            }
+        }
+    }
+
     .how-it-works-wrapper {
         padding: 20px 0;
 
@@ -32,13 +81,13 @@
         }
     }
 
-    .faq-wrapper{
+    .faq-wrapper {
         padding: 20px 0;
 
-        .accordion-wrapper{
+        .accordion-wrapper {
             padding-top: 12px;
 
-            .MuiAccordionDetails-root{
+            .MuiAccordionDetails-root {
                 display: flex;
                 flex-direction: column;
             }
@@ -68,8 +117,8 @@
 
 @media only screen and (max-width: 600px) {
     .pitch-deck-review-page {
-        .intro-wrapper{
-            .va-button{
+        .intro-wrapper {
+            .va-button {
                 width: 100%;
             }
         }

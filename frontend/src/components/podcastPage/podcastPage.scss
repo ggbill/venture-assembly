@@ -16,7 +16,8 @@
     }
     .youtube-player{
         width: 100%;
-        height: 60vh;
+        height: 600px;
+        // height: 60vh;
     }
     .description-wrapper{
         padding-top: 24px;
@@ -29,5 +30,17 @@
             font-size: 0.9em;
         }
     }
+}
+
+@media only screen and (max-width: 600px) {
+    .podcast-page{
+        .youtube-player{
+            width: 100%;
+            height: 400px;
+
+        }
+
+    }
+
 }
 
