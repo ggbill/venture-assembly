@@ -2,9 +2,9 @@ import { Accordion, AccordionDetails, AccordionSummary, Button, Card } from '@ma
 import React, { useEffect, useState } from 'react'
 import MenuBar from '../shared/MenuBar'
 import './pitchDeckReview.scss'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import PitchDeckReviewDialog from './PitchDeckReviewDialog';
-import NotificationDialog from '../shared/NotificationDialog';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import PitchDeckReviewDialog from './PitchDeckReviewDialog'
+// import NotificationDialog from '../shared/NotificationDialog'
 import { useHistory } from 'react-router-dom'
 import LlwelynImage from '../../images/Llewellyn.jpg'
 import SwitchdImage from '../../images/switchd-250-x250.png'
@@ -12,36 +12,36 @@ import SwitchdImage from '../../images/switchd-250-x250.png'
 const PitchDeckReview = () => {
 
     const [isPitchDeckReviewDialogOpen, setIsPitchDeckReviewDialogOpen] = useState<boolean>(false)
-    const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "", isShowDonateButton: false })
+    // const [notificationDialogProperties, setNotificationDialogProperties] = useState<any>({ isOpen: false, type: "", title: "", message: "", isShowDonateButton: false })
 
     const history = useHistory()
 
-    useEffect(() => {
-        // Check to see if this is a redirect back from Checkout
-        const query = new URLSearchParams(window.location.search);
-        if (query.get("success")) {
-            setNotificationDialogProperties({
-                isOpen: true,
-                type: "NOTIFICATION",
-                title: "🎉 Success!",
-                message: "Your card has been charged and a receipt emailed to the email address provided. We will review your pitch deck and notify you via email once it is complete. In the meantime if you have any questions please don't hesitate to drop us an email to hello@ventureassembly.co."
-            })
-        }
-        if (query.get("cancelled")) {
-            setNotificationDialogProperties({
-                isOpen: true,
-                type: "NOTIFICATION",
-                title: "⛔ Order Cancelled",
-                message: "Your order has been cancelled and your card has not been charged. If you have any questions please don't hesitate to drop us an email to hello@ventureassembly.co."
-            })
-        }
-    }, []);
+    // useEffect(() => {
+    //     // Check to see if this is a redirect back from Checkout
+    //     const query = new URLSearchParams(window.location.search);
+    //     if (query.get("success")) {
+    //         setNotificationDialogProperties({
+    //             isOpen: true,
+    //             type: "NOTIFICATION",
+    //             title: "🎉 Success!",
+    //             message: "Your card has been charged and a receipt emailed to the email address provided. We will review your pitch deck and notify you via email once it is complete. In the meantime if you have any questions please don't hesitate to drop us an email to hello@ventureassembly.co."
+    //         })
+    //     }
+    //     if (query.get("cancelled")) {
+    //         setNotificationDialogProperties({
+    //             isOpen: true,
+    //             type: "NOTIFICATION",
+    //             title: "⛔ Order Cancelled",
+    //             message: "Your order has been cancelled and your card has not been charged. If you have any questions please don't hesitate to drop us an email to hello@ventureassembly.co."
+    //         })
+    //     }
+    // }, []);
 
     return (
         <div className="pitch-deck-review-page">
             <MenuBar />
             <div className="content top-page-margin">
-                <div className="intro-wrapper">
+                <section className="intro-section">
                     <span className="page-title">🕵️ Pitch Deck Review.</span>
                     <p>
                         Have one of our expert team review your pitch deck for you before presenting it to potential investors.
@@ -49,8 +49,8 @@ const PitchDeckReview = () => {
                         opinions and suggestions, that could help you secure that much needed cash injection.
                     </p>
                     <Button className="va-button" onClick={() => setIsPitchDeckReviewDialogOpen(true)}>Let's Go</Button>
-                </div>
-                <div className="feedback-wrapper">
+                </section>
+                <section className="feedback-section">
                     <span className="feedback">
                         "Ed's experience and the sheer number of decks he's seen mean he and the team are in a brilliant position to be able to give really
                         useful and practical advice on how to improve a pitch deck. He provided some really excellent pointers that I never would have thought
@@ -75,8 +75,8 @@ const PitchDeckReview = () => {
                     </div>
 
 
-                </div>
-                <div className="how-it-works-wrapper">
+                </section>
+                <section className="how-it-works-section">
                     <span className="page-subtitle">How it works.</span>
                     <div className="steps-wrapper">
                         <Card className="step-card">
@@ -96,8 +96,8 @@ const PitchDeckReview = () => {
                             <span className="description">We will step through your deck with you via video call, providing comments and feedback.</span>
                         </Card>
                     </div>
-                </div>
-                <div className="faq-wrapper">
+                </section>
+                <section className="faq-section">
                     <span className="page-subtitle">FAQs.</span>
                     <div className="accordion-wrapper">
                         <Accordion>
@@ -152,7 +152,7 @@ const PitchDeckReview = () => {
                         </Accordion>
                     </div>
 
-                </div>
+                </section>
             </div>
 
             <PitchDeckReviewDialog
@@ -160,7 +160,7 @@ const PitchDeckReview = () => {
                 isDialogOpen={isPitchDeckReviewDialogOpen}
             />
 
-            <NotificationDialog
+            {/* <NotificationDialog
                 handleClose={() => {
                     setNotificationDialogProperties({ ...notificationDialogProperties, isOpen: false })
                     history.push(`/pitch-deck-review`)
@@ -170,7 +170,7 @@ const PitchDeckReview = () => {
                 title={notificationDialogProperties.title}
                 type={notificationDialogProperties.type}
                 isShowDonateButton={notificationDialogProperties.isShowDonateButton}
-            />
+            /> */}
 
         </div>
     )

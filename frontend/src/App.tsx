@@ -11,6 +11,7 @@ import ScrollToTop from './components/shared/scrollToTop'
 import Podcasts from './components/podcasts/Podcasts'
 import PodcastPage from './components/podcastPage/PodcastPage'
 import PitchDeckReview from './components/pitchDeckReview/PitchDeckReview'
+import Faas from './components/faas/Faas'
 
 
 const history = createBrowserHistory();
@@ -51,6 +52,11 @@ function App() {
                         <Route
                             path="/pitch-deck-review"
                             component={PitchDeckReview}
+                            exact
+                        />
+                        <Route
+                            path="/founder-as-a-service"
+                            component={Faas}
                             exact
                         />
                     </Switch>
