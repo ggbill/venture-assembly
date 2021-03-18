@@ -120,9 +120,9 @@ const FaasEnquiryDialog = (props: InputProps) => {
                             >
                                 <ListItem value="">Please Select</ListItem>
                                 <ListItem value="One Off">One Off (£200)</ListItem>
-                                <ListItem value="Monthly">Monthly (£300 / month)</ListItem>
+                                <ListItem value="Occasional">Occasional (£300 / month)</ListItem>
                                 <ListItem value="Fortnightly">Fortnightly (£500 / month)</ListItem>
-                                <ListItem value="Weekly">Weekly (£1,000 / month)</ListItem>
+                                <ListItem value="Dedicated">Dedicated (£1,000 / month)</ListItem>
                                 <ListItem value="Not Sure">Not sure yet</ListItem>
                             </Select>
                             {!faasEnquiryValidation.getValidation("package").isValid && <FormHelperText>{faasEnquiryValidation.getValidation("package").validationMessage} </FormHelperText>}
