@@ -23,7 +23,7 @@ const Faas = () => {
                     <p>
                         This service has been deisnged to be as flexible as possible. We will not take any equity in your business and you will not be
                         tied in with long contracts. You can cancel at any time for no penalty and if you feel our service is of no value we will happily
-                        provide a refund.
+                        provide a refund no questions asked.
                     </p>
                     <Button className="va-button" onClick={() => setIsFaasDialogOpen(true)}>Make an Enquiry</Button>
                 </section>
