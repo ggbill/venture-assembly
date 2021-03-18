@@ -4,6 +4,7 @@ import MenuBar from '../shared/MenuBar'
 import './faas.scss'
 import '../pitchDeckReview/pitchDeckReview.scss'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import FaasEnquiryDialog from './FaasEnquiryDialog'
 
 const Faas = () => {
 
@@ -17,8 +18,12 @@ const Faas = () => {
                     <span className="page-title">👨‍🔧👩‍🏭👨‍💻 Founder as a Service (FaaS).</span>
                     <p>
                         Bring the Venture Assembly team on board as co-founders for your company. We have a range of skills, experience and contacts that
-                        we can bring to your organisation that can be used to suppliment your existing team. This can be structured on a one of basis for a specific use case
-                        or as an ongoing relationship.
+                        we can bring to your organisation that can be used to suppliment your existing team.
+                    </p>
+                    <p>
+                        This service has been deisnged to be as flexible as possible. We will not take any equity in your business and you will not be
+                        tied in with long contracts. You can cancel at any time for no penalty and if you feel our service is of no value we will happily
+                        provide a refund.
                     </p>
                     <Button className="va-button" onClick={() => setIsFaasDialogOpen(true)}>Make an Enquiry</Button>
                 </section>
@@ -85,7 +90,7 @@ const Faas = () => {
                         </div>
                         <div className="package-card">
                             <Card>
-                                <span className="title">📆 Monthly</span>
+                                <span className="title">📆 Occasional</span>
                                 <span className="description">Monthly calls to update on progress against agreed targets. An ongoing open line of communication through our dedicated Slack channel.</span>
                                 <span className="sub-title">Specifics</span>
                                 <span className="structure">1 x 45 minute call per month. Dedicated slack channel.</span>
@@ -105,10 +110,10 @@ const Faas = () => {
                         </div>
                         <div className="package-card">
                             <Card>
-                                <span className="title">📆 Weekly</span>
-                                <span className="description">Weekly calls to update on progress against agreed targets. An ongoing open line of communication through our dedicated Slack channel.</span>
-                            <span className="sub-title">Specifics</span>
-                                <span className="structure">4 x 45 minute calls per month. Dedicated slack channel.</span>
+                                <span className="title">📆 Dedicated </span>
+                                <span className="description">Three calls per month with optional guest experts invited to support on specific issues. Priority support through our dedicated Slack channel.</span>
+                                <span className="sub-title">Specifics</span>
+                                <span className="structure">3 x 45 minute calls per month. Specialist support available. Dedicated slack channel.</span>
                                 <span className="sub-title">Cost</span>
                                 <span className="cost">£1,000 / month.</span>
                             </Card>
@@ -128,13 +133,24 @@ const Faas = () => {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                ❓ Is this service just a series of zoom calls?
+                                ❓ What types of company will benefit most from FaaS?
                         </AccordionSummary>
                             <AccordionDetails>
-                                <span>📣 Absolutely not. The FaaS model is based around regular calls to keep a structure to the relationship and to encourage open discussions about
-                                ideas and strategy. However, we will constantly be looking out for new opportunities, customers, partnerships, etc that we come across on a day to day
-                                basis and letting you know by <a href="https://www.yac.com/" target="_blank" rel="norefferer">Yac</a> as soon as they crop up. We really do want you to feel like us as a part of your team, albeit limited to a certain
-                                number of hours per month.</span>
+                                <span>📣 Founder as a Service (FaaS) is ideal for companies who are looking to fill a skills gap within the team, either on a
+                                temporary or longer term basis. Some examples as follows:
+                                    <ul>
+                                        <li>You are about to undertake a significant project within the company such as a technical implementation or a fundraising
+                                            round and you want some specialist advice to ensure the project is a success.
+                                        </li>
+                                        <li>You have identified a specific skills gap within the team that is holding the company back. However, you do not have the funds
+                                            to hire a full time employee or contractor and you do not want to hand over equity to a new co-founder.
+                                        </li>
+                                        <li>You are in the process of expanding the team and you want support identifying and selecting the right candidate.</li>
+                                        <li>You are a single founder and you want a direct line of communication with a team with a range of skills and experience
+                                            to validate thinking and bounce around ideas.
+                                        </li>
+                                    </ul>
+                                </span>
 
                             </AccordionDetails>
                         </Accordion>
@@ -144,10 +160,20 @@ const Faas = () => {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                ❓ What skills can you bring to the table
+                                ❓ What skills can can the VA team bring to my business?
                         </AccordionSummary>
                             <AccordionDetails>
-                                📣
+                                📣 Our team have vast experience of working closely with startups and are well placed to support with the vast array of activities 
+                                that are required to set up and run a new business. We also have more specialist skills in the following areas:
+                                <ul>
+                                    <li>Fundraising</li>
+                                    <li>Technology</li>
+                                    <li>Design</li>
+                                    <li>Marketing</li>
+                                </ul>
+                                If we don't think we are well placed to support you for your specific use case we will tell you and even refund you if we agree we have
+                                not been of any use. However, we have a strong experience in startups and feel fairly confident that we can bring some sort of value to
+                                most companies.
                         </AccordionDetails>
                         </Accordion>
                         <Accordion>
@@ -156,10 +182,12 @@ const Faas = () => {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                ❓ What if I do not find your input useful?
+                                ❓ How do I know it is going to be worth the cost?
                         </AccordionSummary>
                             <AccordionDetails>
-                                📣
+                                📣 Every business is different and their needs are unique, so we can't guarantee we are going to be able to help and to a certain extent
+                                you will have to suck it and see. However, you can rest assured that our primary goal is to bring benefit and value to your company in 
+                                any way that we can. If you feel that we havent been able to do that, we will happily provide you with a full refund.
                         </AccordionDetails>
                         </Accordion>
                         <Accordion>
@@ -168,25 +196,25 @@ const Faas = () => {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                ❓ I can't afford a graphic designer to make my deck look super slick, will that be a problem?
+                                ❓ What is Faas&nbsp;<b>{`not`}</b>&nbsp;suitable for?
                         </AccordionSummary>
                             <AccordionDetails>
-                                <div>📣 TLDR version - No.</div>
-                                <div>📣 Longer answer - It is certainly not a requirement to use a graphic designer to create a compelling pitch deck.
-                                We will be reviewing the content of the deck from the eyes of an investor and will only comment on design if it is affecting the quality of the deck as a whole.</div>
-                            </AccordionDetails>
+                                📣 We will support, advise and guide you on any topics that you require but what we will not do is physically work on tasks on behalf of
+                                your company. We act in an advisory role only.
+                        </AccordionDetails>
                         </Accordion>
+
                     </div>
 
                 </section>
             </div>
 
-            {/* <PitchDeckReviewDialog
-                handleClose={() => setIsPitchDeckReviewDialogOpen(false)}
-                isDialogOpen={isPitchDeckReviewDialogOpen}
+            <FaasEnquiryDialog
+                handleClose={() => setIsFaasDialogOpen(false)}
+                isDialogOpen={isFaasDialogOpen}
             />
 
-            <NotificationDialog
+            {/* <NotificationDialog
                 handleClose={() => {
                     setNotificationDialogProperties({ ...notificationDialogProperties, isOpen: false })
                     history.push(`/pitch-deck-review`)

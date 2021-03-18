@@ -1,12 +1,8 @@
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormHelperText, InputLabel, ListItem, Select, TextField } from '@material-ui/core'
 import React, { useRef, useState } from 'react'
 import './faasEnquiryDialog.scss'
-// import usePitchDeckReviewValidation from './usePitchDeckReviewValidation'
-import { loadStripe } from "@stripe/stripe-js";
-import Calendly from '../shared/Calendly';
+import useFaasEnquiryValidation from './useFaasEnquiryValidation'
 import useFetch from '../../hooks/useFetch';
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY || "");
 
 interface InputProps {
     isDialogOpen: boolean,
@@ -14,281 +10,174 @@ interface InputProps {
 }
 
 const FaasEnquiryDialog = (props: InputProps) => {
-    // const [reviewDetails, setReviewDetails] = useState<any>({ name: "", companyName: "", email: "", message: "", pitchDeckUrl: "", pitchDeckFile: {} as File })
-    // const [stepNumber, setStepNumber] = useState<number>(1)
-    // const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(false)
-    // const [isBookingSuccess, setIsBookingSuccess] = useState<boolean>(false)
-    // // const [calendlyEventDetails, setCalendlyEventDetails] = useState<any>({})
-    // const pitchDeckReviewValidation = usePitchDeckReviewValidation()
-    // const inputFile: any = useRef(null)
-    // const pitchDeckReviewApi = useFetch("pitchDeckReview")
+    const [enquiryDetails, setEnquiryDetails] = useState<any>({ name: "", companyName: "", website: "", email: "", package: "", message: "" })
+    const [isAgreedTerms, setIsAgreedTerms] = useState<boolean>(false)
+    const faasEnquiryValidation = useFaasEnquiryValidation()
+    const faasApi = useFetch("faas")
 
-    // const closeSuccessDialog = () => {
-    //     setStepNumber(1)
-    //     setIsBookingSuccess(false)
-    //     props.handleClose()
-    // }
+    const closeSuccessDialog = () => {
+        props.handleClose()
+    }
 
-    // // const updateCalendlyEventDetails = (eventUri, inviteeUri) => {
-    // //     setCalendlyEventDetails({ eventUri: eventUri, inviteeUri: inviteeUri })
-    // // }
+    const submitEnquiry = () => {
+        if (faasEnquiryValidation.validateInputs(enquiryDetails, isAgreedTerms)) {
+            faasApi.post("create", enquiryDetails)
+                .then((result) => {
+                    // console.log(result)
+                }).catch((err: Error) => {
+                    console.log(err)
+                })
 
-    // const goToNextStep = () => {
-    //     if (pitchDeckReviewValidation.validateInputs(reviewDetails, isAgreedTerms)) {
-    //         const formData = new FormData();
-    //         formData.append("file", reviewDetails.pitchDeckFile);
-    //         formData.append("upload_preset", "wb88wjmq");
-    //         formData.append("folder", "Pitch Deck Reviews");
-    //         formData.append("tags", `${reviewDetails.name}, ${reviewDetails.email}`);
+        } else {
+            console.log("not valid")
+        }
 
-    //         fetch("https://api.cloudinary.com/v1_1/venture-assembly/raw/upload", {
-    //             method: "POST",
-    //             body: formData
-    //         })
-    //             .then(response => response.json())
-    //             .then(json => {
-    //                 console.log(`success: ${JSON.stringify(json)}`)
-    //                 // stripeCheckout()
-    //                 setReviewDetails({...reviewDetails, pitchDeckUrl: json.url})
-    //                 setStepNumber(stepNumber + 1)
-    //             }).catch(err => {
-    //                 console.log("fail")
-    //                 throw new Error(err);
-    //             });
+    }
 
-    //     } else {
-    //         console.log("not valid")
-    //     }
-    // }
+    return (
+        <Dialog
+            open={props.isDialogOpen}
+            onClose={props.handleClose}
+            aria-labelledby="form-dialog-title"
+            className="faas-enquiry-dialog"
+        >
+            <DialogTitle id="form-dialog-title">Founder as a Service Enquiry.</DialogTitle>
+            <DialogContent>
+                <div className="intro-text">
+                    In order to enquire about Founder as a Service, please enter some basic details below and we will get back to you within 48 hours (usually quicker!).
+                </div>
+                <div className="inputs-wrapper">
+                    <div className="field-wrapper">
+                        <TextField
+                            id="name"
+                            name="name"
+                            className=""
+                            label="Your Name"
+                            variant="outlined"
+                            value={enquiryDetails.name}
+                            onChange={(event) => setEnquiryDetails({ ...enquiryDetails, name: event.target.value })}
+                            required
+                            fullWidth
+                            error={!faasEnquiryValidation.getValidation("name").isValid}
+                            helperText={!faasEnquiryValidation.getValidation("name").isValid && faasEnquiryValidation.getValidation("name").validationMessage}
+                        />
+                    </div>
+                    <div className="field-wrapper">
+                        <TextField
+                            id="companyName"
+                            name="companyName"
+                            className=""
+                            label="Your Company's Name"
+                            variant="outlined"
+                            value={enquiryDetails.companyName}
+                            onChange={(event) => setEnquiryDetails({ ...enquiryDetails, companyName: event.target.value })}
+                            required
+                            fullWidth
+                            error={!faasEnquiryValidation.getValidation("companyName").isValid}
+                            helperText={!faasEnquiryValidation.getValidation("companyName").isValid && faasEnquiryValidation.getValidation("companyName").validationMessage}
+                        />
+                    </div>
+                    <div className="field-wrapper">
+                        <TextField
+                            id="email"
+                            name="email"
+                            className=""
+                            label="Your Email Address"
+                            variant="outlined"
+                            value={enquiryDetails.email}
+                            onChange={(event) => setEnquiryDetails({ ...enquiryDetails, email: event.target.value })}
+                            required
+                            fullWidth
+                            error={!faasEnquiryValidation.getValidation("email").isValid}
+                            helperText={!faasEnquiryValidation.getValidation("email").isValid && faasEnquiryValidation.getValidation("email").validationMessage}
+                        />
+                    </div>
+                    {/* <div className="field-wrapper">
+                        <TextField
+                            id="website"
+                            name="website"
+                            className=""
+                            label="Your Company's Website (if applicable)"
+                            variant="outlined"
+                            value={enquiryDetails.website}
+                            onChange={(event) => setEnquiryDetails({ ...enquiryDetails, website: event.target.value })}
+                            fullWidth
+                        />
+                    </div> */}
+                    <div className="field-wrapper">
+                        <FormControl variant="outlined"
+                         required
+                         error={!faasEnquiryValidation.getValidation("package").isValid}
+                         >
+                            <InputLabel id="package-label">Which Package Are You Interested In?</InputLabel>
+                            <Select
+                                labelId="package-label"
+                                id="package"
+                                name="package"
+                                value={enquiryDetails.package}
+                                onChange={(event) => setEnquiryDetails({ ...enquiryDetails, package: event.target.value })}
+                                label="Which Package Are You Interested In? *"
+                            >
+                                <ListItem value="">Please Select</ListItem>
+                                <ListItem value="One Off">One Off (£200)</ListItem>
+                                <ListItem value="Monthly">Monthly (£300 / month)</ListItem>
+                                <ListItem value="Fortnightly">Fortnightly (£500 / month)</ListItem>
+                                <ListItem value="Weekly">Weekly (£1,000 / month)</ListItem>
+                                <ListItem value="Not Sure">Not sure yet</ListItem>
+                            </Select>
+                            {!faasEnquiryValidation.getValidation("package").isValid && <FormHelperText>{faasEnquiryValidation.getValidation("package").validationMessage} </FormHelperText>}
+                        </FormControl>
+                    </div>
 
-    // const persistRoundToDB = (calendlyEventUri, calendlyInviteeUri) => {
-    //     setIsBookingSuccess(true)
-    //     console.log(reviewDetails)
-
-    //     pitchDeckReviewApi.post("create", {
-    //         ...reviewDetails,
-    //         calendlyEventUri: calendlyEventUri,
-    //         calendlyInviteeUri: calendlyInviteeUri
-    //     }).then((result) => {
-    //         // console.log(result)
-    //     }).catch((err: Error) => {
-    //         console.log(err)
-    //     })
-    // }
-
-    // // const stripeCheckout = async () => {
-    // //     const stripe = await stripePromise;
-    // //     const response = await fetch("/stripe/create-checkout-session", {
-    // //         method: "POST",
-    // //         headers: {
-    // //             'Accept': 'application/json',
-    // //             'Content-Type': 'application/json'
-    // //         },
-    // //         body: JSON.stringify(reviewDetails),
-    // //     });
-    // //     const session = await response.json();
-    // //     // When the customer clicks on the button, redirect them to Checkout.
-    // //     const result = await stripe!.redirectToCheckout({
-    // //         sessionId: session.id,
-    // //     });
-    // //     if (result.error) {
-    // //         // If `redirectToCheckout` fails due to a browser or network
-    // //         // error, display the localized error message to your customer
-    // //         // using `result.error.message`.
-    // //     }
-    // // }
-
-    return (<></>
-        // <Dialog
-        //     open={props.isDialogOpen}
-        //     onClose={props.handleClose}
-        //     aria-labelledby="form-dialog-title"
-        //     className="pitch-deck-review-dialog"
-        // >
-        //     <DialogTitle id="form-dialog-title">Pitch Deck Review.</DialogTitle>
-        //     <DialogContent>
-        //         <div className="step">
-        //             Step {stepNumber} of 2
-        //         </div>
-
-        //         {stepNumber === 1 ?
-        //             <>
-        //                 <div className="intro-text">
-        //                     To book your pitch deck review session, first enter some basic information about you and your company and upload your deck.
-        //                 </div>
-        //                 <div className="inputs-wrapper">
-        //                     <div className="field-wrapper">
-        //                         <TextField
-        //                             id="name"
-        //                             name="name"
-        //                             className=""
-        //                             label="Your Name"
-        //                             variant="outlined"
-        //                             value={reviewDetails.name}
-        //                             onChange={(event) => setReviewDetails({ ...reviewDetails, name: event.target.value })}
-        //                             required
-        //                             fullWidth
-        //                             error={!pitchDeckReviewValidation.getValidation("name").isValid}
-        //                             helperText={!pitchDeckReviewValidation.getValidation("name").isValid && pitchDeckReviewValidation.getValidation("name").validationMessage}
-        //                         />
-        //                     </div>
-        //                     <div className="field-wrapper">
-        //                         <TextField
-        //                             id="companyName"
-        //                             name="companyName"
-        //                             className=""
-        //                             label="Your Company's Name"
-        //                             variant="outlined"
-        //                             value={reviewDetails.companyName}
-        //                             onChange={(event) => setReviewDetails({ ...reviewDetails, companyName: event.target.value })}
-        //                             required
-        //                             fullWidth
-        //                             error={!pitchDeckReviewValidation.getValidation("companyName").isValid}
-        //                             helperText={!pitchDeckReviewValidation.getValidation("companyName").isValid && pitchDeckReviewValidation.getValidation("companyName").validationMessage}
-        //                         />
-        //                     </div>
-        //                     <div className="field-wrapper">
-        //                         <TextField
-        //                             id="email"
-        //                             name="email"
-        //                             className=""
-        //                             label="Your Email Address"
-        //                             variant="outlined"
-        //                             value={reviewDetails.email}
-        //                             onChange={(event) => setReviewDetails({ ...reviewDetails, email: event.target.value })}
-        //                             required
-        //                             fullWidth
-        //                             error={!pitchDeckReviewValidation.getValidation("email").isValid}
-        //                             helperText={!pitchDeckReviewValidation.getValidation("email").isValid && pitchDeckReviewValidation.getValidation("email").validationMessage}
-        //                         />
-        //                     </div>
-        //                     <div className="field-wrapper" onClick={() => inputFile.current.click()}>
-        //                         <input
-        //                             accept=".pdf"
-        //                             style={{ display: 'none' }}
-        //                             type="file"
-        //                             onChange={(event) => {
-        //                                 if (!event.target.files) return
-        //                                 setReviewDetails({ ...reviewDetails, pitchDeckFile: event.target.files[0] })
-        //                             }}
-        //                             ref={inputFile}
-        //                         />
-
-        //                         <TextField
-        //                             label="Your Pitch Deck (pdf only)"
-        //                             variant="outlined"
-        //                             defaultValue="Select a File"
-        //                             value={reviewDetails.pitchDeckFile ? reviewDetails.pitchDeckFile.name : "Select a File"}
-        //                             disabled
-
-        //                             required
-        //                             fullWidth
-        //                             error={!pitchDeckReviewValidation.getValidation("pitchDeckFile").isValid}
-        //                             helperText={!pitchDeckReviewValidation.getValidation("pitchDeckFile").isValid && pitchDeckReviewValidation.getValidation("pitchDeckFile").validationMessage}
-        //                         />
-
-        //                     </div>
-
-        //                     <TextField
-        //                         id="message"
-        //                         name="message"
-        //                         className=""
-        //                         label="Anything you would like us to know"
-        //                         variant="outlined"
-        //                         value={reviewDetails.message}
-        //                         onChange={(event) => setReviewDetails({ ...reviewDetails, message: event.target.value })}
-        //                         fullWidth
-        //                         multiline
-        //                         rows={5}
-        //                         rowsMax={5}
-        //                     // error={!pitchDeckReviewValidation.getValidation("message").isValid}
-        //                     // helperText={!pitchDeckReviewValidation.getValidation("message").isValid && pitchDeckReviewValidation.getValidation("message").validationMessage}
-        //                     />
-        //                 </div>
+                    <TextField
+                        id="message"
+                        name="message"
+                        className=""
+                        label="Brief description of what you are looking to get out of the service"
+                        variant="outlined"
+                        value={enquiryDetails.message}
+                        onChange={(event) => setEnquiryDetails({ ...enquiryDetails, message: event.target.value })}
+                        fullWidth
+                        multiline
+                        rows={5}
+                        rowsMax={5}
+                        required
+                    error={!faasEnquiryValidation.getValidation("message").isValid}
+                    helperText={!faasEnquiryValidation.getValidation("message").isValid && faasEnquiryValidation.getValidation("message").validationMessage}
+                    />
+                </div>
 
 
-        //                 <div className="ts-and-cs-wrapper">
-        //                     {!pitchDeckReviewValidation.getValidation("isTermsAgreed").isValid &&
-        //                         <FormHelperText className="ts-and-cs-error">{pitchDeckReviewValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
-        //                     }
-        //                     <FormControlLabel
-        //                         labelPlacement="start"
-        //                         control={
-        //                             <Checkbox
-        //                                 checked={isAgreedTerms}
-        //                                 onChange={(event) => setIsAgreedTerms(event.target.checked)}
-        //                                 name="isAgreedTerms"
-        //                             />
-        //                         }
-        //                         label="I agree to Venture Assembly's Privacy Policy"
-        //                         className="tech-checkbox"
-        //                     />
-        //                 </div>
-        //             </>
-        //             :
-        //             <>
-        //                 <div className="intro-text">
-        //                     Next, please select an available slot in which to book the call. We will add a Google Hangouts link to the meeting in advance of the call.
-        //                 </div>
-
-        //                 <Calendly
-        //                     name={reviewDetails.name}
-        //                     companyName={reviewDetails.companyName}
-        //                     email={reviewDetails.email}
-        //                     eventType="Pitch Deck Review"
-        //                     calendlySrc={`${process.env.REACT_APP_CALENDLY_PICTCH_DECK_REVIEW_URL}?embed_domain=https://www.ventureassembly.co&embed_type=Inline&name=${encodeURI(reviewDetails.name)}&email=${encodeURI(reviewDetails.email)}`}
-        //                     // setCalendlyEventDetails={updateCalendlyEventDetails}
-        //                     onBookingSuccess={persistRoundToDB}
-        //                 />
-        //             </>
-        //         }
-
-
-
-
-
-        //     </DialogContent>
-        //     {/* <DialogActions>
-        //         <Button onClick={() => props.handleClose(false)} >
-        //             Cancel
-        //         </Button>
-        //         <Button onClick={() => submit()} className="va-button">
-        //             Proceed to Secure Payment
-        //         </Button>
-        //     </DialogActions> */}
-        //     {stepNumber === 1 ?
-        //         <DialogActions>
-        //             {!pitchDeckReviewValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
-        //             <div className="button-wrapper">
-        //                 <Button className="va-button cancel" onClick={() => props.handleClose()} >
-        //                     Cancel
-        //                 </Button>
-        //                 <Button id="submit" className="va-button confirm" onClick={goToNextStep}>
-        //                     Next
-        //                 </Button>
-        //             </div>
-        //         </DialogActions>
-        //         :
-        //         <DialogActions>
-        //             {isBookingSuccess ?
-        //                 <div className="button-wrapper">
-        //                     <Button className="va-button confirm" onClick={closeSuccessDialog} >
-        //                         Done
-        //                  </Button>
-        //                 </div>
-
-        //                 :
-        //                 <div className="button-wrapper">
-        //                     <Button className="va-button cancel" onClick={() => setStepNumber(stepNumber - 1)} >
-        //                         Back
-        //                  </Button>
-        //                 </div>
-
-        //             }
-
-        //         </DialogActions>
-        //     }
-        // </Dialog>
+                <div className="ts-and-cs-wrapper">
+                    {!faasEnquiryValidation.getValidation("isTermsAgreed").isValid &&
+                        <FormHelperText className="ts-and-cs-error">{faasEnquiryValidation.getValidation("isTermsAgreed").validationMessage}</FormHelperText>
+                    }
+                    <FormControlLabel
+                        labelPlacement="start"
+                        control={
+                            <Checkbox
+                                checked={isAgreedTerms}
+                                onChange={(event) => setIsAgreedTerms(event.target.checked)}
+                                name="isAgreedTerms"
+                            />
+                        }
+                        label="I agree to Venture Assembly's Privacy Policy"
+                        className="tech-checkbox"
+                    />
+                </div>
+            </DialogContent>
+            <DialogActions>
+                {!faasEnquiryValidation.isValidationPassed && <span className="validation-text">Errors highlighted in form - please resolve.</span>}
+                <div className="button-wrapper">
+                    <Button className="va-button cancel" onClick={() => props.handleClose()} >
+                        Cancel
+                        </Button>
+                    <Button id="submit" className="va-button confirm" onClick={submitEnquiry}>
+                        Next
+                        </Button>
+                </div>
+            </DialogActions>
+        </Dialog>
     )
 }
 

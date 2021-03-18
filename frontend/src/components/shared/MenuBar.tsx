@@ -75,9 +75,9 @@ const MenuBar = () => {
                             <Link to={'/pitch-deck-review'}>
                                 <span>Pitch Deck Review</span>
                             </Link>
-                            {/* <Link to={'/founder-as-a-service'}>
+                            <Link to={'/founder-as-a-service'}>
                                 <span>Founder as a Service</span>
-                            </Link> */}
+                            </Link>
                             <Link to={'/round-planner'}>
                                 <span>Round Planner</span>
                             </Link>
@@ -126,9 +126,9 @@ const MenuBar = () => {
                         <Link to={`/pitch-deck-review`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Pitch Deck Review</MenuItem>
                         </Link>
-                        {/* <Link to={`/founder-as-a-service`}>
+                        <Link to={`/founder-as-a-service`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Founder as a Service</MenuItem>
-                        </Link> */}
+                        </Link>
                         <Link to={`/round-planner`}>
                             <MenuItem onClick={() => { setIsDrawerOpen(false) }}>Round Planner</MenuItem>
                         </Link>

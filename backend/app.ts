@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 import stripeRouter from './routes/stripe';
 import roundPlannerRouter from './routes/roundPlanner';
 import pitchDeckReviewRouter from './routes/pitchDeckReview';
+import faasRouter from './routes/faas';
 
 
 const app = express();
@@ -39,6 +40,7 @@ app.use((req, res, next) => {
 app.use('/stripe', stripeRouter);
 app.use('/roundPlanner', roundPlannerRouter);
 app.use('/pitchDeckReview', pitchDeckReviewRouter);
+app.use('/faas', faasRouter);
 
 // app.post('/webhook', (request, response) => {
 

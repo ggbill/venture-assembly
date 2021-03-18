@@ -28,6 +28,7 @@
     "@material-ui/pickers": "^3.2.10",
     "@material-ui/styles": "^4.5.0",
     "@react-pdf/renderer": "^1.6.13",
+    "@sendgrid/mail": "^7.4.2",
     "@stripe/react-stripe-js": "^1.2.2",
     "@stripe/stripe-js": "^1.12.1",
     "@types/express": "^4.17.1",
