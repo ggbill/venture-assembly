@@ -51,6 +51,7 @@
     "react-https-redirect": "^1.1.0",
     "react-lazy-load-image-component": "^1.5.1",
     "react-number-format": "^4.4.1",
+    "react-responsive-carousel": "^3.2.15",
     "react-router-dom": "^5.1.2",
     "react-typist": "^2.0.5",
     "react-youtube": "^7.13.1",

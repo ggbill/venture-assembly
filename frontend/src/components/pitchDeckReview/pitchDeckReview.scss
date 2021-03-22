@@ -1,52 +1,68 @@
-.pitch-deck-review-page, .faas-page {
+.pitch-deck-review-page,
+.faas-page {
     .intro-section {
         padding: 40px 0 20px;
     }
 
     .feedback-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 60px 0;
-        font-size: 0.9em;
 
-        .feedback {
-            font-style: italic;
-            margin-bottom: 12px;
+        .carousel-root{
+            .control-dots{
+                .dot{
+                    background: #071013;
+                    opacity: 1;
+                    &.selected{
+                        background: #da4167;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
         }
 
-        .feedbacker-wrapper {
+        .feedback-wrapper {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            font-size: 0.9em;
 
-            .images-wrapper{
+            .feedback {
+                font-style: italic;
+                margin-bottom: 12px;
+            }
+
+            .feedbacker-wrapper {
                 display: flex;
                 flex-direction: row;
+                align-items: center;
 
-                img{
-                    width: 60px;
-                    height: 60px;
-                    border-radius: 50%;
+                .images-wrapper {
+                    display: flex;
+                    flex-direction: row;
 
-                    &.avatar{
-                        position: relative;
-                        left: -12px;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+
+                        &.avatar {
+                            position: relative;
+                            left: -12px;
+                        }
                     }
                 }
 
+                .name-wrapper {
+                    display: flex;
+                    flex-direction: column;
 
-
-            }
-
-            .name-wrapper {
-                display: flex;
-                flex-direction: column;
-
-                .name {
-                    font-weight: bold;
-                    color: #1f1f1f;
+                    .name {
+                        font-weight: bold;
+                        color: #1f1f1f;
+                    }
                 }
             }
         }
@@ -96,7 +112,8 @@
 }
 
 @media only screen and (max-width: 850px) {
-    .pitch-deck-review-page, .faas-page {
+    .pitch-deck-review-page,
+    .faas-page {
         .how-it-works-section {
             .steps-wrapper {
                 display: flex;
@@ -116,7 +133,8 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .pitch-deck-review-page, .faas-page {
+    .pitch-deck-review-page,
+    .faas-page {
         .intro-section {
             .va-button {
                 width: 100%;
