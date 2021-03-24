@@ -15,6 +15,7 @@ import stripeRouter from './routes/stripe';
 import roundPlannerRouter from './routes/roundPlanner';
 import pitchDeckReviewRouter from './routes/pitchDeckReview';
 import faasRouter from './routes/faas';
+import airtableRouter from './routes/airtable';
 
 
 const app = express();
@@ -29,7 +30,7 @@ app.use(requestLoggerMiddleware);
 
 // only use the raw bodyParser for webhooks
 app.use((req, res, next) => {
-	console.log(`req.originalUrl: ${req.originalUrl}`)
+	// console.log(`req.originalUrl: ${req.originalUrl}`)
 	if (req.originalUrl === '/webhook') {
 		bodyParser.raw({ type: 'application/json' })(req, res, next)
 	} else {
@@ -41,6 +42,7 @@ app.use('/stripe', stripeRouter);
 app.use('/roundPlanner', roundPlannerRouter);
 app.use('/pitchDeckReview', pitchDeckReviewRouter);
 app.use('/faas', faasRouter);
+app.use('/airtable', airtableRouter);
 
 // app.post('/webhook', (request, response) => {
 

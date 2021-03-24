@@ -54,7 +54,7 @@ const PitchDeckReview = () => {
                 </section>
 
                 <section className="feedback-section">
-                    <Carousel
+                    {/* <Carousel
                         showThumbs={false}
                         centerMode={false}
                         showStatus={false}
@@ -118,7 +118,32 @@ const PitchDeckReview = () => {
 
 
 
-                    </Carousel>
+                    </Carousel> */}
+
+                    <div className="feedback-wrapper">
+                        <span className="feedback">
+                            "Ed's experience and the sheer number of decks he's seen mean he and the team are in a brilliant position to be able to give really
+                            useful and practical advice on how to improve a pitch deck. He provided some really excellent pointers that I never would have thought
+                            of myself!"
+                            </span>
+                        <div className="feedbacker-wrapper">
+                            <div className="images-wrapper">
+                                <a href="https://www.switchd.co.uk" target="_blank" rel="noreferrer">
+                                    <img className="logo" src={SwitchdImage} alt="Switchd Logo" />
+                                    <img className="avatar" src={LlwelynImage} alt="Llwelynn Kinch" />
+                                </a>
+
+                            </div>
+                            <div className="name-wrapper">
+                                <span className="name">
+                                    Llewellyn Kinch
+                             </span>
+                                <span className="position">
+                                    Co-Founder <a href="https://www.switchd.co.uk" target="_blank" rel="noreferrer">Switchd</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </section>
 
 

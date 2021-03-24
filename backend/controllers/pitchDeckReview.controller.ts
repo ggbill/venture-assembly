@@ -1,11 +1,13 @@
 var mongoose = require('mongoose');
 
 import PitchDeckReview, { IPitchDeckReview } from '../models/pitchDeckReview.model';
+import { EmailController } from './email.controller';
 
 export namespace PitchDeckReviewController {
     export async function CreatePitchDeckReview(reviewDetails: any): Promise<IPitchDeckReview> {
         return new Promise((resolve: (result) => void, reject: (error: Error) => void) => {
             PitchDeckReview.create({
+                date: new Date(),
                 name: reviewDetails.name,
                 email: reviewDetails.email,
                 companyName: reviewDetails.companyName,
@@ -18,7 +20,14 @@ export namespace PitchDeckReviewController {
                     console.error("Error: " + err);
                     reject(err)
                 }
-                resolve(result);
+                EmailController.SendPitchDeckReviewConfirmationEmail(reviewDetails)
+                .then(result =>{
+                    resolve(result);
+                })
+                .catch(err => {
+                    //write error to db
+                })
+                
             })
         });
     }
