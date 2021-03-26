@@ -22,7 +22,9 @@ router.get("/get-sdgs", async (req, res) => {
         fetchNextPage();
 
     }, function done(err) {
-        if (err) { console.error(err); return; }
+        if (err) { 
+            res.status(404).send(err);
+        }
         // res.json(Array.from(new Set(tagList.sort())))
         res.json(recordList)
     });
