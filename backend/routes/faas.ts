@@ -6,7 +6,7 @@ const router = require('express').Router();
 router.post("/create", async (request: Request, response: Response) => {
     FaasController.CreateFaasEnquiry(request.body)
     .then((result) => {
-        response.send(result);
+        response.json(result);
     })
     .catch((err) => {
         console.log(err)

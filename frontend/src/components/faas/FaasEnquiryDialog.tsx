@@ -15,15 +15,12 @@ const FaasEnquiryDialog = (props: InputProps) => {
     const faasEnquiryValidation = useFaasEnquiryValidation()
     const faasApi = useFetch("faas")
 
-    const closeSuccessDialog = () => {
-        props.handleClose()
-    }
-
     const submitEnquiry = () => {
         if (faasEnquiryValidation.validateInputs(enquiryDetails, isAgreedTerms)) {
             faasApi.post("create", enquiryDetails)
                 .then((result) => {
                     // console.log(result)
+                    props.handleClose()
                 }).catch((err: Error) => {
                     console.log(err)
                 })
@@ -173,7 +170,7 @@ const FaasEnquiryDialog = (props: InputProps) => {
                         Cancel
                         </Button>
                     <Button id="submit" className="va-button confirm" onClick={submitEnquiry}>
-                        Next
+                        Submit
                         </Button>
                 </div>
             </DialogActions>

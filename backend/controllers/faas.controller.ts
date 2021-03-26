@@ -23,12 +23,8 @@ export namespace FaasController {
                     resolve(res);
                 }).catch(err => {
                     console.log(`ERROR ${err}`)
-                });;
-
-
-
-                // resolve(result);
-
+                    reject(err)
+                });
             })
         });
     }

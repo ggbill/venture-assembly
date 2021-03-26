@@ -25,7 +25,7 @@ export namespace PitchDeckReviewController {
                     resolve(result);
                 })
                 .catch(err => {
-                    //write error to db
+                    reject(err)
                 })
                 
             })

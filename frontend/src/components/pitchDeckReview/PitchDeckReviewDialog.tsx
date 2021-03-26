@@ -47,7 +47,7 @@ const PitchDeckReviewDialog = (props: InputProps) => {
             })
                 .then(response => response.json())
                 .then(json => {
-                    console.log(`success: ${JSON.stringify(json)}`)
+                    // console.log(`success: ${JSON.stringify(json)}`)
                     // stripeCheckout()
                     setReviewDetails({...reviewDetails, pitchDeckUrl: json.url})
                     setStepNumber(stepNumber + 1)
@@ -63,7 +63,6 @@ const PitchDeckReviewDialog = (props: InputProps) => {
 
     const persistRoundToDB = (calendlyEventUri, calendlyInviteeUri) => {
         setIsBookingSuccess(true)
-        console.log(reviewDetails)
 
         pitchDeckReviewApi.post("create", {
             ...reviewDetails,

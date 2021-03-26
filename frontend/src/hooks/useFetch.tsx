@@ -28,7 +28,12 @@ const useFetch = (collection: string) => {
         }
 
         return fetch(url, options)
-            .then(response => response.json())
+            .then(response => {
+                return response.json()
+            })
+            .then(json => {
+                return json
+            })
             .catch(err => {
                 throw new Error(err);
             });
