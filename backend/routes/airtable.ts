@@ -23,10 +23,13 @@ router.get("/get-sdgs", async (req, res) => {
 
     }, function done(err) {
         if (err) { 
+            console.log(err)
             res.status(404).send(err);
+        }else{
+           res.json(recordList) 
         }
         // res.json(Array.from(new Set(tagList.sort())))
-        res.json(recordList)
+        
     });
 });
 
