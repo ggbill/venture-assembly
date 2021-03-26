@@ -12,12 +12,6 @@ router.get("/get-sdgs", async (req, res) => {
         // This function (`page`) will get called for each page of records.
 
         records.forEach(function (record) {
-            // if (record.get('Tags')) {
-            //     record.get('Tags').split(",").forEach(tag => {
-            //         tagList.push(tag.trim())
-            //     });
-            // } 
-
             recordList.push(record)
         });
         
