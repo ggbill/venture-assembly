@@ -5,8 +5,8 @@ import './impact.scss'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { Card, Tooltip } from '@material-ui/core'
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import { ReactComponent as MinusSVG } from '../../images/minus.svg'
+import { ReactComponent as AddSVG } from '../../images/add.svg'
 
 const Impact = () => {
 
@@ -14,6 +14,7 @@ const Impact = () => {
     const [sdgList, setSdgList] = useState<any[]>([])
     const [availableSdgList, setAvailableSdgList] = useState<any[]>([])
     const [selectedSdgList, setSelectedSdgList] = useState<any[]>([])
+    const [filter, setFilter] = useState<string | null>(null)
 
     const airtableApi = useFetch("airtable")
 
@@ -24,38 +25,79 @@ const Impact = () => {
         availableSdgList.forEach((sdg, index) => {
             if (sdg.fields.Number === sdgNumber) {
                 newAvailableSdgList.splice(index, 1)
-                setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+                // setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
 
                 newSelectedSdgList.push(sdg)
-                setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+                // setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
             }
         });
+
+        setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+        setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
     }
 
     const removeSdg = (sdgNumber) => {
         let newAvailableSdgList = Object.assign([], availableSdgList)
         let newSelectedSdgList = Object.assign([], selectedSdgList)
+        
 
         selectedSdgList.forEach((sdg, index) => {
             if (sdg.fields.Number === sdgNumber) {
                 newSelectedSdgList.splice(index, 1)
-                setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+                // setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
 
-                newAvailableSdgList.push(sdg)
-                setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+                // newAvailableSdgList.push(sdg)
+                // setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
             }
         });
 
+        // setFilter(null)
+        // setAvailableSdgList(sdgList)
+
+        filterAvailableSDGs(null, filter)
+        setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
     }
 
     const removeAllSdgs = () => {
         setAvailableSdgList(sdgList)
         setSelectedSdgList([])
+        setFilter(null)
+    }
+
+    const filterAvailableSDGs = (event, value) => {
+        console.log(value)
+        setFilter(value)
+        if (value){
+            let newList = availableSdgList.filter(sdg => {
+                if (sdg.fields.Tags){
+                    return(sdg.fields.Tags.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+                }else{
+                    return(false)
+                }
+            })
+            setAvailableSdgList(newList)
+        }else{
+            let tempAvailableSgdList: any[] = []
+
+            sdgList.forEach(sdg => {
+                let isMatched = false
+                selectedSdgList.forEach(selected => {
+                    if (sdg.fields.Number === selected.fields.Number){
+                        isMatched = true
+                    }  
+                })
+                if (!isMatched){
+                    tempAvailableSgdList.push(sdg)
+                }   
+            });
+
+            setAvailableSdgList(tempAvailableSgdList)
+        }
     }
 
     useEffect(() => {
         airtableApi.get("get-sdgs").then((result) => {
-            console.log(result)
+            // console.log(result)
             setSdgList(result)
             setAvailableSdgList(result)
 
@@ -70,7 +112,7 @@ const Impact = () => {
 
             })
 
-            setUniqueTagList(tempUniqueTagList.sort())
+            setUniqueTagList(Array.from(new Set(tempUniqueTagList.sort())))
 
         }).catch((err: Error) => {
             console.log(err)
@@ -89,10 +131,11 @@ const Impact = () => {
                     <p>Select the SDGs that apply to your business from the list below or use the search box to help select based on key words.</p>
                 </div>
                 <Autocomplete
-                    id="combo-box-demo"
                     options={uniqueTagList}
                     // getOptionLabel={(option) => option.title}
                     style={{ width: 300 }}
+                    onChange={filterAvailableSDGs}
+                    value={filter}
                     renderInput={(params) => <TextField {...params} label="Filter SDGs" variant="outlined" />}
                 />
 
@@ -111,7 +154,7 @@ const Impact = () => {
                                         </div>
 
                                         <Tooltip title="Select SDG">
-                                            <AddCircleOutlineIcon />
+                                            <AddSVG />
                                         </Tooltip>
                                     </Card>
                                 )
@@ -136,7 +179,7 @@ const Impact = () => {
                                                 </div>
 
                                                 <Tooltip title="Remove SDG">
-                                                    <RemoveCircleOutlineIcon />
+                                                    <MinusSVG />
                                                 </Tooltip>
                                             </Card>
                                         )

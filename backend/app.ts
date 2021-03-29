@@ -2,10 +2,10 @@ import * as express from 'express';
 import * as cors from 'cors';
 // import * as bodyparser from 'body-parser';
 import requestLoggerMiddleware from './request.logger.middleware';
-const stripe = require("stripe")("sk_test_BxKQ9cg1p2v9Tl3z05gX3GFi");
+// const stripe = require("stripe")("sk_test_BxKQ9cg1p2v9Tl3z05gX3GFi");
 
 // Find your endpoint's secret in your Dashboard's webhook settings
-const endpointSecret = 'whsec_ioinbLILYitGVhnB6Y3JyrjVH4mMgDPP';
+// const endpointSecret = 'whsec_ioinbLILYitGVhnB6Y3JyrjVH4mMgDPP';
 
 const path = require('path');
 const shrinkRay = require('shrink-ray-current');
