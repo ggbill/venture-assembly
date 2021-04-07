@@ -1,47 +1,49 @@
 .impact-page {
     .intro-wrapper {
-        padding-top: 40px;
+        padding: 40px 0 24px;
     }
 
-    .sdg-list-section {
-        display: flex;
-        flex-direction: row;
-        margin-top: 24px;
-
-        .page-subtitle {
+    .select-sdg-section {
+        .sdg-list-section {
             display: flex;
             flex-direction: row;
-            align-items: center;
+            margin-top: 24px;
 
-            .clear-all {
-                color: blue;
-                text-decoration: underline;
-                font-size: 0.5em;
-                font-weight: normal;
-                position: relative;
-                top: 4px;
-                cursor: pointer;
-            }
-        }
+            .page-subtitle {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
 
-        .available-sdg-section {
-            flex: 1 1;
-            padding-right: 6px;
-
-            .sdg-card {
-                svg {
-                    fill: green;
+                .clear-all {
+                    color: blue;
+                    text-decoration: underline;
+                    font-size: 0.5em;
+                    font-weight: normal;
+                    position: relative;
+                    top: 4px;
+                    cursor: pointer;
                 }
             }
-        }
 
-        .selected-sdg-section {
-            flex: 1 1;
-            padding-left: 6px;
+            .available-sdg-section {
+                flex: 1 1;
+                padding-right: 6px;
 
-            .sdg-card {
-                svg {
-                    fill: red;
+                .sdg-card {
+                    svg {
+                        fill: green;
+                    }
+                }
+            }
+
+            .selected-sdg-section {
+                flex: 1 1;
+                padding-left: 6px;
+
+                .sdg-card {
+                    svg {
+                        fill: red;
+                    }
                 }
             }
 
@@ -50,41 +52,100 @@
                 // justify-content: center;
                 font-style: italic;
             }
-        }
 
+            .sdg-container {
+                margin: 12px 0 0 0;
+                padding: 12px;
+                border: solid 1px rgb(226, 226, 226);
+                border-radius: 6px;
+
+                .sdg-card {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    padding-right: 12px;
+                    -webkit-touch-callout: none; /* iOS Safari */
+                    -webkit-user-select: none; /* Safari */
+                    -khtml-user-select: none; /* Konqueror HTML */
+                    -moz-user-select: none; /* Old versions of Firefox */
+                    -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none;
+
+                    &:not(:last-child) {
+                        margin-bottom: 12px;
+                    }
+
+                    .left-content {
+                        display: flex;
+                        align-items: center;
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 12px;
+                        }
+                    }
+
+                    svg {
+                        width: 15px;
+                        height: 15px;
+                        // fill: green;
+                    }
+                }
+            }
+        }
+    }
+
+    .measure-target-section {
         .sdg-container {
-            margin: 12px 0 0 0;
+            margin: 12px 0 48px 0;
             padding: 12px;
             border: solid 1px rgb(226, 226, 226);
             border-radius: 6px;
-
-            .sdg-card {
+            .target-card {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
-                cursor: pointer;
-                padding-right: 12px;
+                padding: 12px;
 
                 &:not(:last-child) {
                     margin-bottom: 12px;
                 }
 
-                .left-content {
+                img {
+                    width: 350px;
+                    margin-right: 12px;
+                }
+
+                .right-section{
                     display: flex;
-                    align-items: center;
-                    img {
-                        width: 50px;
-                        height: 50px;
-                        margin-right: 12px;
+                    flex-direction: column;
+                    padding: 0 12px;
+
+                    .label{
+                        margin-top: 24px;
+                        font-size: 0.8em;
+                    }
+
+                    .slider-wrapper{
+                        padding: 24px 0 0 0;
+
+                        .self-assessment{
+                            font-weight: bold;
+                        }
                     }
                 }
 
-                svg {
-                    width: 15px;
-                    height: 15px;
-                    // fill: green;
-                }
+                
             }
+        }
+    }
+
+    .navigation-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .button-wrapper {
+            margin-top: 12px;
         }
     }
 }

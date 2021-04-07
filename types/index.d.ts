@@ -61,4 +61,6 @@ declare module App {
         market: number
     }
 
+
+
 }

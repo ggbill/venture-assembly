@@ -172,12 +172,18 @@
         .validation-text {
             margin-bottom: 6px;
         }
-
-        .MuiButton-root.confirm {
-            margin-left: 12px;
-        }
     }
 }
+
+.button-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    .MuiButton-root.confirm {
+        margin-left: 12px;
+    }
+}
+
+
 
 @media only screen and (max-width: 600px) {
     .full-height-content {
@@ -211,26 +217,28 @@
         .MuiDialogActions-root {
             align-items: center;
 
-            .button-wrapper {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-
-                .MuiButton-root {
-                    &.confirm {
-                        order: 1;
-                        margin-bottom: 6px;
-                        margin-left: 0;
-                    }
-                    &.cancel {
-                        order: 2;
-                    }
-                }
-            }
+            
         }
 
         .MuiDialogActions-spacing > :not(:first-child) {
             margin-left: 0px;
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .MuiButton-root {
+            &.confirm {
+                order: 1;
+                margin-bottom: 6px;
+                margin-left: 0;
+            }
+            &.cancel {
+                order: 2;
+            }
         }
     }
 }

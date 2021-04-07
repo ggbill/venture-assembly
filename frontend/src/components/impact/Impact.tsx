@@ -1,12 +1,11 @@
+import { Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import MenuBar from '../shared/MenuBar'
 import './impact.scss'
-import TextField from '@material-ui/core/TextField'
-import Autocomplete from '@material-ui/lab/Autocomplete'
-import { Card, Tooltip } from '@material-ui/core'
-import { ReactComponent as MinusSVG } from '../../images/minus.svg'
-import { ReactComponent as AddSVG } from '../../images/add.svg'
+import MeasureTargetSection from './MeasureTargetSection'
+import SelectSDGSection from './SelectSDGSection'
+
 
 const Impact = () => {
 
@@ -14,7 +13,11 @@ const Impact = () => {
     const [sdgList, setSdgList] = useState<any[]>([])
     const [availableSdgList, setAvailableSdgList] = useState<any[]>([])
     const [selectedSdgList, setSelectedSdgList] = useState<any[]>([])
+    const [targetList, setTargetList] = useState<any[]>([])
     const [filter, setFilter] = useState<string | null>(null)
+    const [stepNumber, setStepNumber] = useState<number>(1)
+    const [validationText, setValidationText] = useState<string>("")
+
 
     const airtableApi = useFetch("airtable")
 
@@ -34,19 +37,20 @@ const Impact = () => {
 
         setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
         setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
+        setValidationText("")
     }
 
     const removeSdg = (sdgNumber) => {
         let newAvailableSdgList = Object.assign([], availableSdgList)
         let newSelectedSdgList = Object.assign([], selectedSdgList)
-        
+
 
         selectedSdgList.forEach((sdg, index) => {
             if (sdg.fields.Number === sdgNumber) {
                 newSelectedSdgList.splice(index, 1)
                 // setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
 
-                // newAvailableSdgList.push(sdg)
+                newAvailableSdgList.push(sdg)
                 // setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
             }
         });
@@ -54,7 +58,7 @@ const Impact = () => {
         // setFilter(null)
         // setAvailableSdgList(sdgList)
 
-        filterAvailableSDGs(null, filter)
+        setAvailableSdgList(newAvailableSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
         setSelectedSdgList(newSelectedSdgList.sort((a: any, b: any) => a.fields.Number - b.fields.Number))
     }
 
@@ -67,37 +71,71 @@ const Impact = () => {
     const filterAvailableSDGs = (event, value) => {
         console.log(value)
         setFilter(value)
-        if (value){
+        if (value) {
             let newList = availableSdgList.filter(sdg => {
-                if (sdg.fields.Tags){
-                    return(sdg.fields.Tags.toLowerCase().indexOf(value.toLowerCase()) !== -1)
-                }else{
-                    return(false)
+                if (sdg.fields.Tags) {
+                    return (sdg.fields.Tags.toLowerCase().indexOf(value.toLowerCase()) !== -1)
+                } else {
+                    return (false)
                 }
             })
             setAvailableSdgList(newList)
-        }else{
+        } else {
             let tempAvailableSgdList: any[] = []
 
             sdgList.forEach(sdg => {
                 let isMatched = false
                 selectedSdgList.forEach(selected => {
-                    if (sdg.fields.Number === selected.fields.Number){
+                    if (sdg.fields.Number === selected.fields.Number) {
                         isMatched = true
-                    }  
+                    }
                 })
-                if (!isMatched){
+                if (!isMatched) {
                     tempAvailableSgdList.push(sdg)
-                }   
+                }
             });
 
             setAvailableSdgList(tempAvailableSgdList)
         }
     }
 
+    const moveToNextStep = () => {
+        if (selectedSdgList.length > 0) {
+            setStepNumber(stepNumber + 1)
+            getTargets()
+            setValidationText("")
+        } else {
+            setValidationText("Please select at least 1 SDG")
+        }
+
+
+    }
+
+    const moveToPreviousStep = () => {
+        setStepNumber(stepNumber - 1)
+    }
+
+    const getTargets = () => {
+        let numberListCsv = ""
+        selectedSdgList.forEach(selectedSdg => {
+            numberListCsv += `${selectedSdg.fields.Number},`
+        });
+
+        // console.log(numberListCsv)
+        airtableApi.get(`get-targets/${numberListCsv}`).then((result) => {
+            // console.log(result)
+            result.forEach(element => {
+                element.selfAssessment = 0
+            });
+            setTargetList(result)
+        }).catch((err: Error) => {
+            console.log(err)
+        })
+    }
+
     useEffect(() => {
         airtableApi.get("get-sdgs").then((result) => {
-            // console.log(result)
+            console.log(result)
             setSdgList(result)
             setAvailableSdgList(result)
 
@@ -122,83 +160,64 @@ const Impact = () => {
     }, []);
 
 
+    // useEffect(() => {
+    //     console.log("avaiableSdgListChanged")
+    //     filterAvailableSDGs(null, filter)
+
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps  
+    // }, [availableSdgList, selectedSdgList]);
+
+
     return (
         <div className="impact-page">
             <MenuBar />
             <div className="content top-page-margin">
                 <div className="intro-wrapper">
                     <span className="page-title">🌳 Sustainable Development Goals (SDGs)</span>
-                    <p>Select the SDGs that apply to your business from the list below or use the search box to help select based on key words.</p>
+                    <p>The SDG tool is designed allows companies to eplore each of the 17 SDGs and then rate themselves against each of their sub-targets.
+                    This can then be downloaded in pdf format to be shared, or as a png to be included in marketing materials. All absolutely free.
+                    </p>
                 </div>
-                <Autocomplete
-                    options={uniqueTagList}
-                    // getOptionLabel={(option) => option.title}
-                    style={{ width: 300 }}
-                    onChange={filterAvailableSDGs}
-                    value={filter}
-                    renderInput={(params) => <TextField {...params} label="Filter SDGs" variant="outlined" />}
-                />
+                <span className="page-subtitle">Step {stepNumber} of 3</span>
 
-                {/* {JSON.stringify(availableSdgList)} */}
+                {stepNumber === 1 &&
+                    <SelectSDGSection
+                        uniqueTagList={uniqueTagList}
+                        filterAvailableSDGs={filterAvailableSDGs}
+                        filter={filter}
+                        availableSdgList={availableSdgList}
+                        selectedSdgList={selectedSdgList}
+                        addSdg={addSdg}
+                        removeSdg={removeSdg}
+                        removeAllSdgs={removeAllSdgs}
+                    />
+                }
+                {stepNumber === 2 &&
+                    <MeasureTargetSection
+                        selectedSdgList={selectedSdgList}
+                        targetList={targetList}
+                        setTargetList={setTargetList}
+                    />
+                }
 
-                <div className="sdg-list-section">
-                    <div className="available-sdg-section">
-                        <div className="page-subtitle">Available SDGs</div>
-                        <div className="sdg-container">
-                            {availableSdgList.map((sdg, index) => {
-                                return (
-                                    <Card key={index} className="sdg-card" onClick={() => addSdg(sdg.fields.Number)}>
-                                        <div className="left-content">
-                                            <img src={sdg.fields.Image[0].url} alt={sdg.fields.Goal} />
-                                            <span>{sdg.fields.Goal}</span>
-                                        </div>
-
-                                        <Tooltip title="Select SDG">
-                                            <AddSVG />
-                                        </Tooltip>
-                                    </Card>
-                                )
-                            })}
+                <div className="navigation-wrapper">
+                            <span className="validation-text">{validationText}</span>
+                            <div className="button-wrapper">
+                                {stepNumber !== 1 &&
+                                    <Button className="va-button cancel" onClick={moveToPreviousStep}>
+                                        Back
+                        </Button>
+                                }
+                                {stepNumber !== 3 &&
+                                    <Button id="submit" className="va-button confirm" onClick={moveToNextStep}>
+                                        Next
+                    </Button>
+                                }
+                            </div>
                         </div>
 
-                    </div>
-                    <div className="selected-sdg-section">
-                        <div className="page-subtitle">
-                            Selected SDGs &nbsp;
-                            {selectedSdgList.length > 0 && <div className="clear-all" onClick={() => removeAllSdgs()}>Clear all</div>}
-                        </div>
-                        <div className="sdg-container">
-                            {selectedSdgList.length > 0 ?
-                                <>
-                                    {selectedSdgList.map((sdg, index) => {
-                                        return (
-                                            <Card key={index} className="sdg-card" onClick={() => removeSdg(sdg.fields.Number)}>
-                                                <div className="left-content">
-                                                    <img src={sdg.fields.Image[0].url} alt={sdg.fields.Goal} />
-                                                    <span>{sdg.fields.Goal}</span>
-                                                </div>
-
-                                                <Tooltip title="Remove SDG">
-                                                    <MinusSVG />
-                                                </Tooltip>
-                                            </Card>
-                                        )
-                                    })}
-                                </>
-                                :
-                                <div className="none-selected">No SDGs selected</div>
-
-
-                            }
-
-                        </div>
-                    </div>
-
-                </div>
-
-
+                
             </div>
-
         </div>
     )
 }
