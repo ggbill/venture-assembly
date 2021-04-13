@@ -3,27 +3,39 @@
         padding: 40px 0 24px;
     }
 
+    .hyperlink {
+        color: blue;
+        text-decoration: underline;
+        font-size: 0.6em;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+    .column-title {
+        font-weight: bold;
+        color: black;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .clear-all {
+            position: relative;
+            top: 2px;
+        }
+    }
+
     .select-sdg-section {
         .sdg-list-section {
             display: flex;
             flex-direction: row;
             margin-top: 24px;
 
-            .page-subtitle {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-
-                .clear-all {
-                    color: blue;
-                    text-decoration: underline;
-                    font-size: 0.5em;
-                    font-weight: normal;
-                    position: relative;
-                    top: 4px;
-                    cursor: pointer;
-                }
-            }
+            // .page-subtitle {
+            //     display: flex;
+            //     flex-direction: row;
+            //     align-items: center;
+            // }
 
             .available-sdg-section {
                 flex: 1 1;
@@ -97,45 +109,89 @@
     }
 
     .measure-target-section {
+        .MuiAccordion-root {
+            background-color: transparent;
+
+            .MuiAccordionSummary-root {
+                display: flex;
+                margin: 0 20px;
+            }
+        }
+
         .sdg-container {
-            margin: 12px 0 48px 0;
-            padding: 12px;
-            border: solid 1px rgb(226, 226, 226);
-            border-radius: 6px;
+            // margin: 12px 0 48px 0;
+            // padding: 12px;
+            // border: solid 1px rgb(226, 226, 226);
+            // border-radius: 6px;
             .target-card {
                 display: flex;
                 align-items: center;
                 padding: 12px;
+                overflow: unset;
+                background-color: #fff;
 
                 &:not(:last-child) {
-                    margin-bottom: 12px;
+                    margin-bottom: 18px;
                 }
 
                 img {
-                    width: 350px;
+                    width: 300px;
                     margin-right: 12px;
                 }
 
-                .right-section{
+                .right-section {
                     display: flex;
                     flex-direction: column;
                     padding: 0 12px;
+                    width: 100%;
 
-                    .label{
+                    .remove-button-wrapper {
+                        position: relative;
+                        top: -18px;
+                        margin-bottom: -27px;
+                        left: 30px;
+                        display: flex;
+                        justify-content: flex-end;
+
+                        .remove-button {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 50%;
+                            background-color: red;
+                            color: white;
+                            padding: 6px;
+                            font-weight: bold;
+                            font-size: 1.1em;
+                            cursor: pointer;
+                            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+                        }
+                    }
+
+                    .target-title {
+                        font-weight: bold;
+                        margin-bottom: 6px;
+                    }
+
+                    .target-description {
+                        width: 100%;
+                    }
+
+                    .label {
                         margin-top: 24px;
                         font-size: 0.8em;
                     }
 
-                    .slider-wrapper{
+                    .slider-wrapper {
                         padding: 24px 0 0 0;
 
-                        .self-assessment{
+                        .self-assessment {
                             font-weight: bold;
                         }
                     }
                 }
-
-                
             }
         }
     }

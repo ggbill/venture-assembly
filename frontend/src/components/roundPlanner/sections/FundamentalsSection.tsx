@@ -72,6 +72,7 @@ const FundamentalsSection = (props: InputProps) => {
                                 min={10000}
                                 max={1000000}
                                 onChange={(event, value) => props.setRoundDetails({ ...props.roundDetails, amountRaising: Number(value) })}
+                                color='#DA4167'
                             />
                         </div>
 

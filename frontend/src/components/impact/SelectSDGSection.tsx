@@ -36,7 +36,7 @@ const SelectSDGSection = (props: InputProps) => {
 
             <div className="sdg-list-section">
                 <div className="available-sdg-section">
-                    <div className="page-subtitle">Available SDGs</div>
+                    <div className="column-title">Available SDGs</div>
                     <div className="sdg-container">
                         {props.availableSdgList.length > 0 ?
                             <>
@@ -62,9 +62,9 @@ const SelectSDGSection = (props: InputProps) => {
 
                 </div>
                 <div className="selected-sdg-section">
-                    <div className="page-subtitle">
+                    <div className="column-title">
                         Selected SDGs &nbsp;
-                            {props.selectedSdgList.length > 0 && <div className="clear-all" onClick={() => props.removeAllSdgs()}>Clear all</div>}
+                            {props.selectedSdgList.length > 0 && <div className="clear-all hyperlink" onClick={() => props.removeAllSdgs()}>Clear all</div>}
                     </div>
                     <div className="sdg-container">
                         {props.selectedSdgList.length > 0 ?

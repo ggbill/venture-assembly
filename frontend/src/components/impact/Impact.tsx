@@ -123,9 +123,10 @@ const Impact = () => {
 
         // console.log(numberListCsv)
         airtableApi.get(`get-targets/${numberListCsv}`).then((result) => {
-            // console.log(result)
+            console.log(result)
             result.forEach(element => {
-                element.selfAssessment = 0
+                element.selfAssessment = 1
+                element.isVisible = true
             });
             setTargetList(result)
         }).catch((err: Error) => {
@@ -178,7 +179,8 @@ const Impact = () => {
                     This can then be downloaded in pdf format to be shared, or as a png to be included in marketing materials. All absolutely free.
                     </p>
                 </div>
-                <span className="page-subtitle">Step {stepNumber} of 3</span>
+                {/* <span className="page-subtitle">Step {stepNumber} of 3</span> */}
+                <span className="page-subtitle">Select SDGs</span>
 
                 {stepNumber === 1 &&
                     <SelectSDGSection
@@ -201,22 +203,20 @@ const Impact = () => {
                 }
 
                 <div className="navigation-wrapper">
-                            <span className="validation-text">{validationText}</span>
-                            <div className="button-wrapper">
-                                {stepNumber !== 1 &&
-                                    <Button className="va-button cancel" onClick={moveToPreviousStep}>
-                                        Back
-                        </Button>
-                                }
-                                {stepNumber !== 3 &&
-                                    <Button id="submit" className="va-button confirm" onClick={moveToNextStep}>
-                                        Next
-                    </Button>
-                                }
-                            </div>
-                        </div>
-
-                
+                    <span className="validation-text">{validationText}</span>
+                    <div className="button-wrapper">
+                        {stepNumber !== 1 &&
+                            <Button className="va-button cancel" onClick={moveToPreviousStep}>
+                                Back
+                            </Button>
+                        }
+                        {stepNumber !== 3 &&
+                            <Button id="submit" className="va-button confirm" onClick={moveToNextStep}>
+                                Next
+                            </Button>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )
