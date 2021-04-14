@@ -20,7 +20,6 @@ const RadarChart = (props: InputProps) => {
                 props.roundDetails.swot.advisors,
                 props.roundDetails.swot.traction,
                 props.roundDetails.swot.market,
-                // props.roundDetails.swot.uniqueness,
             ],
             fill: true,
             backgroundColor: "#da416778",
@@ -38,7 +37,6 @@ const RadarChart = (props: InputProps) => {
                 options={{
                     animation: {
                         onComplete: function () {
-                            // console.log("animation complete")
                             props.setRoundDetails({ ...props.roundDetails, radarBase64String: chartRef.current.chartInstance.toBase64Image() })
                         }
                     },
@@ -53,9 +51,6 @@ const RadarChart = (props: InputProps) => {
                             borderRadius: 25,
                             color: '#000',
                             font: {
-                                // weight: 'bold',
-                                // size: 12,
-                                // lineHeight: 1 /* align v center */
                                 size: 14,
                                 weight: 'bold',
                                 color: '#000',
@@ -68,13 +63,6 @@ const RadarChart = (props: InputProps) => {
                                 bottom: 4
                             },
                             backgroundColor: 'white',
-                            /* hover styling */
-                            // backgroundColor: function (context) {
-                            //     return context.hovered ? context.dataset.borderColor : 'white';
-                            // },
-                            // color: function (context) {
-                            //     return context.hovered ? 'white' : context.dataset.borderColor;
-                            // },
                             listeners: {
                                 enter: function (context) {
                                     context.hovered = true;
@@ -106,10 +94,8 @@ const RadarChart = (props: InputProps) => {
                         },
                     },
                     tooltips: false
-
                 }}
             />
-            {/* <button onClick={handleClick}>Click me</button> */}
         </Paper>
     )
 }

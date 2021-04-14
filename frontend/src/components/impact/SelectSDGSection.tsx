@@ -21,12 +21,14 @@ interface InputProps {
 const SelectSDGSection = (props: InputProps) => {
     return (
         <div className="select-sdg-section">
-            <p>Select the SDGs that apply to your business from the list below or use the search box to help select based on key words.</p>
+            <span className="page-subtitle">Select SDGs</span>
+            <p>Select the SDGs that apply to your business from the list below or use the search box to help select based on key words and then click "Next"
+                at the bottom of the page. </p>
 
             <Autocomplete
                 options={props.uniqueTagList}
                 // getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                // style={{ width: 300 }}
                 onChange={props.filterAvailableSDGs}
                 value={props.filter}
                 renderInput={(params) => <TextField {...params} label="Filter SDGs" variant="outlined" />}

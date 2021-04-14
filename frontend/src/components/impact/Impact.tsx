@@ -180,7 +180,7 @@ const Impact = () => {
                     </p>
                 </div>
                 {/* <span className="page-subtitle">Step {stepNumber} of 3</span> */}
-                <span className="page-subtitle">Select SDGs</span>
+                
 
                 {stepNumber === 1 &&
                     <SelectSDGSection
@@ -210,7 +210,7 @@ const Impact = () => {
                                 Back
                             </Button>
                         }
-                        {stepNumber !== 3 &&
+                        {stepNumber !== 2 &&
                             <Button id="submit" className="va-button confirm" onClick={moveToNextStep}>
                                 Next
                             </Button>

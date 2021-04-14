@@ -6,7 +6,6 @@
     .hyperlink {
         color: blue;
         text-decoration: underline;
-        font-size: 0.6em;
         font-weight: normal;
         cursor: pointer;
     }
@@ -22,7 +21,12 @@
         .clear-all {
             position: relative;
             top: 2px;
+            font-size: 0.6em;
         }
+    }
+
+    .MuiAutocomplete-root {
+        width: 300px;
     }
 
     .select-sdg-section {
@@ -109,6 +113,9 @@
     }
 
     .measure-target-section {
+        #accordion-wrapper{
+            padding: 0 2px;
+        }
         .MuiAccordion-root {
             background-color: transparent;
 
@@ -134,10 +141,14 @@
                     margin-bottom: 18px;
                 }
 
-                img {
-                    width: 300px;
-                    margin-right: 12px;
-                }
+                // .left-section {
+                    img {
+                        width: 300px;
+                        margin-right: 12px;
+                    }
+
+                    
+                // }
 
                 .right-section {
                     display: flex;
@@ -162,9 +173,9 @@
                             border-radius: 50%;
                             background-color: red;
                             color: white;
-                            padding: 6px;
+                            padding: 3px;
                             font-weight: bold;
-                            font-size: 1.1em;
+                            font-size: 1em;
                             cursor: pointer;
                             box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
                         }
@@ -191,8 +202,20 @@
                             font-weight: bold;
                         }
                     }
+
+                    .download-link {
+                        display: flex;
+                        justify-content: flex-end;
+                        font-size: 0.8em;
+                        margin-top: -12px;
+                    }
                 }
             }
+        }
+
+        .download-all{
+            display: flex;
+            justify-content: flex-end;
         }
     }
 
@@ -202,6 +225,68 @@
         align-items: flex-end;
         .button-wrapper {
             margin-top: 12px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .impact-page {
+        .MuiAutocomplete-root {
+            width: 100%;
+        }
+        .select-sdg-section {
+            .sdg-list-section {
+                display: flex;
+                flex-direction: column;
+                margin-top: 24px;
+            }
+
+            .sdg-container {
+                margin-bottom: 24px !important;
+            }
+        }
+        .measure-target-section {
+            .sdg-container {
+                .target-card {
+                    flex-direction: column;
+
+                    &:not(:last-child) {
+                        margin-bottom: 30px;
+                    }
+
+                    img {
+                        width: 100%;
+                        margin-right: 0px;
+                    }
+
+                    .right-section {
+                        .remove-button-wrapper {
+                            top: -196px;
+                            left: 23px;
+
+                            .remove-button {
+                            }
+                        }
+
+                        .target-title {
+                        }
+
+                        .target-description {
+                        }
+
+                        .label {
+                        }
+
+                        .slider-wrapper {
+                            padding: 24px 12px 0 12px;
+                            width: unset;
+
+                            .self-assessment {
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
