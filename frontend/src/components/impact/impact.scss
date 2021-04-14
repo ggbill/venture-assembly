@@ -105,7 +105,7 @@
                     svg {
                         width: 15px;
                         height: 15px;
-                        // fill: green;
+                        min-width: 15px;
                     }
                 }
             }
@@ -113,7 +113,7 @@
     }
 
     .measure-target-section {
-        #accordion-wrapper{
+        #accordion-wrapper {
             padding: 0 2px;
         }
         .MuiAccordion-root {
@@ -132,88 +132,107 @@
             // border-radius: 6px;
             .target-card {
                 display: flex;
+                // flex-direction: column;
                 align-items: center;
                 padding: 12px;
                 overflow: unset;
                 background-color: #fff;
 
-                &:not(:last-child) {
-                    margin-bottom: 18px;
+                
+
+                .remove-button-wrapper {
+                    // position: relative;
+                    // top: -18px;
+                    // margin-bottom: -27px;
+                    // left: 30px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    .remove-button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background-color: red;
+                        color: white;
+                        padding: 3px;
+                        font-weight: bold;
+                        font-size: 1em;
+                        cursor: pointer;
+                        box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+                    }
                 }
 
-                // .left-section {
+                // .card-body {
+                //     display: flex;
+                //     flex-direction: row;
+                //     align-items: center;
                     img {
                         width: 300px;
                         margin-right: 12px;
                     }
 
-                    
-                // }
-
-                .right-section {
-                    display: flex;
-                    flex-direction: column;
-                    padding: 0 12px;
-                    width: 100%;
-
-                    .remove-button-wrapper {
-                        position: relative;
-                        top: -18px;
-                        margin-bottom: -27px;
-                        left: 30px;
+                    .right-section {
                         display: flex;
-                        justify-content: flex-end;
-
-                        .remove-button {
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: 20px;
-                            height: 20px;
-                            border-radius: 50%;
-                            background-color: red;
-                            color: white;
-                            padding: 3px;
-                            font-weight: bold;
-                            font-size: 1em;
-                            cursor: pointer;
-                            box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
-                        }
-                    }
-
-                    .target-title {
-                        font-weight: bold;
-                        margin-bottom: 6px;
-                    }
-
-                    .target-description {
+                        flex-direction: column;
+                        padding: 0 12px;
                         width: 100%;
-                    }
 
-                    .label {
-                        margin-top: 24px;
-                        font-size: 0.8em;
-                    }
-
-                    .slider-wrapper {
-                        padding: 24px 0 0 0;
-
-                        .self-assessment {
+                        .target-title {
                             font-weight: bold;
+                            margin-bottom: 6px;
                         }
-                    }
 
-                    .download-link {
-                        display: flex;
-                        justify-content: flex-end;
-                        font-size: 0.8em;
-                        margin-top: -12px;
+                        .target-description {
+                            width: 100%;
+                        }
+
+                        .label {
+                            margin-top: 24px;
+                            font-size: 0.8em;
+                        }
+
+                        .slider-wrapper {
+                            padding: 24px 0 0 0;
+
+                            .self-assessment {
+                                font-weight: bold;
+                            }
+                        }
+
+                        
                     }
+                // }
+            }
+
+            .actions-wrapper{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                margin-top: 6px;
+                font-size: 0.8em;
+
+                &:not(:last-child) {
+                    margin-bottom: 24px;
                 }
+
+                >*{
+                    margin-left: 24px;
+                }
+
+                // .download-link {
+                //     display: flex;
+                //     justify-content: flex-end;
+                //     // font-size: 0.8em;
+                //     // margin-top: -12px;
+                // }
             }
         }
 
-        .download-all{
+        .download-all {
             display: flex;
             justify-content: flex-end;
         }
@@ -251,7 +270,7 @@
                     flex-direction: column;
 
                     &:not(:last-child) {
-                        margin-bottom: 30px;
+                        // margin-bottom: 30px;
                     }
 
                     img {

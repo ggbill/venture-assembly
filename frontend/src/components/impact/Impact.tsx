@@ -1,5 +1,5 @@
 import { Button } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import useFetch from '../../hooks/useFetch'
 import MenuBar from '../shared/MenuBar'
 import './impact.scss'
@@ -18,7 +18,7 @@ const Impact = () => {
     const [stepNumber, setStepNumber] = useState<number>(1)
     const [validationText, setValidationText] = useState<string>("")
 
-
+    const myRef: any = useRef(null)
     const airtableApi = useFetch("airtable")
 
     const addSdg = (sdgNumber) => {
@@ -101,6 +101,7 @@ const Impact = () => {
 
     const moveToNextStep = () => {
         if (selectedSdgList.length > 0) {
+            window.scrollTo({top:0,behavior:'smooth'})
             setStepNumber(stepNumber + 1)
             getTargets()
             setValidationText("")
@@ -112,6 +113,7 @@ const Impact = () => {
     }
 
     const moveToPreviousStep = () => {
+        window.scrollTo({top:0,behavior:'smooth'})
         setStepNumber(stepNumber - 1)
     }
 
@@ -181,7 +183,7 @@ const Impact = () => {
                 </div>
                 {/* <span className="page-subtitle">Step {stepNumber} of 3</span> */}
                 
-
+                {/* <div id="step-change-scroll-to-ref" ref={myRef} style={{position: "relative", top: -80}}></div> */}
                 {stepNumber === 1 &&
                     <SelectSDGSection
                         uniqueTagList={uniqueTagList}
