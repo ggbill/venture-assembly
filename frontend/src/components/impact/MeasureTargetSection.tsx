@@ -157,7 +157,6 @@ const MeasureTargetSection = (props: InputProps) => {
                                                             <div className="hyperlink download-link exclude-from-png-download" onClick={() => hideTarget(index)}> Remove </div>
                                                             <div className="hyperlink download-link exclude-from-png-download" onClick={() => downloadTarget(target.fields.Identifier)}> Download Image </div>
                                                         </div>
-
                                                     </>
                                                 }
                                             </>

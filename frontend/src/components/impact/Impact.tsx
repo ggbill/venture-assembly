@@ -177,13 +177,12 @@ const Impact = () => {
             <div className="content top-page-margin">
                 <div className="intro-wrapper">
                     <span className="page-title">🌳 Sustainable Development Goals (SDGs)</span>
-                    <p>The SDG tool is designed allows companies to eplore each of the 17 SDGs and then rate themselves against each of their sub-targets.
-                    This can then be downloaded in pdf format to be shared, or as a png to be included in marketing materials. All absolutely free.
-                    </p>
+                    <p>The Venture Assembly SDG tool is designed to allow organisations to explore each of the <a href="https://www.un.org/sustainabledevelopment/" target="_blank" rel="noreferrer">United Nation's 17 SDGs</a> and then rate themselves against each of their sub-targets.
+                    Impact investing is an exciting and rapidly growing industry powered by investors who are determined to generate social and environmental impact as well as financial returns. Demonstrating how your company  is helping to address these issues can be a potent addition to 
+                    any pitch deck.</p>
                 </div>
                 {/* <span className="page-subtitle">Step {stepNumber} of 3</span> */}
                 
-                {/* <div id="step-change-scroll-to-ref" ref={myRef} style={{position: "relative", top: -80}}></div> */}
                 {stepNumber === 1 &&
                     <SelectSDGSection
                         uniqueTagList={uniqueTagList}
