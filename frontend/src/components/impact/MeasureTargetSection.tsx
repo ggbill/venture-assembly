@@ -66,7 +66,7 @@ const MeasureTargetSection = (props: InputProps) => {
         return count
     }
 
-    const downloadTarget = (nodeToDownload: string) => {
+    const downloadTarget = (nodeToDownload: string, filename: string) => {
         var node: any = document.getElementById(nodeToDownload)
         var exportOptions = {
             filter: function (element) {
@@ -81,7 +81,7 @@ const MeasureTargetSection = (props: InputProps) => {
         htmlToImage.toPng(node, exportOptions)
             .then(function (dataUrl) {
                 var link = document.createElement('a')
-                link.download = "my-image.png"
+                link.download = `${filename}.png`
                 link.href = dataUrl
                 link.click()
             })
@@ -155,7 +155,7 @@ const MeasureTargetSection = (props: InputProps) => {
                                                         </Card>
                                                         <div className="actions-wrapper">
                                                             <div className="hyperlink download-link exclude-from-png-download" onClick={() => hideTarget(index)}> Remove </div>
-                                                            <div className="hyperlink download-link exclude-from-png-download" onClick={() => downloadTarget(target.fields.Identifier)}> Download Image </div>
+                                                            <div className="hyperlink download-link exclude-from-png-download" onClick={() => downloadTarget(target.fields.Identifier, target.fields.Title)}> Download Image </div>
                                                         </div>
                                                     </>
                                                 }
@@ -167,7 +167,7 @@ const MeasureTargetSection = (props: InputProps) => {
                         </Accordion>
                     )
                 })}
-                <div className="hyperlink exclude-from-png-download download-all" onClick={() => downloadTarget("accordion-wrapper")}> Download All</div>
+                <div className="hyperlink exclude-from-png-download download-all" onClick={() => downloadTarget("accordion-wrapper", "all-targets")}> Download All</div>
 
             </div>
 
