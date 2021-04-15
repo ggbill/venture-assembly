@@ -5,6 +5,7 @@ import CustomVASlider from '../shared/CustomVASlider';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as htmlToImage from 'html-to-image';
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 
 interface InputProps {
     selectedSdgList: any[],
@@ -120,21 +121,11 @@ const MeasureTargetSection = (props: InputProps) => {
                                                 {target.fields.Identifier.split(".")[0] === String(selectedSDG.fields.Number) && target.isVisible &&
                                                     <>
                                                         <Card key={index} className="target-card" id={target.fields.Identifier}>
-                                                            {/* <div className="left-section"> */}
-                                                            {/* <div className="remove-button-wrapper exclude-from-png-download">
-                                                                <Tooltip title="Remove Target">
-                                                                    <div className="remove-button" onClick={() => hideTarget(index)}>X</div>
-                                                                </Tooltip>
-                                                            </div> */}
-                                                            {/* <div className="card-body"> */}
-                                                                <img src={target.fields.Image[0].thumbnails.large.url} alt={target.fields.SDG[0]} />
-                                                                {/* <div className="hyperlink download-link exclude-from-png-download" onClick={() => downloadImage(target.fields.Identifier)}> Download </div> */}
-                                                                {/* <Button className="va-button exclude-from-png-download" onClick={() => downloadImage(target.fields.Identifier)}> Download </Button> */}
-                                                                {/* </div> */}
+
+                                                        {/* <LazyLoadImage className="thumbnail" src={video.snippet.thumbnails.standard.url} effect="blur" alt={video.snippet.title}/> */}
+                                                                <LazyLoadImage src={target.fields.Image[0].thumbnails.large.url} alt={target.fields.SDG[0]} />
 
                                                                 <div className="right-section">
-
-
                                                                     <span className="target-title">{target.fields.Title}</span>
                                                                     <div className="target-description">{target.fields.description}</div>
                                                                     <span className="label">Please assess how much impact you feel your oranisation has on this target:</span>
@@ -159,12 +150,8 @@ const MeasureTargetSection = (props: InputProps) => {
                                                                             color={target.fields.Color}
                                                                         />
                                                                     </div>
-                                                                    {/* <div className="hyperlink download-link exclude-from-png-download" onClick={() => downloadTarget(target.fields.Identifier)}> Download </div> */}
-                                                                    {/* <Button className="va-button exclude-from-png-download" onClick={() => downloadImage(target.fields.Identifier)}> Download </Button> */}
-
                                                                 </div>
-                                                            {/* </div> */}
-
+                                                    
                                                         </Card>
                                                         <div className="actions-wrapper">
                                                             <div className="hyperlink download-link exclude-from-png-download" onClick={() => hideTarget(index)}> Remove </div>
