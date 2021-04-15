@@ -178,7 +178,8 @@ const Impact = () => {
                 <div className="intro-wrapper">
                     <span className="page-title">🌳 Sustainable Development Goals (SDGs)</span>
                     <p>The Venture Assembly SDG tool is designed to allow organisations to explore each of the <a href="https://www.un.org/sustainabledevelopment/" target="_blank" rel="noreferrer">United Nation's 17 SDGs</a> and then rate themselves against each of their sub-targets.
-                    Impact investing is an exciting and rapidly growing industry powered by investors who are determined to generate social and environmental impact as well as financial returns. Demonstrating how your company  is helping to address these issues can be a potent addition to 
+                    These ratings can then be downloaded as images to be shared or included in marketing materials.</p>
+                    <p>Impact investing is an exciting and rapidly growing industry powered by investors who are determined to generate social and environmental impact as well as financial returns. Demonstrating how your company  is helping to address these issues can be a potent addition to 
                     any pitch deck.</p>
                 </div>
                 {/* <span className="page-subtitle">Step {stepNumber} of 3</span> */}
