@@ -106,7 +106,7 @@ const MeasureTargetSection = (props: InputProps) => {
                                 id="panel1a-header"
                             >
                                 <div className="column-title">SDG: {selectedSDG.fields.Goal} ({targetCount(selectedSDG.fields.Number)}) &nbsp;
-                            {isTargetsHidden(selectedSDG.fields.Number) &&
+                                    {isTargetsHidden(selectedSDG.fields.Number) &&
                                         <div className="clear-all hyperlink exclude-from-png-download" onClick={() => restoreTargets(selectedSDG.fields.Number)}>Restore targets</div>
                                     }
                                 </div>

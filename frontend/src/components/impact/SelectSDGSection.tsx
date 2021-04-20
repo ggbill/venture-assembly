@@ -31,7 +31,7 @@ const SelectSDGSection = (props: InputProps) => {
                 // style={{ width: 300 }}
                 onChange={props.filterAvailableSDGs}
                 value={props.filter}
-                renderInput={(params) => <TextField {...params} label="Filter SDGs" variant="outlined" />}
+                renderInput={(params) => <TextField {...params} label="Filter by Keyword" variant="outlined" />}
             />
 
             {/* {JSON.stringify(availableSdgList)} */}

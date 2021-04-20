@@ -179,7 +179,6 @@ const PitchDeckReviewDialog = (props: InputProps) => {
                                     defaultValue="Select a File"
                                     value={reviewDetails.pitchDeckFile ? reviewDetails.pitchDeckFile.name : "Select a File"}
                                     disabled
-
                                     required
                                     fullWidth
                                     error={!pitchDeckReviewValidation.getValidation("pitchDeckFile").isValid}
